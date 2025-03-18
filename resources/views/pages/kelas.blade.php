@@ -95,5 +95,35 @@
         </div>
     </div>
 
+    <script>
+        const success = document.getElementById('success');
+        const error1 = document.getElementById('error-1');
+        const error2 = document.getElementById('error-2');
+        const error3 = document.getElementById('error-3');
+
+        if (success) {
+             setTimeout(() => {
+               success.style.display = 'none';
+             }, 10000);
+        }
+
+        if (error1) {
+             setTimeout(() => {
+               error1.style.display = 'none';
+             }, 10000);
+        }
+
+        if (error2) {
+             setTimeout(() => {
+               error2.style.display = 'none';
+             }, 10000);
+        }
+
+        if (error3) {
+             setTimeout(() => {
+               error3.style.display = 'none';
+             }, 10000);
+        }
+    </script>
     @include('components.footer')
 @endsection
