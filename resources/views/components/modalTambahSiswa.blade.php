@@ -33,12 +33,9 @@
             </select>
             <label for="kelas" class="font-semibold text-sm text-gray-600 pb-1 block" @required(true)>Kelas</label>
             <select name="kelas" id="kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
+                @foreach ($kelass as $kelas)
+                    <option value='{{ $kelas->nama_kelas }}'>{{ $kelas->nama_kelas }}</option>
+                @endforeach
             </select>
             <label for="alamat" class="font-semibold text-sm text-gray-600 pb-1 block" @required(true)>Alamat</label>
             <textarea name="alamat" id="alamat" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"></textarea>

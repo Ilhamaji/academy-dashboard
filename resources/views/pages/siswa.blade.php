@@ -28,12 +28,9 @@
             <div class="flex flex-row gap-2">
                 <select name='cariKelas' class="border rounded-lg px-1 py-2 text-sm w-26">
                     <option value=''>Kelas</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                    <option value='6'>6</option>
+                    @foreach ($kelass as $kelas)
+                        <option value='{{ $kelas->nama_kelas }}'>{{ $kelas->nama_kelas }}</option>
+                    @endforeach
                 </select>
                 <div class="flex">
                     <div class="w-full max-w-sm min-w-[200px] relative">
@@ -70,7 +67,7 @@
            <thead>
            <tr>
                <th class="p-4 border-b border-slate-200 bg-slate-50">
-               <p class="text-sm font-normal leading-none text-slate-500">
+               <p class="text-sm font-normal leading-none text-slate-500 text-center">
                    No
                </p>
                </th>
@@ -100,7 +97,7 @@
                </p>
                </th>
                <th class="p-4 border-b border-slate-200 bg-slate-50">
-               <p class="text-sm font-normal leading-none text-slate-500">
+               <p class="text-sm font-normal leading-none text-slate-500 text-center">
                    Aksi
                </p>
                </th>
@@ -110,7 +107,7 @@
             @foreach ($siswas as $siswa)
             <tr class="hover:bg-slate-50 border-b border-slate-200">
                 <td class="p-4 py-5">
-                <p class="block font-semibold md:text-sm text-xs md:w-auto w-2 truncate">{{ $loop->iteration }}</p>
+                <p class="block font-semibold md:text-sm text-xs md:w-auto w-2 truncate text-center">{{ $loop->iteration }}</p>
                 </td>
                 <td class="p-4 py-5">
                 <p class="md:text-sm text-xs md:w-auto w-10 truncate">{{ $siswa->nisn }}</p>
@@ -127,8 +124,8 @@
                 <td class="p-4 py-5">
                 <p class="md:text-sm text-xs md:w-60 lg:w-96 w-20 truncate">{{ $siswa->alamat }}</p>
                 </td>
-                <td class="p-4 py-5">
-                <p class="flex">
+                <td class="p-4 py-5 flex">
+                <p class="flex mx-auto">
                     <a href="/siswa/edit/{{$siswa->nisn}}" class="cursor-pointer bg-blue-500 hover:bg-blue-700 px-3 py-2 rounded-lg group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                             <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-black"/>

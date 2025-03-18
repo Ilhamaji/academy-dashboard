@@ -19,8 +19,9 @@ class SiswaController extends Controller
             $user = Auth::user();
 
             $siswas = DB::table('siswa')->orderBy('created_at', 'ASC')->get();
+            $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-            return view('pages.siswa', ['user' => $user, 'siswas' => $siswas]);
+            return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass]);
         }else{
             return view('auth.login');
         }
@@ -134,8 +135,8 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa, $nisn)
     {
         //
-        $iswa = DB::table('siswa')->where('nisn', '=', $nisn);
-        $iswa->delete();
+        $siswa = DB::table('siswa')->where('nisn', '=', $nisn);
+        $siswa->delete();
 
         return redirect("/siswa")->with('success', 'Siswa deleted successfully');
     }

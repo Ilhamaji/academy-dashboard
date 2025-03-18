@@ -8,6 +8,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\KelasController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -32,5 +33,10 @@ Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
 
 //Endpoint Pembayaran
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
+
+//Endpoint Pembayaran
+Route::get('/kelas', [KelasController::class, 'index']);
+Route::post('/kelas', [KelasController::class, 'store']);
+Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
 
 
