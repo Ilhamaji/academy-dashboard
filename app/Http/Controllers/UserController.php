@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\View;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -70,11 +71,11 @@ class UserController extends Controller
 
         if ($request->hasFile('image')) {
 
-            //upload new image
             //delete old image
-            Storage::delete(public_path('images/').$user->image);
-            $imageName = time().'.'.$request->image->extension();
+            File::delete(public_path('/').$user->image);
 
+            //upload new image
+            $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('images'), $imageName);
             $imagePath = "images/".$imageName;
 

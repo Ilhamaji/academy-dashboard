@@ -14,23 +14,23 @@
 
     <div class="grid grid-cols-2 gap-4">
         <div class="w-auto h-fit bg-wite shadow-md rounded-lg p-10">
-            <div class="text-xl font-bold">Tambah Kelas</div>
+            <div class="text-xl font-bold">Edit Kelas</div>
             <hr class="my-6">
             <form action="/kelas" method="POST">
                 {{ csrf_field() }}
                 <label for="nama_kelas" class="font-semibold text-sm text-gray-600 pb-1 block">Nama Kelas</label>
                 <select name="nama_kelas" id="nama_kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <option value="1" @if($s->nama_kelas == 1) selected @endif>1</option>
+                    <option value="2" @if($s->nama_kelas == 2) selected @endif>2</option>
+                    <option value="3" @if($s->nama_kelas == 3) selected @endif>3</option>
+                    <option value="4" @if($s->nama_kelas == 4) selected @endif>4</option>
+                    <option value="5" @if($s->nama_kelas == 5) selected @endif>5</option>
+                    <option value="6" @if($s->nama_kelas == 6) selected @endif>6</option>
                 </select>
                 <label for="wali_kelas" class="font-semibold text-sm text-gray-600 pb-1 block">Wali Kelas</label>
-                <input id="wali_kelas" type="text" name="wali_kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true) />
+                <input id="wali_kelas" type="text" name="wali_kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true) value="{{ $s->wali_kelas }}" />
                 <button type="submit" class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
-                    <span class="inline-block">Tambah</span>
+                    <span class="inline-block">Simpan Perubahan</span>
                 </button>
             </form>
         </div>

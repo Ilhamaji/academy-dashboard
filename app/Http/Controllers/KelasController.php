@@ -65,9 +65,14 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kelas $kelas)
+    public function edit(Kelas $kelas, $id)
     {
         //
+        $user = Auth::user();
+        $s = DB::table('kelas')->where('id', '=', $id)->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.kelasEdit', ['user' => $user, 's' => $s[0], 'kelass' => $kelass]);
     }
 
     /**
@@ -76,6 +81,19 @@ class KelasController extends Controller
     public function update(Request $request, Kelas $kelas)
     {
         //
+        $siswa = DB::table('siswa')->where('nisn', '=', $nisn);
+
+        $request->validate([
+            'nama_kelas' => 'required|numeric|unique:kelas',
+            'wali_kelas' => 'required|max:60',
+        ]);
+
+        $siswa->update([
+            'nama_kelas' => $request->nama_kelas,
+            'wali_kelas' => $request->wali_kelas,
+        ]);
+
+        return redirect("/kelas")->with('success', 'Kelas sukses diupdate');
     }
 
     /**

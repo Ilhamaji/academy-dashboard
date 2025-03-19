@@ -37,6 +37,7 @@ Route::get('/pembayaran', [PembayaranController::class, 'index']);
 //Endpoint Pembayaran
 Route::get('/kelas', [KelasController::class, 'index']);
 Route::post('/kelas', [KelasController::class, 'store']);
+Route::get('/kelas/edit/{id}', [KelasController::class, 'edit']);
 Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
 
 

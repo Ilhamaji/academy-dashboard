@@ -71,6 +71,7 @@ class SiswaController extends Controller
     {
         //
         $user = Auth::user();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
         if(!$request->cariKelas == '' && $request->cari == ''){
             $siswas = DB::table('siswa')->where('kelas','=', $request->cariKelas)->get();
@@ -82,9 +83,7 @@ class SiswaController extends Controller
             ->get();
         }
 
-
-
-        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas]);
+        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass]);
     }
 
     /**
@@ -94,9 +93,7 @@ class SiswaController extends Controller
     {
         //
         $user = Auth::user();
-
         $s = DB::table('siswa')->where('nisn', '=', $nisn)->get();
-
 
         return view('pages.siswaEdit', ['user' => $user, 's' => $s[0]]);
     }
