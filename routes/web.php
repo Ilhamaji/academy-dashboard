@@ -10,8 +10,6 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\KelasController;
 
-Route::get('/', [HomeController::class, 'index']);
-
 //Endpoint Auth
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
@@ -19,25 +17,31 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/logout', [LogoutController::class, 'index']);
 
-//Endpoint User
-Route::get('/profil', [UserController::class, 'index']);
-Route::put('/profil/{id}', [UserController::class, 'update']);
+//Endpoint Dashboard
+Route::middleware(['auth'])->group(function () {
+    //Endpoint Home
+    Route::get('/', [HomeController::class, 'index']);
 
-//Endpoint Siswa
-Route::get('/siswa', [SiswaController::class, 'index']);
-Route::post('/siswa', [SiswaController::class, 'store']);
-Route::get('/siswa/edit/{nisn}', [SiswaController::class, 'edit']);
-Route::put('/siswa/edit/{nisn}', [SiswaController::class, 'update']);
-Route::get('/siswa/cari', [SiswaController::class, 'show']);
-Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
+        //Endpoint User
+    Route::get('/profil', [UserController::class, 'index']);
+    Route::put('/profil/{id}', [UserController::class, 'update']);
 
-//Endpoint Pembayaran
-Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    //Endpoint Siswa
+    Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::post('/siswa', [SiswaController::class, 'store']);
+    Route::get('/siswa/edit/{nisn}', [SiswaController::class, 'edit']);
+    Route::put('/siswa/edit/{nisn}', [SiswaController::class, 'update']);
+    Route::get('/siswa/cari', [SiswaController::class, 'show']);
+    Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
 
-//Endpoint Pembayaran
-Route::get('/kelas', [KelasController::class, 'index']);
-Route::post('/kelas', [KelasController::class, 'store']);
-Route::get('/kelas/edit/{id}', [KelasController::class, 'edit']);
-Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
+    //Endpoint Pembayaran
+    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+
+    //Endpoint Pembayaran
+    Route::get('/kelas', [KelasController::class, 'index']);
+    Route::post('/kelas', [KelasController::class, 'store']);
+    Route::get('/kelas/edit/{id}', [KelasController::class, 'edit']);
+    Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
+});
 
 

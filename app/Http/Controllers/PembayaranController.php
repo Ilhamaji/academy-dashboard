@@ -14,13 +14,9 @@ class PembayaranController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            $user = Auth::user();
+        $user = Auth::user();
 
-            return view('pages.pembayaran', ['user' => $user]);
-        }else{
-            return view('auth.login');
-        }
+        return view('pages.pembayaran', ['user' => $user]);
     }
 
     /**

@@ -15,16 +15,12 @@ class SiswaController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            $user = Auth::user();
+        $user = Auth::user();
 
-            $siswas = DB::table('siswa')->orderBy('created_at', 'ASC')->get();
-            $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $siswas = DB::table('siswa')->orderBy('created_at', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-            return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass]);
-        }else{
-            return view('auth.login');
-        }
+        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass]);
     }
 
     /**

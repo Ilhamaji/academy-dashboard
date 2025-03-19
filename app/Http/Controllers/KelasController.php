@@ -15,14 +15,11 @@ class KelasController extends Controller
     public function index()
     {
         //
-        if (Auth::check()) {
-            $user = Auth::user();
-            $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-            return view('pages.kelas', ['user' => $user, 'kelass' => $kelass]);
-        }else{
-            return view('auth.login');
-        }
+        $user = Auth::user();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.kelas', ['user' => $user, 'kelass' => $kelass]);
     }
 
     /**
