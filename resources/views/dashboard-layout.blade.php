@@ -73,14 +73,15 @@
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Lainnya</p>
                 </button>
-
             </div>
           </li>
         </ul>
-        <ul class="mb-4 flex flex-col gap-1">
-          <li class="mx-3.5 mt-4 mb-2">
-            <p class="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75">Profile</p>
-          </li>
+        <ul class="flex flex-col gap-1">
+            <li>
+                <a>
+                    <div class="text-xl text-white font-bold">Profil</div>
+                </a>
+            </li>
           <li>
             <a class="" href="/logout">
               <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">

@@ -12,10 +12,10 @@
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
 
-    <div class="md:grid md:grid-cols-2 gap-4">
+    <div class="md:grid md:grid-flow-col gap-4">
         <div class="w-auto h-fit bg-wite shadow-md rounded-lg p-10">
             <div class="text-xl font-bold">Edit Kelas {{ $s->nama_kelas }}</div>
-            <hr class="my-6">
+            <hr class="my-5">
             <form action="/kelas" method="POST">
                 {{ csrf_field() }}
                 <label for="nama_kelas" class="font-semibold text-sm text-gray-600 pb-1 block">Nama Kelas</label>
@@ -34,10 +34,10 @@
                 </button>
             </form>
         </div>
-        <div class="w-auto">
+        <div class="w-auto md:col-span-3">
             <div class="w-auto bg-wite shadow-md rounded-lg p-10">
                 <div class="text-xl font-bold">Daftar Kelas</div>
-                <hr class="my-6">
+                <hr class="my-5">
                 <table class="w-full text-left table-auto w-full">
                     <thead>
                     <tr>

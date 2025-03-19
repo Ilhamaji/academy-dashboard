@@ -1,5 +1,5 @@
 @extends('dashboard-layout')
-@section('title', 'Home')
+@section('title', 'Profil')
 
 @section('dashboard-content')
     <form method="POST" action="/profil/{{$user->id}}" enctype="multipart/form-data">
@@ -7,8 +7,10 @@
         {{ method_field('put') }}
         <!-- component -->
         <div class="w-full block justify-center bg-white shadow-md rounded-lg p-5">
-            <div class="flex text-xl font-bold">Edit <span class="ml-2">{{ $user->name }}</span></div>
-            <hr class="my-6">
+            <div class="text-xl">
+                <span class="mr-1">Edit Data</span><span class="text-xl font-bold">{{ $user->name }}</span>
+            </div>
+            <hr class="my-5">
             <div class="xs:p-0 mx-auto md:w-full">
                 <div class="bg-transparent w-full rounded-lg divide-gray-200">
                     <div class="pb-6">

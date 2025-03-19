@@ -22,11 +22,11 @@
             <div class="text-center bg-red-400 py-2 mt-3 text-white rounded-md">{{$error}}</div>
         @endforeach
 
-        <div class="grid sm:grid-cols-1 md:grid-cols-1 gap-2 bg-white shadow-md mx-20 px-5 py-5 rounded-lg">
+        <div class="grid sm:grid-cols-1 md:grid-cols-1 gap-2 bg-white shadow-md px-5 py-5 rounded-lg">
             <div class="text-xl">
-                <span class="mr-2">Edit Data</span><span class="text-xl font-bold">{{ $s->nama_siswa }}</span>
+                <span class="mr-1">Edit Data</span><span class="text-xl font-bold">{{ $s->nama_siswa }}</span>
             </div>
-            <hr class="my-6">
+            <hr class="my-5">
             <div class="">
                 <label for="nisn" class="font-semibold text-sm text-gray-600 pb-1 block">NISN</label>
                 <input type="text" id="nisn" name="nisn" class="border rounded-lg px-3 py-2 mt-1 text-sm w-full" value="{{$s->nisn}}"  @required(true) />
