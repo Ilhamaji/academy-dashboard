@@ -2,7 +2,7 @@
 
 <!-- component -->
 <div class="min-h-screen bg-gray-50/50">
-    <aside id="sidebar" class="fixed no-scrollbar overflow-y-scroll bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 h-screen w-72 transition-transform duration-300 xl:translate-x-0">
+    <aside id="sidebar" class="fixed no-scrollbar overflow-y-scroll bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 min-h-screen w-72 transition-transform duration-300 xl:translate-x-0">
       <div class="relative border-b border-white/20">
         <a class="flex items-center gap-4 py-8 px-8" href="/profil">
             <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">
@@ -43,8 +43,11 @@
           <li>
             <a class="" href="/kelas">
               <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-xs py-3 rounded-lg text-white hover:bg-white/10 {{ request()->is('kelas') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }} w-full flex items-center gap-4 px-4 capitalize" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                  <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.36066 4.98361H4.93443V7.86885H8.60656V9.44262H4.93443V13.1148H8.60656V14.6885H4.14754C3.71296 14.6885 3.36066 14.3362 3.36066 13.9016V4.98361Z" fill="#fff"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1.83607C1 0.822034 1.82203 0 2.83607 0H10.7049C11.7189 0 12.541 0.822034 12.541 1.83607V3.67213C12.541 4.68616 11.7189 5.5082 10.7049 5.5082H2.83607C1.82203 5.5082 1 4.68616 1 3.67213V1.83607ZM2.83607 1.57377C2.6912 1.57377 2.57377 1.6912 2.57377 1.83607V3.67213C2.57377 3.81699 2.6912 3.93443 2.83607 3.93443H10.7049C10.8498 3.93443 10.9672 3.81699 10.9672 3.67213V1.83607C10.9672 1.6912 10.8498 1.57377 10.7049 1.57377H2.83607Z" fill="#fff"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81967 8.39344C7.81967 7.37941 8.64171 6.55738 9.65574 6.55738H12.2787C13.2927 6.55738 14.1148 7.37941 14.1148 8.39344V8.91803C14.1148 9.93206 13.2927 10.7541 12.2787 10.7541H9.65574C8.64171 10.7541 7.81967 9.93206 7.81967 8.91803V8.39344ZM9.65574 8.13115C9.51088 8.13115 9.39344 8.24858 9.39344 8.39344V8.91803C9.39344 9.06289 9.51088 9.18033 9.65574 9.18033H12.2787C12.4235 9.18033 12.541 9.06289 12.541 8.91803V8.39344C12.541 8.24858 12.4235 8.13115 12.2787 8.13115H9.65574Z" fill="#fff"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81967 13.6393C7.81967 12.6253 8.64171 11.8033 9.65574 11.8033H12.2787C13.2927 11.8033 14.1148 12.6253 14.1148 13.6393V14.1639C14.1148 15.178 13.2927 16 12.2787 16H9.65574C8.64171 16 7.81967 15.178 7.81967 14.1639V13.6393ZM9.65574 13.377C9.51088 13.377 9.39344 13.4945 9.39344 13.6393V14.1639C9.39344 14.3088 9.51088 14.4262 9.65574 14.4262H12.2787C12.4235 14.4262 12.541 14.3088 12.541 14.1639V13.6393C12.541 13.4945 12.4235 13.377 12.2787 13.377H9.65574Z" fill="#fff"/>
                 </svg>
                 <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Kelas</p>
               </button>
@@ -98,7 +101,7 @@
             <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">@yield('title')</h6>
           </div>
           <div class="flex items-center">
-            <button onclick="sidebarHandler()" class="relative mr-2 hover:bg-gray-200 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
+            <button onclick="sidebarHandler()" class="relative mr-2 bg-gray-200 hover:bg-gray-300 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
               <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" stroke-width="3" class="h-6 w-6 text-blue-gray-500">
                   <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
