@@ -37,10 +37,11 @@ Route::middleware(['auth'])->group(function () {
     //Endpoint Pembayaran
     Route::get('/pembayaran', [PembayaranController::class, 'index']);
 
-    //Endpoint Pembayaran
+    //Endpoint Kelas
     Route::get('/kelas', [KelasController::class, 'index']);
     Route::post('/kelas', [KelasController::class, 'store']);
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit']);
+    Route::put('/kelas/edit/{id}', [KelasController::class, 'update']);
     Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
 });
 

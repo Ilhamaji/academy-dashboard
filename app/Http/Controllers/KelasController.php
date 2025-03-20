@@ -75,17 +75,17 @@ class KelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(Request $request, Kelas $kelas, $nama_kelas)
     {
         //
-        $siswa = DB::table('siswa')->where('nisn', '=', $nisn);
+        $kelas = DB::table('kelas')->where('nama_kelas', '=', $nama_kelas);
 
         $request->validate([
-            'nama_kelas' => 'required|numeric|unique:kelas',
+            'nama_kelas' => 'required|numeric',
             'wali_kelas' => 'required|max:60',
         ]);
 
-        $siswa->update([
+        $kelas->update([
             'nama_kelas' => $request->nama_kelas,
             'wali_kelas' => $request->wali_kelas,
         ]);

@@ -19,6 +19,11 @@
       </div>
       <div class="m-4">
         <ul class="mb-4 flex flex-col gap-1">
+            <li>
+                <a>
+                    <div class="text-xl text-white font-bold">Halaman</div>
+                </a>
+            </li>
           <li>
             <a class="" href="/">
               <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-xs py-3 rounded-lg text-white hover:bg-white/10 {{ request()->is('/') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }} w-full flex items-center gap-4 px-4 capitalize" type="button">

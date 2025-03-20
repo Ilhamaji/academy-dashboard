@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
@@ -15,8 +16,10 @@ class PembayaranController extends Controller
     {
         //
         $user = Auth::user();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
 
-        return view('pages.pembayaran', ['user' => $user]);
+        return view('pages.pembayaran', ['user' => $user, 'kelass' => $kelass, 'siswas' => $siswas]);
     }
 
     /**

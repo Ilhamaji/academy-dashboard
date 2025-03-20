@@ -24,12 +24,13 @@
         @include('components.modalTambahKelas')
     </div>
 
-    <div class="md:grid md:grid-flow-col gap-4">
+    <div class="md:grid md:grid-flow-col mt-2 gap-4">
         <div class="w-auto h-fit bg-wite shadow-md rounded-lg p-10">
             <div class="text-xl font-bold">Edit Kelas {{ $s->nama_kelas }}</div>
             <hr class="my-5">
-            <form action="/kelas" method="POST">
+            <form action="/kelas/edit/{{ $s->nama_kelas }}" method="POST">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
                 <label for="nama_kelas" class="font-semibold text-sm text-gray-600 pb-1 block">Nama Kelas</label>
                 <select name="nama_kelas" id="nama_kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
                     <option value="1" @if($s->nama_kelas == 1) selected @endif>1</option>
@@ -72,7 +73,7 @@
                     @foreach ($kelass as $kelas)
                      <tr class="hover:bg-slate-50 border-b border-slate-200">
                          <td class="p-4">
-                         <p class="md:text-sm text-xs md:w-auto truncate text-center">{{ $kelas->nama_kelas }}</p>
+                         <p class="md:text-sm text-xs md:w-auto truncate text-center font-bold">{{ $kelas->nama_kelas }}</p>
                          </td>
                          <td class="p-4">
                          <p class="md:text-sm text-xs md:w-auto truncate">{{ $kelas->wali_kelas }}</p>
