@@ -12,12 +12,6 @@
             </div>
         @endif
 
-        @if(session()->has('error'))
-            <div class="text-center bg-red-400 py-2 text-white rounded-md">
-                {{session()->get('error')}}
-            </div>
-        @endif
-
         @foreach ($errors->all() as $error)
             <div class="text-center bg-red-400 py-2 mt-3 text-white rounded-md">{{$error}}</div>
         @endforeach

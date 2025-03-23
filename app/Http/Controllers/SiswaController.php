@@ -42,7 +42,7 @@ class SiswaController extends Controller
             'nisn' => 'required|numeric|unique:siswa',
             'nama_siswa' => 'required',
             'jenis_kelamin' => 'required',
-            'kelas' => 'required|numeric',
+            'kelas' => 'nullable|numeric',
             'alamat' => 'required',
         ]);
 
@@ -106,7 +106,7 @@ class SiswaController extends Controller
             'nisn' => 'required|numeric',
             'nama_siswa' => 'required',
             'jenis_kelamin' => 'required',
-            'kelas' => 'required|numeric',
+            'kelas' => 'nullable|numeric',
             'alamat' => 'required',
         ]);
 

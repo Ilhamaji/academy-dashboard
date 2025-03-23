@@ -1,7 +1,7 @@
 @extends('layout')
 
 <!-- component -->
-<div class="min-h-screen bg-gray-50/50">
+<div class="min-h-screen bg-gray-100">
     <aside id="sidebar" class="fixed no-scrollbar overflow-y-scroll bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 min-h-screen w-72 transition-transform duration-300 xl:translate-x-0">
       <div class="relative border-b border-white/20">
         <a class="flex items-center gap-4 py-8 px-8" href="/profil">
@@ -60,24 +60,22 @@
           </li>
           <li>
             <div class="group hover:bg-gray-600 rounded-lg duration-300">
-                <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize {{ request()->is('pembayaran') || request()->is('lainnya') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
+                <a href="/penerimaan" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize {{ request()->is('penerimaan') || request()->is('penerimaan/pembayaran') || request()->is('penerimaan/lainnya') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                         <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Penerimaan</p>
-                </button>
-                <a href="/pembayaran" class="middle hidden group-hover:flex none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="scale-x-[-1]">
-                        <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Pembayaran</p>
                 </a>
-                <a href="/lainnya" class="middle hidden group-hover:flex none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="scale-x-[-1]">
-                        <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </div>
+          </li>
+          <li>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/pengeluaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize {{ request()->is('pengeluaran') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
+                        <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Lainnya</p>
-                </button>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Pengeluaran</p>
+                </a>
             </div>
           </li>
         </ul>
@@ -100,11 +98,11 @@
         </ul>
       </div>
     </aside>
-    <div class="p-4 xl:ml-72 min-h-screen">
+    <div class="py-4 px-4 md:px-5 lg:px-10 xl:ml-72">
       <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl px-0 py-1">
         <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
           <div class="capitalize">
-            <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900">@yield('title')</h6>
+            <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900 my-auto">@yield('title')</h6>
           </div>
           <div class="flex items-center">
             <button onclick="sidebarHandler()" class="relative mr-2 bg-gray-200 hover:bg-gray-300 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
@@ -127,7 +125,7 @@
           </div>
         </div>
       </nav>
-      @yield('dashboard-content')
+        @yield('dashboard-content')
     </div>
 </div>
 

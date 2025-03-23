@@ -8,6 +8,8 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PenerimaanController;
+use App\Http\Controllers\LainnyaController;
 use App\Http\Controllers\KelasController;
 
 //Endpoint Auth
@@ -34,8 +36,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/cari', [SiswaController::class, 'show']);
     Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
 
-    //Endpoint Pembayaran
-    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    //Endpoint penerimaan
+    Route::get('/penerimaan', [PenerimaanController::class, 'index']);
+    Route::post('/penerimaan/pembayaran', [PembayaranController::class, 'store']);
+    Route::post('/penerimaan/lain-lain', [LainnyaController::class, 'store']);
 
     //Endpoint Kelas
     Route::get('/kelas', [KelasController::class, 'index']);

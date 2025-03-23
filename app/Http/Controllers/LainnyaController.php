@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pembayaran;
+use App\Models\Lainnya;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class PembayaranController extends Controller
+class LainnyaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -30,36 +30,21 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
         //
-        $siswa = DB::table('siswa')->where('nisn', '=', $request->nisn);
-
-        $request->validate([
-            'nisn' => 'required|numeric|unique:pembayaran',
-            'kelas' => 'required|numeric',
-            'keterangan' => 'required',
-            'nominal' => 'required|numeric',
-            'tgl' => 'required|date'
-        ]);
-
-        DB::table('pembayaran')->insert([
+        DB::table('lain_lain')->insert([
             [
-                'nisn' => $request->nisn,
                 'keterangan' => $request->keterangan,
                 'nominal' => $request->nominal,
                 'tanggal' => $request->tgl
             ],
         ]);
 
-        $siswa->update([
-            'kelas' => $request->kelas,
-        ]);
-
-        return redirect("/penerimaan")->with('success', 'Pembayaran created successfully');
+        return redirect("/penerimaan")->with('success', 'Lainnya created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pembayaran $pembayaran)
+    public function show(Lainnya $lainnya)
     {
         //
     }
@@ -67,7 +52,7 @@ class PembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pembayaran $pembayaran)
+    public function edit(Lainnya $lainnya)
     {
         //
     }
@@ -75,7 +60,7 @@ class PembayaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pembayaran $pembayaran)
+    public function update(Request $request, Lainnya $lainnya)
     {
         //
     }
@@ -83,7 +68,7 @@ class PembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pembayaran $pembayaran)
+    public function destroy(Lainnya $lainnya)
     {
         //
     }
