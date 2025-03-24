@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lainnya;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LainnyaController extends Controller
 {
@@ -44,9 +45,13 @@ class LainnyaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lainnya $lainnya)
+    public function show(Lainnya $lainnya, $id)
     {
         //
+        $user = Auth::user();
+        $lains = DB::table('lain_lain')->where('id', '=', $id)->orderBy('tanggal', 'ASC')->get();
+
+        return view('pages.kwitansiLainnya', ['user' => $user, 'lains' => $lains]);
     }
 
     /**

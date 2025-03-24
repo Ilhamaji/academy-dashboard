@@ -18,8 +18,14 @@ class HomeController extends Controller
     {
         //
         $user = Auth::user();
+        $pembayaran = DB::table('pembayaran')->sum('nominal');
+        $lain = DB::table('lain_lain')->sum('nominal');
+        $pengeluaran = DB::table('pengeluaran')->sum('nominal');
+        $siswa = DB::table('siswa')->count();
+        $kelas = DB::table('kelas')->count();
+        $total = $pembayaran + $lain - $pengeluaran;
 
-        return view('pages.home', ['user' => $user]);
+        return view('pages.home', ['user' => $user, 'total' => $total, 'siswa' => $siswa, 'kelas' => $kelas]);
     }
 
     /**

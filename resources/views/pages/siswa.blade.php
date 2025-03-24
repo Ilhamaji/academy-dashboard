@@ -57,30 +57,42 @@
 
     @include('components.modalTambahSiswa')
 
-    <div class="overflow-auto mt-6 w-full shadow-md rounded-lg">
-        <table class="table-auto border-collapse w-full">
-          <thead>
-            <tr class="rounded-lg text-xs md:text-sm font-medium text-gray-500 bg-slate-200 text-left">
-              <th class="p-4"><p class="truncate">No</p></th>
-              <th class="p-4"><p class="truncate">NISN</p></th>
-              <th class="p-4"><p class="truncate">Nama</p></th>
-              <th class="p-4"><p class="truncate">Jenis Kelamin</p></th>
-              <th class="p-4"><p class="truncate">Kelas</p></th>
-              <th class="p-4"><p class="truncate">Alamat</p></th>
-              <th class="p-4"><p class="truncate">Aksi</p></th>
-            </tr>
-          </thead>
-          <tbody class="text-xs md:text-sm font-normal text-gray-700 bg-white">
-            @foreach ($siswas as $siswa)
-                <tr class="hover:bg-gray-100 border-gray-200 border-b">
-                    <td class="p-4 text-center font-bold"><p class="truncate">{{ $loop->iteration }}</td>
-                    <td class="p-4"><p class="w-10 lg:w-auto truncate">{{ $siswa->nisn }}</td>
-                    <td class="p-4"><p class="w-20 lg:w-auto truncate">{{ $siswa->nama_siswa }}</td>
-                    <td class="p-4"><p class="w-20 lg:w-auto truncate">{{ $siswa->jenis_kelamin }}</td>
-                    <td class="p-4"><p class="truncate">{{ $siswa->kelas }}</td>
-                    <td class="p-4"><p class="w-20 md:w-40 lg:w-100 truncate">{{ $siswa->alamat }}</td>
-                    <td class="p-4">
-                        <p class="flex mx-auto">
+    <div class="flex flex-col mt-6">
+        <div class="-m-1.5 max-h-[80vh] overflow-auto shadow-md rounded-lg bg-gray-200">
+          <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="overflow-hidden">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead>
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">No</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">NISN</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nama</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Kelamin</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Kelas</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Alamat</th>
+                    <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @foreach ($siswas as $siswa)
+                    <tr class="odd:bg-white even:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <p class="w-10 lg:w-auto truncate">{{ $siswa->nisn }}</p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <p class="w-20 lg:w-auto truncate">{{ $siswa->nama_siswa }}</p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <p class="w-20 lg:w-auto truncate">{{ $siswa->jenis_kelamin }}</p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <p class="">{{ $siswa->kelas }}</p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                            <p class="w-20 md:w-40 lg:w-86 truncate">{{ $siswa->alamat }}</p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
                             <a href="/siswa/edit/{{$siswa->nisn}}" class="cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                     <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -97,12 +109,14 @@
                                     <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </a>
-                        </p>
-                    </td>
-                </tr>
-            @endforeach
-          </tbody>
-        </table>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
     </div>
 
    <script>

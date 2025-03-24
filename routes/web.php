@@ -10,6 +10,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\LainnyaController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\KelasController;
 
 //Endpoint Auth
@@ -36,10 +37,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/cari', [SiswaController::class, 'show']);
     Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
 
-    //Endpoint penerimaan
+    //Endpoint Penerimaan
     Route::get('/penerimaan', [PenerimaanController::class, 'index']);
     Route::post('/penerimaan/pembayaran', [PembayaranController::class, 'store']);
+    Route::get('/penerimaan/pembayaran/{id}', [PembayaranController::class, 'show']);
     Route::post('/penerimaan/lain-lain', [LainnyaController::class, 'store']);
+    Route::get('/penerimaan/lain-lain/{id}', [LainnyaController::class, 'show']);
+
+    //Endpoint Pengeluaran
+    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
+    Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
+    Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
 
     //Endpoint Kelas
     Route::get('/kelas', [KelasController::class, 'index']);

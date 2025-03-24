@@ -27,7 +27,8 @@ aria-hidden="true"
                 @endforeach
             </select>
             <label for="kelas" class="font-semibold text-sm text-gray-600 pb-1 block">Kelas</label>
-            <select name="kelas" id="kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
+            <select name="kelas" id="kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
+                <option value=''>Pilih kelas jika belum terdaftar</option>
                 @foreach ($kelass as $kelas)
                     <option value='{{ $kelas->nama_kelas }}'>{{ $kelas->nama_kelas }}</option>
                 @endforeach

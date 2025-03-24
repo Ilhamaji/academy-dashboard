@@ -30,11 +30,11 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
         //
-        $siswa = DB::table('siswa')->where('nisn', '=', $request->nisn);
+        $siswa = DB::table('siswa')->where('nisn', '=', $request->nisn)->get();
 
         $request->validate([
-            'nisn' => 'required|numeric|unique:pembayaran',
-            'kelas' => 'required|numeric',
+            'nisn' => 'required|numeric',
+            'kelas' => 'nullable|numeric',
             'keterangan' => 'required',
             'nominal' => 'required|numeric',
             'tgl' => 'required|date'
@@ -49,9 +49,11 @@ class PembayaranController extends Controller
             ],
         ]);
 
-        $siswa->update([
-            'kelas' => $request->kelas,
-        ]);
+        if ($siswa->kelas === '' || $siswa->kelas === NULL) {
+            $siswa->update([
+                'kelas' => $request->kelas,
+            ]);
+        }
 
         return redirect("/penerimaan")->with('success', 'Pembayaran created successfully');
     }
@@ -59,9 +61,13 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pembayaran $pembayaran)
+    public function show(Pembayaran $pembayaran, $id)
     {
         //
+        $user = Auth::user();
+        $pembayaran = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.*')->where('id', '=', $id)->orderBy('tanggal', 'ASC')->get();
+
+        return view('pages.kwitansiPembayaran', ['user' => $user, 'pembayaran' => $pembayaran]);
     }
 
     /**
