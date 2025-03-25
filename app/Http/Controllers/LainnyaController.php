@@ -48,10 +48,11 @@ class LainnyaController extends Controller
     public function show(Lainnya $lainnya, $id)
     {
         //
+        $title = 'Penerimaan';
         $user = Auth::user();
         $lains = DB::table('lain_lain')->where('id', '=', $id)->orderBy('tanggal', 'ASC')->get();
 
-        return view('pages.kwitansiLainnya', ['user' => $user, 'lains' => $lains]);
+        return view('pages.kwitansiLainnya', ['user' => $user, 'lains' => $lains, 'title' => $title]);
     }
 
     /**

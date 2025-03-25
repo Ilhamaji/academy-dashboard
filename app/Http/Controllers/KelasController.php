@@ -15,11 +15,11 @@ class KelasController extends Controller
     public function index()
     {
         //
-
+        $title = 'Kelas';
         $user = Auth::user();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-        return view('pages.kelas', ['user' => $user, 'kelass' => $kelass]);
+        return view('pages.kelas', ['user' => $user, 'kelass' => $kelass, 'title' => $title]);
     }
 
     /**
@@ -65,11 +65,12 @@ class KelasController extends Controller
     public function edit(Kelas $kelas, $id)
     {
         //
+        $title = 'Kelas';
         $user = Auth::user();
         $s = DB::table('kelas')->where('id', '=', $id)->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-        return view('pages.kelasEdit', ['user' => $user, 's' => $s[0], 'kelass' => $kelass]);
+        return view('pages.kelasEdit', ['user' => $user, 's' => $s[0], 'kelass' => $kelass, 'title' => $title, 'back' => $id]);
     }
 
     /**

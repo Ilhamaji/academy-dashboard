@@ -19,9 +19,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $title = 'Profil';
         $user = Auth::user();
 
-        return view('pages.profil', ['user' => $user]);
+        return view('pages.profil', ['user' => $user, 'title' => $title]);
     }
 
     /**

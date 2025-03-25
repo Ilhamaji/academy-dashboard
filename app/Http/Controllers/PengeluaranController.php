@@ -15,11 +15,12 @@ class PengeluaranController extends Controller
     public function index()
     {
         //
+        $title = 'Pengeluaran';
         $user = Auth::user();
         $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-        return view('pages.pengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass]);
+        return view('pages.pengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
     }
 
     /**
@@ -62,10 +63,11 @@ class PengeluaranController extends Controller
     public function show(Pengeluaran $pengeluaran, $id)
     {
         //
+        $title = 'Pengeluaran';
         $user = Auth::user();
         $pengeluaran = DB::table('pengeluaran')->where('id', '=', $id)->get();
 
-        return view('pages.kwitansiPengeluaran', ['user' => $user, 'pengeluaran' => $pengeluaran]);
+        return view('pages.kwitansiPengeluaran', ['user' => $user, 'pengeluaran' => $pengeluaran, 'title' => $title]);
     }
 
     /**

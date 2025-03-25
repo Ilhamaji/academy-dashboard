@@ -12,6 +12,12 @@
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
 
+    <div class="flex mb-2">
+        <a href="/penerimaan" class="text-sm hover:text-blue-500">Penerimaan</a>
+        <div class="mx-1">/</div>
+        <a class="text-sm text-blue-500">Kwitansi</a>
+    </div>
+
     @foreach ($lains as $lain)
         <div class="flex h-[78vh]">
             <div class="m-auto">

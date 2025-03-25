@@ -12,6 +12,8 @@ use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\LainnyaController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\KasController;
 
 //Endpoint Auth
 Route::get('/register', [RegisterController::class, 'index']);
@@ -49,12 +51,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
     Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
 
+    //Endpoint Detail
+    Route::get('/detail', [DetailController::class, 'index']);
+    Route::get('/detail/kelas/{id}', [DetailController::class, 'show']);
+    Route::post('/detail/kelas/{id}', [DetailController::class, 'showCari']);
+    Route::get('/detail/kelas/siswa/{nisn}', [DetailController::class, 'detail']);
+    Route::post('/detail/kelas/siswa/{nisn}', [DetailController::class, 'detailCari']);
+    Route::get('/detail/kelas/siswa/pembayaran/{id}', [DetailController::class, 'more']);
+
     //Endpoint Kelas
     Route::get('/kelas', [KelasController::class, 'index']);
     Route::post('/kelas', [KelasController::class, 'store']);
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit']);
     Route::put('/kelas/edit/{id}', [KelasController::class, 'update']);
     Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
+
+    //Endpoint Kas
+    Route::get('/kas', [KasController::class, 'index']);
+    Route::post('/kas', [KasController::class, 'show']);
 });
 
 

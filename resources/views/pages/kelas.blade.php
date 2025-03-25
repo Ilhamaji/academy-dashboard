@@ -12,8 +12,14 @@
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
 
+    <div class="flex mb-2">
+        <a href="/kelas" class="text-sm text-blue-500">Kelas</a>
+        <div class="mx-1">/</div>
+    </div>
+
+
     <div class="flex">
-        <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-gradient-to-br from-gray-800 to-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+        <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
                     <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -32,14 +38,14 @@
                 <thead>
                   <tr>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Kelas</th>
-                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nama</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Wali Kelas</th>
                     <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                 @foreach ($kelass as $kelas)
                     <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $kelas->nama_kelas }}</td>
+                        <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $kelas->nama_kelas }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $kelas->wali_kelas }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
                             <a href="/kelas/edit/{{$kelas->id}}" class="cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">

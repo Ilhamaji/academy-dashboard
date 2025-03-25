@@ -16,6 +16,12 @@
             <div class="text-center bg-red-400 py-2 mt-3 text-white rounded-md">{{$error}}</div>
         @endforeach
 
+        <div class="flex mb-2">
+            <a href="/siswa" class="text-sm hover:text-blue-500">Siswa</a>
+            <div class="mx-1">/</div>
+            <a class="text-sm text-blue-500">Edit</a>
+        </div>
+
         <div class="grid sm:grid-cols-1 md:grid-cols-1 gap-2 bg-white shadow-md px-5 py-5 rounded-lg">
             <div class="text-xl">
                 <span class="mr-1">Edit Data</span><span class="text-xl font-bold">{{ $s->nama_siswa }}</span>

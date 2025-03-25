@@ -12,9 +12,14 @@
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
 
+    <div class="flex mb-2">
+        <p class="text-sm text-blue-500">Siswa</p>
+        <div class="mx-1">/</div>
+    </div>
+
     <div class="flex flex-col md:flex-row gap-3 sm:justify-between">
         <div class="flex">
-            <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-gradient-to-br from-gray-800 to-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+            <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
                         <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,30 +31,26 @@
 
         <form class="flex" action="/siswa/cari" method="GET">
             <div class="flex flex-row gap-2">
-                <select name='cariKelas' class="border rounded-lg px-1 py-2 text-sm w-26 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
-                    <option value='' class="bg-gray-900">Kelas</option>
+                <select name='cariKelas' class="border rounded-lg px-1 py-2 text-sm w-26 bg-gray-900 text-white">
+                    <option value='' class="bg-black text-white">Kelas</option>
                     @foreach ($kelass as $kelas)
-                        <option value='{{ $kelas->nama_kelas }}' class="bg-gray-900">{{ $kelas->nama_kelas }}</option>
+                        <option value='{{ $kelas->nama_kelas }}' class="bg-black text-white">{{ $kelas->nama_kelas }}</option>
                     @endforeach
                 </select>
                 <div class="flex">
-                    <div class="w-full max-w-sm min-w-[200px] relative">
-                    <div class="relative">
-                        <input
-                        name="cari"
-                        class="bg-white w-full pr-11 h-full pl-3 py-2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
-                        placeholder="Cari siswa..."
-                        />
-                        <button
-                        class="absolute h-8 w-8 md:right-1 md:top-1 right-[0.1rem] top-[0.1rem] my-auto px-2 flex items-center bg-white rounded cursor-pointer"
-                        type="submit"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-8 h-8 text-slate-600">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                            </svg>
-                        </button>
-                    </div>
-                    </div>
+                    <input
+                    name="cari"
+                    class="bg-white w-full pr-11 h-full pl-3 py-2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
+                    placeholder="Cari siswa..."
+                    />
+                    <button
+                    class="h-full w-10 ml-2 md:right-1 bg-gray-900 md:top-1 right-[0.1rem] top-[0.1rem] my-auto px-2 flex items-center bg-gray-900 rounded cursor-pointer"
+                    type="submit"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#fff" class="w-8 h-8 text-slate-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </form>

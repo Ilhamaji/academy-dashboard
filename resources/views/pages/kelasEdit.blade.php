@@ -12,6 +12,12 @@
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
 
+    <div class="flex mb-2">
+        <a href="/kelas" class="text-sm hover:text-blue-500">Kelas</a>
+        <div class="mx-1">/</div>
+        <a class="text-sm text-blue-500">Edit</a>
+    </div>
+
     <div class="flex">
         <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-gradient-to-br from-gray-800 to-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
             <span>
@@ -56,7 +62,7 @@
                     <thead>
                       <tr>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Kelas</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nama</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Wali Kelas</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>
                       </tr>
                     </thead>

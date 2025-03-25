@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         //
+        $title = 'Home';
         $user = Auth::user();
         $pembayaran = DB::table('pembayaran')->sum('nominal');
         $lain = DB::table('lain_lain')->sum('nominal');
@@ -25,7 +26,7 @@ class HomeController extends Controller
         $kelas = DB::table('kelas')->count();
         $total = $pembayaran + $lain - $pengeluaran;
 
-        return view('pages.home', ['user' => $user, 'total' => $total, 'siswa' => $siswa, 'kelas' => $kelas]);
+        return view('pages.home', ['user' => $user, 'total' => $total, 'siswa' => $siswa, 'kelas' => $kelas, 'title' => $title]);
     }
 
     /**

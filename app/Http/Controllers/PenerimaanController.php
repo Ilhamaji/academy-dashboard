@@ -15,13 +15,14 @@ class PenerimaanController extends Controller
     public function index()
     {
         //
+        $title = 'Penerimaan';
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
         $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
         $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
 
-        return view('pages.penerimaan', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains]);
+        return view('pages.penerimaan', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title]);
     }
 
     /**

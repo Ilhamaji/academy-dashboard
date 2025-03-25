@@ -13,7 +13,11 @@
     @endforeach
 
     <div class="flex mb-2">
-        <a href="/penerimaan" class="text-sm hover:text-blue-500">Penerimaan</a>
+        <a href="/detail" class="text-sm hover:text-blue-500">Kelas</a>
+        <div class="mx-1">/</div>
+        <a href="/detail/kelas/{{ $backKelas }}" class="text-sm hover:text-blue-500">Siswa</a>
+        <div class="mx-1">/</div>
+        <a href="/detail/kelas/siswa/{{ $back }}" class="text-sm hover:text-blue-500">Pembayaran</a>
         <div class="mx-1">/</div>
         <a class="text-sm text-blue-500">Kwitansi</a>
     </div>

@@ -15,12 +15,12 @@ class SiswaController extends Controller
     public function index()
     {
         //
+        $title = 'Siswa';
         $user = Auth::user();
-
         $siswas = DB::table('siswa')->orderBy('created_at', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass]);
+        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'title' => $title]);
     }
 
     /**
@@ -66,6 +66,7 @@ class SiswaController extends Controller
     public function show(Siswa $siswa, Request $request)
     {
         //
+        $title = 'Siswa';
         $user = Auth::user();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
@@ -79,7 +80,7 @@ class SiswaController extends Controller
             ->get();
         }
 
-        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass]);
+        return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'title' => $title]);
     }
 
     /**
@@ -88,10 +89,11 @@ class SiswaController extends Controller
     public function edit(Siswa $siswa, $nisn)
     {
         //
+        $title = 'Siswa';
         $user = Auth::user();
         $s = DB::table('siswa')->where('nisn', '=', $nisn)->get();
 
-        return view('pages.siswaEdit', ['user' => $user, 's' => $s[0]]);
+        return view('pages.siswaEdit', ['user' => $user, 's' => $s[0], 'title' => $title]);
     }
 
     /**

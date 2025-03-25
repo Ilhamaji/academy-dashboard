@@ -64,10 +64,11 @@ class PembayaranController extends Controller
     public function show(Pembayaran $pembayaran, $id)
     {
         //
+        $title = 'Penerimaan';
         $user = Auth::user();
         $pembayaran = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.*')->where('id', '=', $id)->orderBy('tanggal', 'ASC')->get();
 
-        return view('pages.kwitansiPembayaran', ['user' => $user, 'pembayaran' => $pembayaran]);
+        return view('pages.kwitansiPembayaran', ['user' => $user, 'pembayaran' => $pembayaran, 'title' => $title]);
     }
 
     /**

@@ -2,12 +2,12 @@
 
 <!-- component -->
 <div class="min-h-screen bg-gray-100">
-    <aside id="sidebar" class="fixed no-scrollbar overflow-y-scroll bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 min-h-screen w-72 transition-transform duration-300 xl:translate-x-0">
-      <div class="relative border-b border-white/20">
-        <a class="flex items-center gap-4 py-8 px-8" href="/profil">
-            <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">
-                Hi, {{$user->name}}
-          </h6>
+    <aside id="sidebar" class="fixed shadow-md no-scrollbar overflow-y-scroll bg-gray-900 -translate-x-80 fixed inset-0 z-50 min-h-screen w-72 transition-transform duration-300 xl:translate-x-0">
+      <div class="relative">
+        <a class="flex items-center gap-4 py-4 mx-4 border-b" href="/">
+            <h6 class="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-white">
+                Nama Sekolah
+            </h6>
         </a>
         <button onclick="sidebarHandler()" class="middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden" type="button">
           <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
@@ -21,47 +21,59 @@
         <ul class="mb-4 flex flex-col gap-1">
             <li>
                 <a>
-                    <div class="text-xl text-white font-bold">Halaman</div>
+                    <div class="text-lg text-gray-400 font-bold">Halaman</div>
                 </a>
             </li>
           <li>
-            <a class="" href="/">
-              <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-xs py-3 rounded-lg text-white hover:bg-white/10 {{ request()->is('/') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }} w-full flex items-center gap-4 px-4 capitalize" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                  <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
-                  <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
-                </svg>
-                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Dashboard</p>
-              </button>
-            </a>
-          </li>
-          <li>
-            <a class="" href="/siswa">
-              <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-xs py-3 rounded-lg text-white hover:bg-white/10 {{ request()->is('siswa') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }} w-full flex items-center gap-4 px-4 capitalize" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                  <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
-                </svg>
-                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Siswa</p>
-              </button>
-            </a>
-          </li>
-          <li>
-            <a class="" href="/kelas">
-              <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-xs py-3 rounded-lg text-white hover:bg-white/10 {{ request()->is('kelas') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }} w-full flex items-center gap-4 px-4 capitalize" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.36066 4.98361H4.93443V7.86885H8.60656V9.44262H4.93443V13.1148H8.60656V14.6885H4.14754C3.71296 14.6885 3.36066 14.3362 3.36066 13.9016V4.98361Z" fill="#fff"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 1.83607C1 0.822034 1.82203 0 2.83607 0H10.7049C11.7189 0 12.541 0.822034 12.541 1.83607V3.67213C12.541 4.68616 11.7189 5.5082 10.7049 5.5082H2.83607C1.82203 5.5082 1 4.68616 1 3.67213V1.83607ZM2.83607 1.57377C2.6912 1.57377 2.57377 1.6912 2.57377 1.83607V3.67213C2.57377 3.81699 2.6912 3.93443 2.83607 3.93443H10.7049C10.8498 3.93443 10.9672 3.81699 10.9672 3.67213V1.83607C10.9672 1.6912 10.8498 1.57377 10.7049 1.57377H2.83607Z" fill="#fff"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81967 8.39344C7.81967 7.37941 8.64171 6.55738 9.65574 6.55738H12.2787C13.2927 6.55738 14.1148 7.37941 14.1148 8.39344V8.91803C14.1148 9.93206 13.2927 10.7541 12.2787 10.7541H9.65574C8.64171 10.7541 7.81967 9.93206 7.81967 8.91803V8.39344ZM9.65574 8.13115C9.51088 8.13115 9.39344 8.24858 9.39344 8.39344V8.91803C9.39344 9.06289 9.51088 9.18033 9.65574 9.18033H12.2787C12.4235 9.18033 12.541 9.06289 12.541 8.91803V8.39344C12.541 8.24858 12.4235 8.13115 12.2787 8.13115H9.65574Z" fill="#fff"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81967 13.6393C7.81967 12.6253 8.64171 11.8033 9.65574 11.8033H12.2787C13.2927 11.8033 14.1148 12.6253 14.1148 13.6393V14.1639C14.1148 15.178 13.2927 16 12.2787 16H9.65574C8.64171 16 7.81967 15.178 7.81967 14.1639V13.6393ZM9.65574 13.377C9.51088 13.377 9.39344 13.4945 9.39344 13.6393V14.1639C9.39344 14.3088 9.51088 14.4262 9.65574 14.4262H12.2787C12.4235 14.4262 12.541 14.3088 12.541 14.1639V13.6393C12.541 13.4945 12.4235 13.377 12.2787 13.377H9.65574Z" fill="#fff"/>
-                </svg>
-                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Kelas</p>
-              </button>
-            </a>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:text-white group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Home' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
+                        <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
+                        <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
+                      </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium ">Dashboard</p>
+                </a>
+            </div>
           </li>
           <li>
             <div class="group hover:bg-gray-600 rounded-lg duration-300">
-                <a href="/penerimaan" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize {{ request()->is('penerimaan') || request()->is('penerimaan/pembayaran') || request()->is('penerimaan/lainnya') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
+                <a href="/siswa" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Siswa' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
+                        <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
+                      </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Siswa</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/kelas" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Kelas' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h10M11 9h5" class="group-hover:stroke-white {{ $title === 'Kelas' ? 'stroke-white' : ''}}"/><rect width="4" height="4" x="3" y="5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" rx="1" class="group-hover:stroke-white {{ $title === 'Kelas' ? 'stroke-white' : ''}}"/><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15h10m-10 4h5" class="group-hover:stroke-white {{ $title === 'Kelas' ? 'stroke-white' : ''}}"/><rect width="4" height="4" x="3" y="15" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" rx="1" class="group-hover:stroke-white {{ $title === 'Kelas' ? 'stroke-white' : ''}}"/></svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Kelas</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/detail" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Detail' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 -0.5 11 11" version="1.1">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-304.000000, -565.000000)" fill="#fff" class="group-hover:fill-white {{ $title === 'Detail' ? 'fill-white' : ''}}">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M259,410 C259,410.552 258.5072,411 257.9,411 L256.1554,411 L257.3896,412.121 C257.8186,412.512 257.8186,413.145 257.3896,413.536 L257.3896,413.536 C256.9595,413.926 256.2632,413.926 255.8331,413.536 L254.6,412.414 L254.6,414 C254.6,414.552 254.1072,415 253.5,415 L253.5,415 C252.8928,415 252.4,414.552 252.4,414 L252.4,412.414 L251.1669,413.536 C250.7368,413.926 250.0405,413.926 249.6104,413.536 C249.1814,413.145 249.1814,412.512 249.6104,412.121 L250.8446,411 L249.1,411 C248.4928,411 248,410.552 248,410 L248,410 C248,409.448 248.4928,409 249.1,409 L250.8446,409 L249.6104,407.879 C249.1814,407.488 249.1814,406.855 249.6104,406.464 L249.6104,406.464 C250.0405,406.074 250.7368,406.074 251.1669,406.464 L252.4,407.586 L252.4,406 C252.4,405.448 252.8928,405 253.5,405 L253.5,405 C254.1072,405 254.6,405.448 254.6,406 L254.6,407.586 L255.8331,406.464 C256.2632,406.074 256.9595,406.074 257.3896,406.464 L257.3896,406.464 C257.8186,406.855 257.8186,407.488 257.3896,407.879 L256.1554,409 L257.9,409 C258.5072,409 259,409.448 259,410 L259,410 Z" id="important_details-[#1434]">
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Detail</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/penerimaan" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" class="w-5 h-5 text-inherit group-hover:fill-white {{ $title === 'Penerimaan' ? 'fill-white' : ''}}">
                         <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Penerimaan</p>
@@ -70,11 +82,23 @@
           </li>
           <li>
             <div class="group hover:bg-gray-600 rounded-lg duration-300">
-                <a href="/pengeluaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize {{ request()->is('pengeluaran') ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
+                <a href="/pengeluaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Pengeluaran' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" class="w-5 h-5 text-inherit group-hover:fill-white {{ $title === 'Pengeluaran' ? 'fill-white' : ''}}">
                         <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Pengeluaran</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/kas" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Kas' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 13C7 11.1144 7 10.1716 7.58579 9.58579C8.17157 9 9.11438 9 11 9H14H17C18.8856 9 19.8284 9 20.4142 9.58579C21 10.1716 21 11.1144 21 13V14V15C21 16.8856 21 17.8284 20.4142 18.4142C19.8284 19 18.8856 19 17 19H14H11C9.11438 19 8.17157 19 7.58579 18.4142C7 17.8284 7 16.8856 7 15V14V13Z" stroke="#fff" class="group-hover:stroke-white {{ $title === 'Kas' ? 'stroke-white' : '' }}" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M7 15V15C5.11438 15 4.17157 15 3.58579 14.4142C3.58579 14.4142 3.58579 14.4142 3.58579 14.4142C3 13.8284 3 12.8856 3 11L3 9C3 7.11438 3 6.17157 3.58579 5.58579C4.17157 5 5.11438 5 7 5L13 5C14.8856 5 15.8284 5 16.4142 5.58579C17 6.17157 17 7.11438 17 9V9" stroke="#fff" class="group-hover:stroke-white {{ $title === 'Kas' ? 'stroke-white' : '' }}" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M16 14C16 15.1046 15.1046 16 14 16C12.8954 16 12 15.1046 12 14C12 12.8954 12.8954 12 14 12C15.1046 12 16 12.8954 16 14Z" stroke="#fff" class="group-hover:stroke-white {{ $title === 'Kas' ? 'stroke-white' : '' }}" stroke-width="2"/>
+                        </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Kas</p>
                 </a>
             </div>
           </li>
@@ -82,50 +106,48 @@
         <ul class="flex flex-col gap-1">
             <li>
                 <a>
-                    <div class="text-xl text-white font-bold">Profil</div>
+                    <div class="text-lg text-gray-400 font-bold">Profil</div>
                 </a>
             </li>
           <li>
-            <a class="" href="/logout">
-              <button class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
-                  <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
-                </svg>
-                <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Logout</p>
-              </button>
-            </a>
+            <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                <a href="/logout" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:text-white group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-red-600 group-hover:to-red-400 group-hover:shadow-red-500/20 group-hover:shadow-lg group-hover:shadow-red-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'logout' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
+                        <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
+                      </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Logout</p>
+                </a>
+            </div>
           </li>
         </ul>
       </div>
     </aside>
-    <div class="py-4 px-4 md:px-5 lg:px-10 xl:ml-72">
-      <nav class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl px-0 py-1">
-        <div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
-          <div class="capitalize">
-            <h6 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900 my-auto">@yield('title')</h6>
+    <div class="xl:ml-72">
+      <nav class="block w-full max-w-full text-black px-0 py-1 bg-transparent px-4 md:px-5 lg:px-10">
+        <div class="flex flex-col-reverse justify-between gap-6 flex-row md:items-center">
+          <div class="capitalize my-auto">
+            <h6 class="flex antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-black my-auto">@yield('title')</h6>
           </div>
-          <div class="flex items-center">
-            <button onclick="sidebarHandler()" class="relative mr-2 bg-gray-200 hover:bg-gray-300 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
-              <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" stroke-width="3" class="h-6 w-6 text-blue-gray-500">
-                  <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
-                </svg>
-              </span>
-            </button>
+          <div class="flex items-center justify-between">
             <a href="/profil">
-              <button class="middle none font-sans font-bold center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer text-xs py-3 rounded-lg text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 hidden items-center gap-1 px-4 xl:flex" type="button">
+              <button class="middle block font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-sm py-3 rounded-lg text-black hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 visible items-center gap-1 flex" type="button">
+                <span class="pr-2 hidden invisble capitalize none xl:visible xl:flex">{{$user->name}}</span>
                 <img src="/{{$user->image}}" alt="foto-profil" class="w-8 h-8 rounded-full">
-                <span class="pl-2">{{$user->name}}</span></button>
-              <button class="relative middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
-                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                    {{$user->name}}
-                </span>
               </button>
             </a>
+            <button onclick="sidebarHandler()" class="relative ml-2 bg-gray-200 hover:bg-gray-300 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:none xl:hidden" type="button">
+                <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" stroke-width="3" class="h-6 w-6 text-blue-gray-500">
+                    <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
+                  </svg>
+                </span>
+            </button>
           </div>
         </div>
       </nav>
+      <div class="py-4 px-4 md:px-5 lg:px-10">
         @yield('dashboard-content')
+      </div>
     </div>
 </div>
 
