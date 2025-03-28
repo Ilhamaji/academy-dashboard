@@ -1,21 +1,11 @@
 <!-- Modal -->
 <div
-class="fixed antialiased inset-0 bg-gray-600/50 bg-opacity-75 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300 ease-out z-[9999]"
-id="exampleModalWeb3"
-aria-hidden="true"
+class="flex justify-center items-center transition-opacity duration-300 ease-out z-[9999]"
 >
-    <div class="bg-white rounded-lg w-9/12 sm:w-7/12 md:w-5/12 lg:w-3/12 scale-95 p-5 transition-transform duration-300 ease-out">
+    <div class="bg-white shadow-md rounded-lg w-9/12 sm:w-7/12 md:w-5/12 lg:w-4/12 scale-95 p-5 transition-transform duration-300 ease-out">
         <!-- Modal Header -->
         <div class="flex justify-between">
             <span>Tambah Penerimaan Pembayaran</span>
-            <button
-            type="button"
-            id="closeModalButton"
-            aria-label="Close"
-            class="text-white bg-gradient-to-br from-gray-800 to-gray-900 hover:cursor-pointer px-2 rounded-md"
-            >
-            &times;
-            </button>
         </div>
         <hr class="my-4">
         <form action="/penerimaan/pembayaran" method="POST">
@@ -48,21 +38,3 @@ aria-hidden="true"
         </form>
     </div>
 </div>
-
-
-<!-- JavaScript -->
-<script>
-const modal = document.getElementById("exampleModalWeb3");
-const openModalButton = document.getElementById("openModalButton");
-const closeModalButton = document.getElementById("closeModalButton");
-
-openModalButton.addEventListener("click", () => {
-    modal.classList.remove("opacity-0", "pointer-events-none");
-    modal.classList.add("opacity-100");
-});
-
-closeModalButton.addEventListener("click", () => {
-    modal.classList.add("opacity-0", "pointer-events-none");
-    modal.classList.remove("opacity-100");
-});
-</script>

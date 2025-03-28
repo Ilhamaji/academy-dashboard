@@ -54,7 +54,7 @@ class PengeluaranController extends Controller
         $user = Auth::user();
         $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
 
-        return redirect('/pengeluaran')->with('success', 'Berhasil mencatat pengeluaran');
+        return redirect('/transaksi/pengeluaran')->with('success', 'Berhasil mencatat pengeluaran');
     }
 
     /**
@@ -68,6 +68,15 @@ class PengeluaranController extends Controller
         $pengeluaran = DB::table('pengeluaran')->where('id', '=', $id)->get();
 
         return view('pages.kwitansiPengeluaran', ['user' => $user, 'pengeluaran' => $pengeluaran, 'title' => $title]);
+    }
+
+    public function transaksi(){
+        $title = 'Transaksi Pengeluaran';
+        $user = Auth::user();
+        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.transaksiPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
     }
 
     /**

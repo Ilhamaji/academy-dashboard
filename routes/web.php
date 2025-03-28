@@ -45,11 +45,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penerimaan/pembayaran/{id}', [PembayaranController::class, 'show']);
     Route::post('/penerimaan/lain-lain', [LainnyaController::class, 'store']);
     Route::get('/penerimaan/lain-lain/{id}', [LainnyaController::class, 'show']);
+    Route::get('/transaksi/pembayaran', [PenerimaanController::class, 'transaksi']);
+    Route::get('/transaksi/lain-lain', [LainnyaController::class, 'transaksi']);
 
     //Endpoint Pengeluaran
     Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
     Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
     Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
+    Route::get('/transaksi/pengeluaran', [PengeluaranController::class, 'transaksi']);
 
     //Endpoint Detail
     Route::get('/detail', [DetailController::class, 'index']);
@@ -69,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     //Endpoint Kas
     Route::get('/kas', [KasController::class, 'index']);
     Route::post('/kas', [KasController::class, 'show']);
+
 });
 
 

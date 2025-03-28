@@ -2,40 +2,9 @@
 @section('title', 'Pembayaran')
 
 @section('dashboard-content')
-    @if(session()->has('success'))
-        <div id="success" class="text-center bg-green-400 py-2 mb-3 text-white rounded-md">
-            {{session()->get('success')}}
-        </div>
-    @endif
-
-    @foreach ($errors->all() as $error)
-        <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
-    @endforeach
-
     <div class="flex mb-2">
         <p class="text-sm text-blue-500">Penerimaan</p>
         <div class="mx-1">/</div>
-    </div>
-
-    <div class="flex">
-        <button id="openModalButton" type="button" class="transition hover:cursor-pointer duration-200 font-bold p-4 bg-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center flex">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
-                    <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
-            <span class="inline my-auto ml-1">Pembayaran</span>
-        </button>
-        @include('components.modalTambahPembayaran')
-        <button id="openModalButtons" type="button" class="ml-2 transition hover:cursor-pointer duration-200 p-4 bg-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center flex">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
-                    <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
-            <span class="inline my-auto ml-1 font-bold">Lain-lain</span>
-        </button>
-        @include('components.modalTambahLainnya')
     </div>
 
     <div class="my-4 text-xl font-bold">Tabel Pembayaran</div>
@@ -122,35 +91,5 @@
         </div>
     </div>
 
-    <script>
-        const success = document.getElementById('success');
-        const error1 = document.getElementById('error-1');
-        const error2 = document.getElementById('error-2');
-        const error3 = document.getElementById('error-3');
-
-        if (success) {
-             setTimeout(() => {
-               success.style.display = 'none';
-             }, 10000);
-        }
-
-        if (error1) {
-             setTimeout(() => {
-               error1.style.display = 'none';
-             }, 10000);
-        }
-
-        if (error2) {
-             setTimeout(() => {
-               error2.style.display = 'none';
-             }, 10000);
-        }
-
-        if (error3) {
-             setTimeout(() => {
-               error3.style.display = 'none';
-             }, 10000);
-        }
-    </script>
     @include('components.footer')
 @endsection

@@ -55,7 +55,7 @@ class PembayaranController extends Controller
             ]);
         }
 
-        return redirect("/penerimaan")->with('success', 'Pembayaran created successfully');
+        return redirect("/transaksi/pembayaran")->with('success', 'Pembayaran created successfully');
     }
 
     /**
