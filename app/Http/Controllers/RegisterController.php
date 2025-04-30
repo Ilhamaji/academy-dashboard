@@ -32,6 +32,7 @@ class RegisterController extends Controller
 
         $request->validate([
             'name' => 'required',
+            'username' => 'required|unique:users',
             'email' => 'required|unique:users',
             'image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
             'password' => 'required',
@@ -45,6 +46,7 @@ class RegisterController extends Controller
         DB::table('users')->insert([
             [
                 'name' => $request->name,
+                'username' => $request->username,
                 'email' => $request->email,
                 'image' => $imagePath,
                 'password' => $hashedPassword,

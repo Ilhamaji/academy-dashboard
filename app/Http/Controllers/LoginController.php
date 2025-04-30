@@ -25,11 +25,11 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
-        $creds = ['email' => $request->email, 'password' => $request->password];
+        $creds = ['username' => $request->username, 'password' => $request->password];
 
         if (Auth::attempt($creds)) {
             return redirect('/');

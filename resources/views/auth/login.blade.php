@@ -22,8 +22,8 @@
                             <div class="text-center bg-red-400 py-2 mt-3 text-white rounded-md">{{$error}}</div>
                         @endforeach
                     </div>
-                    <label class="font-semibold text-sm text-gray-600 pb-1 block" @required(true)>E-mail</label>
-                    <input type="text" name="email" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
+                    <label class="font-semibold text-sm text-gray-600 pb-1 block" @required(true)>Username</label>
+                    <input type="text" name="username" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
                     <label class="font-semibold text-sm text-gray-600 pb-1 block" @required(true)>Password</label>
                     <input type="password" name="password" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" />
                     <button type="submit" class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
