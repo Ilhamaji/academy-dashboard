@@ -6,13 +6,16 @@ use App\Models\Penerimaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ExportPembayaran;
+use App\Exports\ExportLainlain;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PenerimaanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function pembayaran()
     {
         //
         $title = 'Penerimaan';
@@ -20,9 +23,20 @@ class PenerimaanController extends Controller
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
         $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.pembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'title' => $title]);
+    }
+
+    public function lainnya()
+    {
+        //
+        $title = 'Penerimaan';
+        $user = Auth::user();
+        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
         $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
 
-        return view('pages.penerimaan', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title]);
+        return view('pages.lainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'lains' => $lains, 'title' => $title]);
     }
 
     public function transaksi(){
@@ -34,6 +48,14 @@ class PenerimaanController extends Controller
         $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
 
         return view('pages.transaksiPembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title]);
+    }
+
+    public function export_pembayaran(){
+        return Excel::download(new ExportPembayaran, 'penerimaan-pembayaran.xlsx');
+    }
+
+    public function export_lainlain(){
+        return Excel::download(new ExportLainlain, 'penerimaan-lainlain.xlsx');
     }
 
     /**

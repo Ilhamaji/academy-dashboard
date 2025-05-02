@@ -14,6 +14,13 @@ class PembayaranController extends Controller
      */
     public function index()
     {
+        $title = 'Laporan Penerimaan';
+        $user = Auth::user();
+        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.laporanPembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'title' => $title]);
     }
 
     /**

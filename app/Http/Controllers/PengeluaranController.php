@@ -6,6 +6,8 @@ use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ExportPengeluaran;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PengeluaranController extends Controller
 {
@@ -23,12 +25,27 @@ class PengeluaranController extends Controller
         return view('pages.pengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
     }
 
+    public function pengeluaran(Request $request)
+    {
+        //
+        $title = 'Laporan Pengeluaran';
+        $user = Auth::user();
+        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new ExportPengeluaran, 'pengeluaran.xlsx');
     }
 
     /**

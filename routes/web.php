@@ -40,7 +40,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
 
     //Endpoint Penerimaan
-    Route::get('/penerimaan', [PenerimaanController::class, 'index']);
+    Route::get('/pembayaran', [PenerimaanController::class, 'pembayaran']);
+    Route::get('/lain-lain', [PenerimaanController::class, 'lainnya']);
+    Route::get('/laporan/pembayaran', [PembayaranController::class, 'index']);
+    Route::get('/laporan/lain-lain', [LainnyaController::class, 'index']);
+    Route::get('/laporan/pembayaran/download', [PenerimaanController::class, 'export_pembayaran']);
+    Route::get('/laporan/lain-lain/download', [PenerimaanController::class, 'export_lainlain']);
     Route::post('/penerimaan/pembayaran', [PembayaranController::class, 'store']);
     Route::get('/penerimaan/pembayaran/{id}', [PembayaranController::class, 'show']);
     Route::post('/penerimaan/lain-lain', [LainnyaController::class, 'store']);
@@ -51,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
     //Endpoint Pengeluaran
     Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
     Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
+    Route::get('/laporan/pengeluaran', [PengeluaranController::class, 'pengeluaran']);
+    Route::get('/laporan/pengeluaran/download', [PengeluaranController::class, 'export']);
     Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
     Route::get('/transaksi/pengeluaran', [PengeluaranController::class, 'transaksi']);
 

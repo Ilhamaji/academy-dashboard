@@ -44,15 +44,37 @@
                 </a>
             </div>
           </li>
-          <li>
-            <div class="group hover:bg-gray-600 rounded-lg duration-300">
-                <a href="/penerimaan" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
+          <li class="group/drop group/dropHead hover:bg-gray-800 rounded-lg">
+            <div class="hover:bg-gray-600 rounded-lg duration-300">
+                <a class="middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" aria-hidden="true" class="w-5 h-5 text-inherit group-hover:fill-white {{ $title === 'Penerimaan' ? 'fill-white' : ''}}">
                         <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Data Penerimaan</p>
                 </a>
             </div>
+            <ul class="none hidden group-hover/drop:visible group-hover/drop:block">
+              <li>
+                <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                    <a href="/pembayaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gray-600 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-180 scale-y-[-1]">
+                            <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Pembayaran</p>
+                    </a>
+                </div>
+              </li>
+              <li>
+                <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                    <a href="/lain-lain" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gray-600 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-180 scale-y-[-1]">
+                            <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Lain-Lain</p>
+                    </a>
+                </div>
+              </li>
+            </ul>
           </li>
           <li>
             <div class="group hover:bg-gray-600 rounded-lg duration-300">
@@ -165,9 +187,9 @@
                 </a>
             </div>
           </li>
-          <li>
-            <div class="group hover:bg-gray-600 rounded-lg duration-300">
-                <a href="/detail" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Detail' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
+          <li class="group/drop group/dropHead hover:bg-gray-800 rounded-lg">
+            <div class="hover:bg-gray-600 rounded-lg duration-300">
+                <a class="middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Laporan Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">
                         <g>
                             <g>
@@ -203,10 +225,32 @@
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Penerimaan</p>
                 </a>
             </div>
+            <ul class="none hidden group-hover/drop:visible group-hover/drop:block">
+              <li>
+                <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                    <a href="/laporan/pembayaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gray-600 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-180 scale-y-[-1]">
+                            <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Pembayaran</p>
+                    </a>
+                </div>
+              </li>
+              <li>
+                <div class="group hover:bg-gray-600 rounded-lg duration-300">
+                    <a href="/laporan/lain-lain" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gray-600 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-180 scale-y-[-1]">
+                            <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Lain-Lain</p>
+                    </a>
+                </div>
+              </li>
+            </ul>
           </li>
           <li>
             <div class="group hover:bg-gray-600 rounded-lg duration-300">
-                <a href="/detail" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Detail' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
+                <a href="/laporan/pengeluaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-white {{ $title === 'Laporan Pengeluaran' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#fff" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">
                         <g>
                             <g>
