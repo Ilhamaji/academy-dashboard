@@ -17,7 +17,7 @@ class SiswaController extends Controller
         //
         $title = 'Siswa';
         $user = Auth::user();
-        $siswas = DB::table('siswa')->orderBy('created_at', 'ASC')->get();
+        $siswas = DB::table('siswa')->orderBy('created_at', 'ASC')->paginate(6);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
         return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'title' => $title]);

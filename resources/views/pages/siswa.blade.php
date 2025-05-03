@@ -118,6 +118,7 @@
             </div>
           </div>
         </div>
+        <div class="my-6">{{ $siswas->links() }}</div>
     </div>
 
    <script>

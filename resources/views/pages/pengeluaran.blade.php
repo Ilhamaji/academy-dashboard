@@ -45,6 +45,9 @@
             </div>
           </div>
         </div>
+        <div class="my-6">
+            {{ $pengeluarans->links() }}
+        </div>
     </div>
 
     @include('components.footer')

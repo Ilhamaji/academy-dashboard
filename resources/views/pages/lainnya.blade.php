@@ -44,6 +44,9 @@
             </div>
           </div>
         </div>
+        <div class="my-6">
+            {{ $lains->links() }}
+        </div>
     </div>
 
     @include('components.footer')

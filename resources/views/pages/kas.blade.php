@@ -115,6 +115,9 @@
             </div>
           </div>
         </div>
+        <div class="my-6">
+            {{ $pembayarans->links() }}
+        </div>
     </div>
 
     <div class="my-4 text-xl font-bold">Pemasukan Lain-lain</div>
@@ -153,6 +156,9 @@
               </table>
             </div>
           </div>
+        </div>
+        <div class="my-6">
+            {{ $lains->links() }}
         </div>
     </div>
 
@@ -194,6 +200,9 @@
               </table>
             </div>
           </div>
+        </div>
+        <div class="my-6">
+            {{ $pengeluarans->links() }}
         </div>
     </div>
 

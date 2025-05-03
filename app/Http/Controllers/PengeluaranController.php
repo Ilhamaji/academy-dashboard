@@ -19,7 +19,7 @@ class PengeluaranController extends Controller
         //
         $title = 'Pengeluaran';
         $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
+        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->paginate(6);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
         return view('pages.pengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);

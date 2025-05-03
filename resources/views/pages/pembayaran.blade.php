@@ -50,6 +50,9 @@
             </div>
           </div>
         </div>
+        <div class="my-6">
+            {{ $pembayarans->links() }}
+        </div>
     </div>
 
     @include('components.footer')

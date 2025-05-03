@@ -17,7 +17,7 @@ class KelasController extends Controller
         //
         $title = 'Kelas';
         $user = Auth::user();
-        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->paginate(6);
 
         return view('pages.kelas', ['user' => $user, 'kelass' => $kelass, 'title' => $title]);
     }
