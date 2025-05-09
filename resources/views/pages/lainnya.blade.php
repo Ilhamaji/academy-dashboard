@@ -3,7 +3,7 @@
 
 @section('dashboard-content')
     <div class="flex mb-2">
-        <p class="text-sm text-blue-500">Penerimaan</p>
+        <p class="text-sm text-blue-500">Lain-lain</p>
         <div class="mx-1">/</div>
     </div>
 

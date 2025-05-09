@@ -68,16 +68,16 @@ class SiswaController extends Controller
         //
         $title = 'Siswa';
         $user = Auth::user();
-        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->paginate(6);
 
         if(!$request->cariKelas == '' && $request->cari == ''){
-            $siswas = DB::table('siswa')->where('kelas','=', $request->cariKelas)->get();
-        }else if(!$request->cariKelas == '' && !$request->cari == ''){
-            $siswas = DB::table('siswa')->where('nama_siswa','like',"%".$request->cari."%")->whereIn('kelas', [$request->cariKelas])->get();
+            $siswas = DB::table('siswa')->where('kelas','=', $request->cariKelas)->paginate(6);
+        }elseif(!$request->cariKelas == '' && !$request->cari == ''){
+            $siswas = DB::table('siswa')->where('nama_siswa','like',"%".$request->cari."%")->whereIn('kelas', [$request->cariKelas])->paginate(6);
         }else{
             $siswas = DB::table('siswa')
             ->where('nama_siswa','like',"%".$request->cari."%")
-            ->get();
+            ->paginate(6);
         }
 
         return view('pages.siswa', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'title' => $title]);

@@ -13,7 +13,7 @@
     @endforeach
 
     <div class="flex mb-2">
-        <a href="/penerimaan" class="text-sm hover:text-blue-500">Penerimaan</a>
+        <a href="/lain-lain" class="text-sm hover:text-blue-500">Lain-lain</a>
         <div class="mx-1">/</div>
         <a class="text-sm text-blue-500">Kwitansi</a>
     </div>

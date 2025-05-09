@@ -40,7 +40,7 @@ class PenerimaanController extends Controller
     }
 
     public function transaksi(){
-        $title = 'Transaksi Penerimaan';
+        $title = 'Penerimaan';
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
         $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();

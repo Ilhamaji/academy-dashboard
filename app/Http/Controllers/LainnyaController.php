@@ -19,7 +19,7 @@ class LainnyaController extends Controller
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
+        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(6);
 
         return view('pages.laporanLainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'lains' => $lains, 'title' => $title]);
     }
@@ -71,6 +71,24 @@ class LainnyaController extends Controller
         $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
 
         return view('pages.transaksiLainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title]);
+    }
+
+    public function cari(Request $request)
+    {
+        $title = 'Laporan Penerimaan';
+        $user = Auth::user();
+
+        if(!$request->bulan == '' && $request->tahun == ''){
+            $lains = DB::table('lain_lain')->whereMonth('tanggal', '=', $request->bulan)->orderBy('tanggal', 'ASC')->paginate(6);
+        }elseif($request->bulan == '' && !$request->tahun == ''){
+            $lains = DB::table('lain_lain')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(6);
+        }elseif(!$request->bulan == '' && !$request->tahun == ''){
+            $lains = DB::table('lain_lain')->whereMonth('tanggal', '=', $request->bulan)->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(6);
+        }else{
+            $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(6);
+        }
+
+        return view('pages.laporanLainnya', ['lains' => $lains, 'user' => $user, 'title' => $title]);
     }
 
     /**

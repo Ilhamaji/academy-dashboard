@@ -14,7 +14,7 @@
             type="button"
             id="closeModalButton"
             aria-label="Close"
-            class="text-white bg-gradient-to-br from-gray-800 to-gray-900 hover:cursor-pointer px-2 rounded-md"
+            class="text-white bg-red-600 hover:cursor-pointer px-2 rounded-md"
             >
             &times;
             </button>

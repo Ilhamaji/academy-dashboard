@@ -19,7 +19,7 @@
 
     <div class="flex flex-col md:flex-row gap-3 sm:justify-between">
         <div class="flex">
-            <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-gray-900 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+            <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
                         <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -31,10 +31,10 @@
 
         <form class="flex" action="/siswa/cari" method="GET">
             <div class="flex flex-row gap-2">
-                <select name='cariKelas' class="border rounded-lg px-1 py-2 text-sm w-26 bg-gray-900 text-white">
-                    <option value='' class="bg-black text-white">Kelas</option>
+                <select name='cariKelas' class="rounded px-1 py-2 text-sm w-26 text-black bg-white shadow-sm">
+                    <option value='' class="">Kelas</option>
                     @foreach ($kelass as $kelas)
-                        <option value='{{ $kelas->nama_kelas }}' class="bg-black text-white">{{ $kelas->nama_kelas }}</option>
+                        <option value='{{ $kelas->nama_kelas }}' class="">{{ $kelas->nama_kelas }}</option>
                     @endforeach
                 </select>
                 <div class="flex">
@@ -44,7 +44,7 @@
                     placeholder="Cari siswa..."
                     />
                     <button
-                    class="h-full w-10 ml-2 md:right-1 bg-gray-900 md:top-1 right-[0.1rem] top-[0.1rem] my-auto px-2 flex items-center bg-gray-900 rounded cursor-pointer"
+                    class="h-full w-10 ml-2 md:right-1 bg-blue-600 md:top-1 right-[0.1rem] top-[0.1rem] my-auto px-2 flex items-center rounded cursor-pointer"
                     type="submit"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="#fff" class="w-8 h-8 text-slate-600">
