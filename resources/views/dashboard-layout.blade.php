@@ -25,8 +25,6 @@
                 </a>
             </li>
           <li>
-          </li>
-          <li>
             <div class="group rounded-lg duration-300">
                 <a href="/siswa" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Siswa' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
@@ -329,7 +327,7 @@
       </div>
     </aside>
     <div class="xl:ml-72">
-      <nav class="block w-full max-w-full text-black px-0 py-1 bg-transparent px-4 md:px-5 lg:px-10">
+      <nav class="block w-full max-w-full text-black px-0 py-1 bg-white shadow-sm px-4 md:px-5 lg:px-10">
         <div class="flex flex-col-reverse justify-between gap-6 flex-row md:items-center">
           <div class="capitalize my-auto">
             <h6 class="flex antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-black my-auto">@yield('title')</h6>
