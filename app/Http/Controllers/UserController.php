@@ -79,24 +79,40 @@ class UserController extends Controller
             $hashedPassword = Hash::make($request->password);
 
             //update post with new image
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'image' => $imagePath,
-                'password' => $hashedPassword,
-            ]);
+            if ($request->password === $request->password_confirmation) {
+                if (Hash::check($request->password, $user->password)) {
+                    $user->update([
+                        'name' => $request->name,
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'image' => $imagePath,
+                    ]);
+                }else {
+                    return redirect("/profil")->with('error', 'Password tidak sesuai!');
+                }
+            }else {
+                return redirect("/profil")->with('error', 'Konfirmasi Password tidak sesuai!');
+            }
         }else {
             $hashedPassword = Hash::make($request->password);
 
             //update post without image
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $hashedPassword,
-            ]);
+            if ($request->password === $request->password_confirmation) {
+                if (Hash::check($request->password, $user->password)){
+                    $user->update([
+                        'name' => $request->name,
+                        'username' => $request->username,
+                        'email' => $request->email,
+                    ]);
+                }else {
+                    return redirect("/profil")->with('error', 'Password tidak sesuai!');
+                }
+            }else {
+                return redirect("/profil")->with('error', 'Konfirmasi Password tidak sesuai!');
+            }
         }
 
-        return redirect("/profil")->with('success', 'User updated successfully');
+        return redirect("/profil")->with('success', 'User berhasil diupdate!');
     }
 
     /**

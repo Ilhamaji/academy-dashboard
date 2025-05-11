@@ -1,5 +1,5 @@
 @extends('dashboard-layout')
-@section('title', 'Profil')
+@section('title', 'Informasi Sekolah')
 
 @section('dashboard-content')
     <!-- component -->

@@ -19,7 +19,7 @@ class LainnyaController extends Controller
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(6);
+        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(10);
 
         return view('pages.laporanLainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'lains' => $lains, 'title' => $title]);
     }

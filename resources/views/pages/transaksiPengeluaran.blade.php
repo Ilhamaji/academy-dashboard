@@ -52,5 +52,4 @@
          }
    </script>
 
-    @include('components.footer')
 @endsection

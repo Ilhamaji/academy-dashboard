@@ -110,5 +110,4 @@
              }, 10000);
         }
     </script>
-    @include('components.footer')
 @endsection

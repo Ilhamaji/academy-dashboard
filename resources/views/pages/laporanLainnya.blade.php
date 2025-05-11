@@ -52,7 +52,7 @@
         </form>
     </div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col mb-4">
         <div class="-m-1.5 max-h-[80vh] overflow-auto shadow-md rounded-lg bg-gray-200">
         <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">
@@ -62,7 +62,7 @@
         </div>
     </div>
 
+    {{$lains->links()}}
 
-@include('components.footer')
 @endsection
 

@@ -20,5 +20,4 @@
 
     @include('components.kwitansiPembayaran')
 
-    @include('components.footer')
 @endsection

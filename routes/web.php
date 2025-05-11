@@ -14,6 +14,7 @@ use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\KasController;
+use App\Http\Controllers\InformasiController;
 
 //Endpoint Auth
 Route::get('/register', [RegisterController::class, 'index']);
@@ -27,7 +28,10 @@ Route::middleware(['auth'])->group(function () {
     //Endpoint Home
     Route::get('/', [HomeController::class, 'index']);
 
-        //Endpoint User
+    //Endpoint Informasi
+    Route::get('/informasi', [InformasiController::class, 'index']);
+
+    //Endpoint User
     Route::get('/profil', [UserController::class, 'index']);
     Route::put('/profil/{id}', [UserController::class, 'update']);
 

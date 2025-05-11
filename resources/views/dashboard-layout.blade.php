@@ -42,13 +42,15 @@
                 </a>
             </div>
           </li>
-          <li class="group/drop group/dropHead bg-blue-200 rounded-lg">
+          <li class="group/drop group/dropHead hover:bg-blue-200 rounded-lg">
             <div class="rounded-lg duration-300">
                 <a class="flex justify-between middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover/dropHead:text-white {{ $title === 'Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#155dfc" aria-hidden="true" class="w-5 h-5 text-inherit group-hover/dropHead:fill-white {{ $title === 'Penerimaan' ? 'fill-white' : ''}}">
+                    <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#155dfc" aria-hidden="true" class="w-5 h-5 text-inherit group-hover/dropHead:fill-white my-auto mr-4 {{ $title === 'Penerimaan' ? 'fill-white' : ''}}">
                         <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Data Penerimaan</p>
+                    <p class="flex antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Data Penerimaan</p>
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-270 group-hover/drop:rotate-0">
                         <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#155dfc" class="group-hover/drop:fill-white {{$title === 'Penerimaan' ? 'fill-white' : ''}}"/>
                     </svg>
@@ -92,10 +94,11 @@
                 <div class="text-lg text-gray-400 font-bold">Transaksi</div>
             </a>
           </li>
-          <li class="group/drop group/dropHead bg-blue-200 rounded-lg">
+          <li class="group/drop group/dropHead hover:bg-blue-200 rounded-lg">
             <div class="rounded-lg duration-300">
                 <a class="middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover/dropHead:text-white {{ $title === 'Transaksi Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="20" height="20" viewBox="0 -1 32 32" version="1.1">
+                    <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" width="20" height="20" viewBox="0 -1 32 32" version="1.1" class="my-auto mr-4">
                         <g id="Page-1" stroke="#155dfc" stroke-width="2" fill="none" fill-rule="evenodd" sketch:type="MSPage" class="group-hover/dropHead:stroke-white {{$title === 'Transaksi Penerimaan' ? 'stroke-white' : ''}}">
                         <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-464.000000, -672.000000)" fill="#fff">
                         <path d="M469,688 L481.273,688 L477.282,691.299 C476.89,691.69 476.89,692.326 477.282,692.718 C477.676,693.11 478.313,693.11 478.706,692.718 L484.686,687.776 C484.896,687.566 484.985,687.289 484.971,687.016 C484.985,686.742 484.896,686.465 484.686,686.255 L478.706,681.313 C478.313,680.921 477.676,680.921 477.282,681.313 C476.89,681.705 476.89,682.341 477.282,682.732 L481.235,686 L469,686 C468.447,686 468,686.447 468,687 C468,687.553 468.447,688 469,688 L469,688 Z M494,698 C494,699.104 493.104,700 492,700 L490,700 L490,674 L492,674 C493.104,674 494,674.896 494,676 L494,698 L494,698 Z M488,700 L468,700 C466.896,700 466,699.104 466,698 L466,676 C466,674.896 466.896,674 468,674 L488,674 L488,700 L488,700 Z M492,672 L468,672 C465.791,672 464,673.791 464,676 L464,698 C464,700.209 465.791,702 468,702 L492,702 C494.209,702 496,700.209 496,698 L496,676 C496,673.791 494.209,672 492,672 L492,672 Z" id="align-right" sketch:type="MSShapeGroup">
@@ -104,6 +107,7 @@
                         </g>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Transaksi Penerimaan</p>
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-270 group-hover/drop:rotate-0">
                         <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#155dfc" class="group-hover/dropHead:fill-white {{$title === 'Transaksi Penerimaan' ? 'fill-white' : ''}}"/>
                     </svg>
@@ -191,10 +195,11 @@
                 </a>
             </div>
           </li>
-          <li class="group/drop group/dropHead bg-blue-200 rounded-lg">
+          <li class="group/drop group/dropHead hover:bg-blue-200 rounded-lg">
             <div class="rounded-lg duration-300">
                 <a class="middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover/dropHead:text-white {{ $title === 'Laporan Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover/dropHead:fill-white {{$title === 'Laporan Penerimaan' ? 'fill-white' : ''}}">
+                    <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="my-auto mr-4 group-hover/dropHead:fill-white {{$title === 'Laporan Penerimaan' ? 'fill-white' : ''}}">
                         <g>
                             <g>
                                 <path d="M427.692,0H86.442C72.304,0,59.733,10.4,59.733,24.5v460.867c0,14.1,12.571,26.633,26.708,26.633h341.25    c14.137,0,24.575-12.533,24.575-26.633V24.5C452.267,10.4,441.829,0,427.692,0z M435.2,485.367c0,4.683-2.779,9.567-7.508,9.567    H86.442c-4.729,0-9.642-4.883-9.642-9.567V24.5c0-4.683,4.912-7.433,9.642-7.433h341.25c4.729,0,7.508,2.75,7.508,7.433V485.367z"/>
@@ -227,6 +232,7 @@
                         </g>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Penerimaan</p>
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-270 group-hover/drop:rotate-0">
                         <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#155dfc" class="group-hover/dropHead:fill-white {{$title === 'Laporan Penerimaan' ? 'fill-white' : ''}}"/>
                     </svg>
@@ -314,7 +320,7 @@
                 </a>
             </li>
           <li>
-            <div class="group bg-red-200 rounded-lg duration-300">
+            <div class="group rounded-lg duration-300">
                 <a href="/logout" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-red-600 group-hover:to-red-400 group-hover:shadow-red-500/20 group-hover:shadow-lg group-hover:shadow-red-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-red-600 group-hover:text-white {{ $title === 'logout' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-inherit">
                         <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd"></path>
@@ -351,7 +357,10 @@
       </nav>
       <div class="flex flex-col py-4 px-4 md:px-5 lg:px-10 min-h-[90vh]">
         @yield('dashboard-content')
-      </div>
+        <div class="mt-auto mb-0">
+            @include('components.footer')
+        </div>
+    </div>
     </div>
 </div>
 

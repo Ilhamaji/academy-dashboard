@@ -17,7 +17,7 @@ class PembayaranController extends Controller
         $title = 'Laporan Penerimaan';
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->paginate(10);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
         return view('pages.laporanPembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'title' => $title]);
@@ -38,7 +38,7 @@ class PembayaranController extends Controller
     {
         //
 
-        $siswa = DB::table('siswa')->where('nisn', '=', $request->nisn)->get();
+        $siswa = DB::table('siswa')->where('nisn', '=', $request->nisn)->first();
 
         $request->validate([
             'nisn' => 'required|numeric',

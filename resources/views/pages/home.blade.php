@@ -43,7 +43,7 @@
                     <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ $kelas }}</h4>
                     </div>
                 </div>
-                <a href="/profil" class="relative hover:shadow-xl flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <a href="/informasi" class="relative hover:shadow-xl flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
                     <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-yellow-600 to-yellow-400 text-white shadow-yellow-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="20" width="20" version="1.1" id="_x32_" viewBox="0 0 512 512" xml:space="preserve" class="fill-white">
                             <g>
@@ -58,7 +58,5 @@
                 </a>
             </div>
         </div>
-
-        @include('components.footer')
     </div>
 @endsection
