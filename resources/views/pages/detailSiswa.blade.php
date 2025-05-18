@@ -13,12 +13,12 @@
     @endforeach
 
     <div class="flex mb-2">
-        <a href="/detail" class="text-sm hover:text-blue-500">Kelas</a>
+        <a href="/laporan/kelas" class="text-sm hover:text-blue-500">Kelas</a>
         <div class="mx-1">/</div>
         <a class="text-sm text-blue-500">Siswa</a>
     </div>
 
-    <form class="flex" action="/detail/kelas/{{ $id }}" method="POST">
+    <form class="flex" action="/laporan/kelas/{{ $id }}" method="POST">
         {{ csrf_field() }}
         <div class="flex flex-row gap-2">
             <div class="flex">
@@ -77,7 +77,7 @@
                             <p class="w-20 md:w-40 lg:w-86 truncate">{{ $siswa->alamat }}</p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
-                            <a href="/detail/kelas/siswa/{{$siswa->nisn}}" class="cursor-pointer bg-green-500 hover:bg-green-700 p-3 rounded-lg">
+                            <a href="/laporan/kelas/siswa/{{$siswa->nisn}}" class="cursor-pointer bg-green-500 hover:bg-green-700 p-3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="20" height="20" viewBox="0 0 16 16">
                                     <g fill="white">
                                         <path d="M8 16a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8zm0-1a7 7 0 0 0 7-7 7 7 0 0 0-7-7 7 7 0 0 0-7 7 7 7 0 0 0 7 7z"/>

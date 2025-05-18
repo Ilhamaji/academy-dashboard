@@ -22,11 +22,15 @@
     @foreach ($errors->all() as $error)
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
-    <form action="/profil/{{$user->id}}" enctype="multipart/form-data" method="POST">
+
+    <form action="/profil/{{$user->id}}" enctype="multipart/form-data" method="POST" class="bg-white rounded p-5 shadow-md">
         {{ csrf_field() }}
         {{ method_field('put') }}
-      <div class="-mx-3 flex flex-wrap">
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-2">
+        <div class="font-bold text-lg pb-5 border-b-1 border-gray-200">
+                Edit Data Admin
+            </div>
+      <div class="-mx-3 flex flex-wrap mt-5">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-2 mb-5">
             <div class="flex mx-auto my-auto h-50 w-50 rounded-full overflow-hidden">
                 <img src="{{$user->image}}" class="h-50" alt="image">
             </div>
@@ -134,12 +138,11 @@
         <button
           class="hover:shadow-form rounded-md bg-blue-600 py-3 px-8 text-center text-base font-semibold text-white outline-none"
         >
-          Submit
+          Simpan
         </button>
       </div>
     </form>
   </div>
-</div>
 
     <script>
         const success = document.getElementById('success');

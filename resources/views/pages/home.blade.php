@@ -5,7 +5,7 @@
     <div class="py-6">
         <div class="min-h-[75vh]">
             <div class="grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-                <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <a href="/kas" class="relative flex flex-col rounded-xl text-gray-700 hover:shadow-xl bg-clip-border bg-white shadow-md">
                     <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6 text-white">
                         <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"></path>
@@ -15,10 +15,10 @@
                     </div>
                     <div class="p-4 text-right">
                     <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Total Kas</p>
-                    <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">Rp {{ $total }}</h4>
+                    <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">Rp {{ number_format($total, 0); }}</h4>
                     </div>
-                </div>
-                <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                </a>
+                <a href="/laporan/siswa" class="relative hover:shadow-xl flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
                     <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6 text-white">
                         <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd"></path>
@@ -28,8 +28,8 @@
                     <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Jumlah Siswa</p>
                     <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ $siswa }}</h4>
                     </div>
-                </div>
-                <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                </a>
+                <a href="/laporan/kelas" class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md hover:shadow-xl rounded-xl">
                     <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M3.36066 4.98361H4.93443V7.86885H8.60656V9.44262H4.93443V13.1148H8.60656V14.6885H4.14754C3.71296 14.6885 3.36066 14.3362 3.36066 13.9016V4.98361Z" fill="#fff"/>
@@ -42,14 +42,14 @@
                     <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Jumlah Kelas</p>
                     <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">{{ $kelas }}</h4>
                     </div>
-                </div>
+                </a>
                 <a href="/informasi" class="relative hover:shadow-xl flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
                     <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-yellow-600 to-yellow-400 text-white shadow-yellow-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="20" width="20" version="1.1" id="_x32_" viewBox="0 0 512 512" xml:space="preserve" class="fill-white">
                             <g>
                                 <path class="st0" d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M256,86.069   c28.463,0,51.538,23.074,51.538,51.538c0,28.464-23.074,51.538-51.538,51.538c-28.463,0-51.538-23.074-51.538-51.538   C204.462,109.143,227.537,86.069,256,86.069z M310.491,425.931H201.51v-43.593h35.667V276.329H215.38v-43.593h65.389v3.963v39.63   v106.009h29.722V425.931z"/>
                             </g>
-                            </svg>
+                        </svg>
                     </div>
                     <div class="p-4 text-right">
                     <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">Informasi Detail</p>

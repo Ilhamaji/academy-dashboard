@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Endpoint Informasi
     Route::get('/informasi', [InformasiController::class, 'index']);
+    Route::put('/informasi/{id}', [InformasiController::class, 'update']);
 
     //Endpoint User
     Route::get('/profil', [UserController::class, 'index']);
@@ -44,8 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/hapus/{nisn}', [SiswaController::class, 'destroy']);
 
     //Endpoint Penerimaan
-    Route::get('/pembayaran', [PenerimaanController::class, 'pembayaran']);
-    Route::get('/lain-lain', [PenerimaanController::class, 'lainnya']);
+    Route::get('/penerimaan', [PenerimaanController::class, 'jenis_penerimaan']);
+    Route::post('/penerimaan/jenis', [PenerimaanController::class, 'tambah_jenis_penerimaan']);
     Route::get('/laporan/pembayaran', [PembayaranController::class, 'index']);
     Route::get('/laporan/lain-lain', [LainnyaController::class, 'index']);
     Route::post('/laporan/lain-lain', [LainnyaController::class, 'cari']);
@@ -58,22 +59,31 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penerimaan/lain-lain/{id}', [LainnyaController::class, 'show']);
     Route::get('/transaksi/pembayaran', [PenerimaanController::class, 'transaksi']);
     Route::get('/transaksi/lain-lain', [LainnyaController::class, 'transaksi']);
+    Route::get('/laporan/jenis-penerimaan', [PenerimaanController::class, 'laporan_jenis_penerimaan']);
 
     //Endpoint Pengeluaran
-    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
+    Route::get('/pengeluaran', [PengeluaranController::class, 'jenis_pengeluaran']);
+    Route::post('/pengeluaran/jenis', [PengeluaranController::class, 'tambah_jenis_pengeluaran']);
     Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
     Route::get('/laporan/pengeluaran', [PengeluaranController::class, 'pengeluaran']);
     Route::get('/laporan/pengeluaran/download', [PengeluaranController::class, 'export']);
     Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
     Route::get('/transaksi/pengeluaran', [PengeluaranController::class, 'transaksi']);
+    Route::get('/laporan/jenis-pengeluaran', [PengeluaranController::class, 'laporan_jenis_pengeluaran']);
 
-    //Endpoint Detail
-    Route::get('/detail', [DetailController::class, 'index']);
-    Route::get('/detail/kelas/{id}', [DetailController::class, 'show']);
-    Route::post('/detail/kelas/{id}', [DetailController::class, 'showCari']);
-    Route::get('/detail/kelas/siswa/{nisn}', [DetailController::class, 'detail']);
-    Route::post('/detail/kelas/siswa/{nisn}', [DetailController::class, 'detailCari']);
-    Route::get('/detail/kelas/siswa/pembayaran/{id}', [DetailController::class, 'more']);
+    //Endpoint Laporan Kelas
+    Route::get('/laporan/kelas', [DetailController::class, 'kelas']);
+    Route::get('/laporan/kelas/{id}', [DetailController::class, 'show']);
+    Route::post('/laporan/kelas/{id}', [DetailController::class, 'showCari']);
+    Route::get('/laporan/kelas/siswa/{nisn}', [DetailController::class, 'detail']);
+    Route::post('/laporan/kelas/siswa/{nisn}', [DetailController::class, 'detailCari']);
+    Route::get('/laporan/kelas/siswa/pembayaran/{id}', [DetailController::class, 'more']);
+
+    //Endpoint Laporan Siswa
+    Route::get('/laporan/siswa', [DetailController::class, 'siswa']);
+    // Route::get('/laporan/siswa/{nisn}', [DetailController::class, 'siswaShow']);
+    // Route::post('/laporan/siswa/{nisn}', [DetailController::class, 'siswaShowCari']);
+    Route::get('/laporan/siswa/download', [SiswaController::class, 'export_siswa']);
 
     //Endpoint Kelas
     Route::get('/kelas', [KelasController::class, 'index']);
@@ -85,7 +95,7 @@ Route::middleware(['auth'])->group(function () {
     //Endpoint Kas
     Route::get('/kas', [KasController::class, 'index']);
     Route::post('/kas', [KasController::class, 'show']);
-
+    Route::get('/kas/download', [KasController::class, 'view_pdf']);
 });
 
 

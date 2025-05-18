@@ -13,14 +13,14 @@
     @endforeach
 
     <div class="flex mb-2">
-        <a href="/detail" class="text-sm hover:text-blue-500">Kelas</a>
+        <a href="/laporan/kelas" class="text-sm hover:text-blue-500">Kelas</a>
         <div class="mx-1">/</div>
-        <a href="/detail/kelas/{{ $back }}" class="text-sm hover:text-blue-500">Siswa</a>
+        <a href="/laporan/kelas/{{ $back }}" class="text-sm hover:text-blue-500">Siswa</a>
         <div class="mx-1">/</div>
         <a class="text-sm text-blue-500">Pembayaran</a>
     </div>
 
-    <form class="flex" action="/detail/kelas/siswa/{{ $nisn }}" method="POST">
+    <form class="flex" action="/laporan/kelas/siswa/{{ $nisn }}" method="POST">
         {{ csrf_field() }}
         <div class="flex flex-row gap-2">
             <div class="flex">

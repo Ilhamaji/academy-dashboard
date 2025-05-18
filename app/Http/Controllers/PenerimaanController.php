@@ -9,34 +9,38 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\ExportPembayaran;
 use App\Exports\ExportLainlain;
 use Maatwebsite\Excel\Facades\Excel;
+use \Carbon\Carbon;
 
 class PenerimaanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function pembayaran()
-    {
-        //
-        $title = 'Penerimaan';
-        $user = Auth::user();
-        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->paginate(6);
-        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+    public function tambah_jenis_penerimaan(Request $request){
+        $request->validate([
+            'jenis' => 'required',
+        ]);
 
-        return view('pages.pembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'title' => $title]);
+        $date = Carbon::now();
+        $formattedDate = $date->toDateTimeString();
+
+        DB::table('jenis_pembayaran')->insert([
+            [
+                'jenis' => $request->jenis,
+                'updated_at' => $formattedDate,
+            ],
+        ]);
+
+        return redirect('/pembayaran')->with('success', 'Berhasil menambah jenis pembayaran');
     }
 
-    public function lainnya()
+    public function jenis_penerimaan()
     {
         //
         $title = 'Penerimaan';
         $user = Auth::user();
-        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
-        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(6);
 
-        return view('pages.lainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'lains' => $lains, 'title' => $title]);
+        return view('pages.pembayaran', ['user' => $user, 'title' => $title]);
     }
 
     public function transaksi(){
@@ -46,8 +50,17 @@ class PenerimaanController extends Controller
         $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
         $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
+        $jenis = DB::table('jenis_pembayaran')->get();
 
-        return view('pages.transaksiPembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title]);
+        return view('pages.transaksiPembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title, 'jenis' => $jenis]);
+    }
+
+    public function laporan_jenis_penerimaan(Request $request){
+        $title = 'Laporan Jenis Penerimaan';
+        $user = Auth::user();
+        $jenis = DB::table('jenis_pembayaran')->paginate(10);
+
+        return view('pages.jenisPenerimaan', ['user' => $user, 'title' => $title, 'jenis' => $jenis]);
     }
 
     public function export_pembayaran(){

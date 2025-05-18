@@ -11,8 +11,8 @@
     @foreach ($lains as $lain)
         <tr class="odd:bg-white even:bg-gray-100">
             <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 {{ $lain->keterangan === 'bos' ? 'uppercase' : 'capitalize' }}">{{ $lain->keterangan }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $lain->nominal }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $lain->keterangan }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($lain->nominal, 0); }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $lain->tanggal }}</td>
         </tr>
     @endforeach

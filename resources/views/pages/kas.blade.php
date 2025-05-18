@@ -19,7 +19,8 @@
 
     <form class="flex" action="/kas" method="POST">
         {{ csrf_field() }}
-        <div class="flex flex-row gap-2">
+        <div class="flex w-full justify-between gap-2">
+            <a href="{{url('/kas/download')}}" target="_blank" class="py-2 px-4 bg-green-500 text-white rounded-md">Export</a>
             <div class="flex">
                 <input
                 name="cari"
@@ -39,7 +40,7 @@
         </div>
     </form>
 
-    <div class="block w-96 h-auto mt-6 bg-white p-4 rounded-lg shadow-md">
+    {{-- <div class="block w-96 h-auto mt-6 bg-white p-4 rounded-lg shadow-md">
         <div class="flex justify-between w-full">
             <div class="">Pemasukan Pembayaran</div>
             <div class="font-bold">Rp {{ $kasPembayaran }}</div>
@@ -70,7 +71,7 @@
             <div class="">Total</div>
             <div class="font-bold">Rp  {{ ($kasPembayaran + $kasLain) - $kasPengeluaran }}</div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="my-4 text-xl font-bold">Pemasukan Pembayaran</div>
     <div class="flex flex-col">
@@ -97,8 +98,8 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nisn }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nama_siswa }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->kelas }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 {{ $pembayaran->keterangan === 'spp' ? 'uppercase' : 'capitalize' }}">{{ $pembayaran->keterangan }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $pembayaran->nominal }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 {{ $pembayaran->jenis === 'spp' ? 'uppercase' : 'capitalize' }}">{{ $pembayaran->jenis }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($pembayaran->nominal, 0); }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->tanggal }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
                             <a href="/penerimaan/pembayaran/{{ $pembayaran->id }}" class="mx-auto cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">
@@ -140,7 +141,7 @@
                     <tr class="odd:bg-white even:bg-gray-100">
                         <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 {{ $lain->keterangan === 'bos' ? 'uppercase' : 'capitalize' }}">{{ $lain->keterangan }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $lain->nominal }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($lain->nominal, 0); }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $lain->tanggal }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
                             <a href="/penerimaan/lain-lain/{{ $lain->id }}" class="mx-auto cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">
@@ -184,7 +185,7 @@
                         <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 capitalize">{{ $pengeluaran->jenis }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pengeluaran->keterangan }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $pengeluaran->nominal }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($pengeluaran->nominal, 0); }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pengeluaran->tanggal }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
                             <a href="/penerimaan/pengeluaran/{{ $pengeluaran->id }}" class="mx-auto cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">

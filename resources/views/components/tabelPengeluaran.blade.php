@@ -14,7 +14,7 @@
             <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 capitalize">{{ $pengeluaran->jenis }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pengeluaran->keterangan }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $pengeluaran->nominal }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($pengeluaran->nominal, 0); }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pengeluaran->tanggal }}</td>
         </tr>
     @endforeach

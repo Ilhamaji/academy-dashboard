@@ -1,5 +1,5 @@
 <!-- component -->
-<div class="bg-white mt-2 mb-7 rounded w-full mx-auto">
+<div class="bg-white mt-2 rounded w-full mx-auto">
     <div x-data="dataFileDnD()" class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
         <div x-ref="dnd"
             class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">

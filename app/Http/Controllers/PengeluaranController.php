@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ExportPengeluaran;
 use Maatwebsite\Excel\Facades\Excel;
+use \Carbon\Carbon;
 
 class PengeluaranController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function jenis_pengeluaran()
     {
         //
         $title = 'Pengeluaran';
@@ -25,15 +26,43 @@ class PengeluaranController extends Controller
         return view('pages.pengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
     }
 
+    public function tambah_jenis_pengeluaran(Request $request)
+    {
+        //
+        $request->validate([
+            'jenis' => 'required',
+        ]);
+
+        $date = Carbon::now();
+        $formattedDate = $date->toDateTimeString();
+
+        DB::table('jenis_pengeluaran')->insert([
+            'jenis' => $request->jenis,
+            'updated_at' => $formattedDate,
+        ]);
+
+        return redirect('/pengeluaran')->with('success', 'Berhasil menambah jenis pengeluaran');
+    }
+
     public function pengeluaran(Request $request)
     {
         //
         $title = 'Laporan Pengeluaran';
         $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->orderBy('tanggal', 'ASC')->paginate(10);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
         return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
+    }
+
+    public function laporan_jenis_pengeluaran(Request $request)
+    {
+        //
+        $title = 'Laporan Jenis Pengeluaran';
+        $user = Auth::user();
+        $jenis = DB::table('jenis_pengeluaran')->paginate(10);
+
+        return view('pages.jenisPengeluaran', ['user' => $user, 'title' => $title, 'jenis' => $jenis]);
     }
     /**
      * Show the form for creating a new resource.
@@ -62,7 +91,7 @@ class PengeluaranController extends Controller
         ]);
 
         DB::table('pengeluaran')->insert([
-            'jenis' => $request->jenis,
+            'id_jenis' => $request->jenis,
             'keterangan' => $request->keterangan,
             'nominal' => $request->nominal,
             'tanggal' => $request->tgl,
@@ -77,7 +106,7 @@ class PengeluaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pengeluaran $pengeluaran, $id)
+    public function show($id)
     {
         //
         $title = 'Pengeluaran';
@@ -91,9 +120,11 @@ class PengeluaranController extends Controller
         $title = 'Transaksi Pengeluaran';
         $user = Auth::user();
         $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
+        $jenis = DB::table('jenis_pengeluaran')->orderBy('jenis', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-        return view('pages.transaksiPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
+
+        return view('pages.transaksiPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title, 'jenis' => $jenis]);
     }
 
     /**

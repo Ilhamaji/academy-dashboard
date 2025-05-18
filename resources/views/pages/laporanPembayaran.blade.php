@@ -63,5 +63,4 @@
     </div>
 
     {{$pembayarans->links()}}
-
 @endsection

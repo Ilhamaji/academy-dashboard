@@ -1,5 +1,5 @@
 @extends('dashboard-layout')
-@section('title', 'Detail Kelas')
+@section('title', 'Laporan Data Kelas')
 
 @section('dashboard-content')
     @if(session()->has('success'))
@@ -35,7 +35,7 @@
                         <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $kelas->nama_kelas }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $kelas->wali_kelas }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
-                            <a href="/detail/kelas/{{$kelas->id}}" class="cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">
+                            <a href="/laporan/kelas/{{$kelas->id}}" class="cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Uploaded to svgrepo.com" width="20" height="20" viewBox="0 0 32 32" xml:space="preserve">
                                     <style type="text/css">
                                         .sharpcorners_een{fill:#fff;}

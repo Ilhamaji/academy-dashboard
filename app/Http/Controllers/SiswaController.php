@@ -6,6 +6,8 @@ use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\ExportSiswa;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
@@ -134,5 +136,9 @@ class SiswaController extends Controller
         $siswa->delete();
 
         return redirect("/siswa")->with('success', 'Siswa deleted successfully');
+    }
+
+    public function export_siswa(){
+        return Excel::download(new ExportSiswa, 'siswa.xlsx');
     }
 }

@@ -17,8 +17,8 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nisn }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nama_siswa }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->kelas }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 {{ $pembayaran->keterangan === 'spp' ? 'uppercase' : 'capitalize' }}">{{ $pembayaran->keterangan }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $pembayaran->nominal }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->jenis }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($pembayaran->nominal, 0); }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->tanggal }}</td>
         </tr>
     @endforeach

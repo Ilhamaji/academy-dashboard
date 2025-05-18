@@ -12,8 +12,9 @@ class="flex justify-center items-center transition-opacity duration-300 ease-out
             {{ csrf_field() }}
             <label for="jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis</label>
             <select name="jenis" id="jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
-                <option value="Gaji Karyawan">Gaji Karyawan</option>
-                <option value="Operasional">Operasional</option>
+                @foreach ($jenis as $j)
+                    <option value="{{ $j->id }}">{{ $j->jenis }}</option>
+                @endforeach
             </select>
             <label for="keterangan" class="font-semibold text-sm text-gray-600 pb-1 block">Keterangan</label>
             <input id="keterangan" type="text" name="keterangan" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>

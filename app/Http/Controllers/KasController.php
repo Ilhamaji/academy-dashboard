@@ -6,6 +6,7 @@ use App\Models\Kas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class KasController extends Controller
 {
@@ -18,10 +19,10 @@ class KasController extends Controller
         $title = 'Kas';
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->paginate(6);
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_pembayaran', 'pembayaran.id_jenis', '=', 'jenis_pembayaran.id')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_pembayaran.jenis')->orderBy('tanggal', 'ASC')->paginate(10);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(6);
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->paginate(6);
+        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(10);
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->orderBy('tanggal', 'ASC')->paginate(10);
 
         $kasPembayaran = DB::table('pembayaran')->sum('nominal');
         $kasLain = DB::table('lain_lain')->sum('nominal');
@@ -55,10 +56,10 @@ class KasController extends Controller
         $title = 'Kas';
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->where('tanggal', 'like', '%'.$request->cari.'%')->paginate(6);
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->where('tanggal', 'like', '%'.$request->cari.'%')->paginate(10);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->where('tanggal', 'like', '%'.$request->cari.'%')->paginate(6);
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->where('tanggal', 'like', '%'.$request->cari.'%')->paginate(6);
+        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->where('tanggal', 'like', '%'.$request->cari.'%')->paginate(10);
+        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->where('tanggal', 'like', '%'.$request->cari.'%')->paginate(10);
 
         $kasPembayaran = DB::table('pembayaran')->where('tanggal', 'like', '%'.$request->cari.'%')->sum('nominal');
         $kasLain = DB::table('lain_lain')->where('tanggal', 'like', '%'.$request->cari.'%')->sum('nominal');
@@ -66,6 +67,21 @@ class KasController extends Controller
 
         return view('pages.kas', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title, 'pengeluarans' => $pengeluarans,'kasPembayaran' => $kasPembayaran, 'kasLain' => $kasLain, 'kasPengeluaran' => $kasPengeluaran]);
 
+    }
+
+    public function view_pdf() {
+        $mpdf = new \Mpdf\Mpdf();
+        $stylesheet = file_get_contents('pdf.css');
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_pembayaran', 'pembayaran.id_jenis', '=', 'jenis_pembayaran.id')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_pembayaran.jenis')->sum('nominal');
+        $lains = DB::table('lain_lain')->sum('nominal');
+        $informasi = DB::table('informasi')->find(0);
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->sum('nominal');
+        $time = Carbon::now();
+        $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+
+        $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
+        $mpdf->WriteHTML(view('components.pdfKas', ['pembayarans' => $pembayarans, 'lains' => $lains, 'pengeluarans' => $pengeluarans, 'informasi' => $informasi, 'tahun' => $tahun]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->Output();
     }
 
     /**

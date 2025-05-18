@@ -43,41 +43,16 @@
             </div>
           </li>
           <li class="group/drop group/dropHead hover:bg-blue-200 rounded-lg">
-            <div class="rounded-lg duration-300">
-                <a class="flex justify-between middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover/dropHead:text-white {{ $title === 'Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+            <a href="/penerimaan" class="rounded-lg duration-300">
+                <div class="flex justify-between middle cursor-pointer none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover/dropHead:shadow-md group-hover/dropHead:bg-gradient-to-tr group-hover/dropHead:from-blue-600 group-hover/dropHead:to-blue-400 group-hover/dropHead:shadow-blue-500/20 group-hover/dropHead:shadow-lg group-hover/dropHead:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover/dropHead:text-white {{ $title === 'Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
                     <div class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#155dfc" aria-hidden="true" class="w-5 h-5 text-inherit group-hover/dropHead:fill-white my-auto mr-4 {{ $title === 'Penerimaan' ? 'fill-white' : ''}}">
                         <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z" clip-rule="evenodd"></path>
                     </svg>
                     <p class="flex antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Data Penerimaan</p>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-270 group-hover/drop:rotate-0">
-                        <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#155dfc" class="group-hover/drop:fill-white {{$title === 'Penerimaan' ? 'fill-white' : ''}}"/>
-                    </svg>
-                </a>
-            </div>
-            <ul class="none hidden duration-300 group-hover/drop:visible group-hover/drop:block">
-              <li>
-                <div class="group rounded-lg duration-300">
-                    <a href="/pembayaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-blue-400 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-180 scale-y-[-1]">
-                            <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#155dfc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white" />
-                        </svg>
-                        <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Pembayaran</p>
-                    </a>
                 </div>
-              </li>
-              <li>
-                <div class="group rounded-lg duration-300">
-                    <a href="/lain-lain" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-blue-400 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="rotate-180 scale-y-[-1]">
-                            <path d="M20 7V8.2C20 9.88016 20 10.7202 19.673 11.362C19.3854 11.9265 18.9265 12.3854 18.362 12.673C17.7202 13 16.8802 13 15.2 13H4M4 13L8 9M4 13L8 17" stroke="#155dfc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-white" />
-                        </svg>
-                        <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Lain-Lain</p>
-                    </a>
-                </div>
-              </li>
-            </ul>
+            </a>
           </li>
           <li>
             <div class="group rounded-lg duration-300">
@@ -158,7 +133,124 @@
           </li>
           <li>
             <div class="group rounded-lg duration-300">
-                <a href="/detail" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Siswa' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                <a href="/laporan/jenis-penerimaan" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Jenis Penerimaan' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Jenis Penerimaan' ? 'fill-white' : ''}}">
+                        <g>
+                            <g>
+                                <path d="M427.692,0H86.442C72.304,0,59.733,10.4,59.733,24.5v460.867c0,14.1,12.571,26.633,26.708,26.633h341.25    c14.137,0,24.575-12.533,24.575-26.633V24.5C452.267,10.4,441.829,0,427.692,0z M435.2,485.367c0,4.683-2.779,9.567-7.508,9.567    H86.442c-4.729,0-9.642-4.883-9.642-9.567V24.5c0-4.683,4.912-7.433,9.642-7.433h341.25c4.729,0,7.508,2.75,7.508,7.433V485.367z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M299.733,59.733H214.4c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h85.333    c4.713,0,8.533-3.817,8.533-8.533C308.267,63.55,304.446,59.733,299.733,59.733z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,119.467H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,123.283,381.246,119.467,376.533,119.467z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,179.2H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,183.017,381.246,179.2,376.533,179.2z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,238.933H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,242.75,381.246,238.933,376.533,238.933z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,298.667H137.6c-4.713,0-9.6,2.75-9.6,7.467v128c0,4.717,4.887,9.6,9.6,9.6h238.933    c4.713,0,7.467-4.883,7.467-9.6v-128C384,301.417,381.246,298.667,376.533,298.667z M366.933,426.667H145.067V315.733h221.867    V426.667z"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Jenis Penerimaan</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group rounded-lg duration-300">
+                <a href="/laporan/jenis-pengeluaran" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Jenis Pengeluaran' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Jenis Pengeluaran' ? 'fill-white' : ''}}">
+                        <g>
+                            <g>
+                                <path d="M427.692,0H86.442C72.304,0,59.733,10.4,59.733,24.5v460.867c0,14.1,12.571,26.633,26.708,26.633h341.25    c14.137,0,24.575-12.533,24.575-26.633V24.5C452.267,10.4,441.829,0,427.692,0z M435.2,485.367c0,4.683-2.779,9.567-7.508,9.567    H86.442c-4.729,0-9.642-4.883-9.642-9.567V24.5c0-4.683,4.912-7.433,9.642-7.433h341.25c4.729,0,7.508,2.75,7.508,7.433V485.367z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M299.733,59.733H214.4c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h85.333    c4.713,0,8.533-3.817,8.533-8.533C308.267,63.55,304.446,59.733,299.733,59.733z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,119.467H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,123.283,381.246,119.467,376.533,119.467z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,179.2H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,183.017,381.246,179.2,376.533,179.2z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,238.933H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,242.75,381.246,238.933,376.533,238.933z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,298.667H137.6c-4.713,0-9.6,2.75-9.6,7.467v128c0,4.717,4.887,9.6,9.6,9.6h238.933    c4.713,0,7.467-4.883,7.467-9.6v-128C384,301.417,381.246,298.667,376.533,298.667z M366.933,426.667H145.067V315.733h221.867    V426.667z"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Jenis Pengeluaran</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group rounded-lg duration-300">
+                <a href="/laporan/kelas" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Kelas' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Kelas' ? 'fill-white' : ''}}">
+                        <g>
+                            <g>
+                                <path d="M427.692,0H86.442C72.304,0,59.733,10.4,59.733,24.5v460.867c0,14.1,12.571,26.633,26.708,26.633h341.25    c14.137,0,24.575-12.533,24.575-26.633V24.5C452.267,10.4,441.829,0,427.692,0z M435.2,485.367c0,4.683-2.779,9.567-7.508,9.567    H86.442c-4.729,0-9.642-4.883-9.642-9.567V24.5c0-4.683,4.912-7.433,9.642-7.433h341.25c4.729,0,7.508,2.75,7.508,7.433V485.367z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M299.733,59.733H214.4c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h85.333    c4.713,0,8.533-3.817,8.533-8.533C308.267,63.55,304.446,59.733,299.733,59.733z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,119.467H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,123.283,381.246,119.467,376.533,119.467z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,179.2H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,183.017,381.246,179.2,376.533,179.2z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,238.933H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,242.75,381.246,238.933,376.533,238.933z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,298.667H137.6c-4.713,0-9.6,2.75-9.6,7.467v128c0,4.717,4.887,9.6,9.6,9.6h238.933    c4.713,0,7.467-4.883,7.467-9.6v-128C384,301.417,381.246,298.667,376.533,298.667z M366.933,426.667H145.067V315.733h221.867    V426.667z"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Data Kelas</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group rounded-lg duration-300">
+                <a href="/laporan/siswa" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:shadow-md group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-blue-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Siswa' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Siswa' ? 'fill-white' : ''}}">
                         <g>
                             <g>

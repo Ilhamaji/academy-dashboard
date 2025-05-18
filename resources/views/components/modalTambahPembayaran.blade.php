@@ -20,13 +20,14 @@ class="flex justify-center items-center transition-opacity duration-300 ease-out
             <select name="kelas" id="kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
                 <option value=''>Pilih kelas jika belum terdaftar</option>
                 @foreach ($kelass as $kelas)
-                    <option value='{{ $kelas->nama_kelas }}'>{{ $kelas->nama_kelas }}</option>
+                    <option value='{{ $kelas->id }}'>{{ $kelas->nama_kelas }}</option>
                 @endforeach
             </select>
-            <label for="keterangan" class="font-semibold text-sm text-gray-600 pb-1 block">Keterangan</label>
-            <select name="keterangan" id="keterangan" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
-                <option value='spp'>SPP (Sumbangan Pembinaan Pendidikan)</option>
-                <option value='seragam'>Seragam</option>
+            <label for="jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Pembayaran</label>
+            <select name="jenis" id="jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
+                @foreach ($jenis as $j)
+                    <option value='{{ $j->jenis }}'>{{ $j->jenis }}</option>
+                @endforeach
             </select>
             <label for="nominal" class="font-semibold text-sm text-gray-600 pb-1 block">Nominal</label>
             <input id="nominal" type="number" name="nominal" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>

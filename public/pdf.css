@@ -1,0 +1,100 @@
+.pdf-header {
+    display: grid;
+    grid-template-columns: 2;
+    width: 100%;
+}
+
+.pdf-header-logo {
+    display: flex;
+    float: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pdf-header-text {
+    display: flex;
+    float: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pdf-title {
+    display: flex;
+    float: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 50px auto;
+}
+
+img {
+    display: flex;
+    float: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 150px;
+}
+
+span {
+    width: 100%;
+    display: flex;
+    float: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pdf-footer {
+    width: 100%;
+    display: flex;
+    float: center;
+}
+
+.pdf-footer > span > p {
+    justify-content: space-between;
+}
+
+.tabel {
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    float: center;
+}
+
+.tabelss {
+    margin-top: 100px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    float: center;
+}
+
+.tabels {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.tabels-h,
+.tabels-r,
+.tabels-d {
+    border: 1px solid black;
+}
+
+.tabels-num {
+    text-align: center;
+}
+
+.tabel-tit {
+    width: 100%;
+    font-size: xx-large;
+    text-align: center;
+}
