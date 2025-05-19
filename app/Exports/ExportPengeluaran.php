@@ -14,7 +14,8 @@ class ExportPengeluaran implements FromView
     public function view(): View
     {
         //
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
+       $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->orderBy('tanggal', 'ASC')->get();
+
         return view('components.tabelPengeluaran', ['pengeluarans' => $pengeluarans]);
 
     }

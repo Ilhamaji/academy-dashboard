@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ExportPengeluaran;
+use App\Exports\ExportJenisPengeluaran;
 use Maatwebsite\Excel\Facades\Excel;
 use \Carbon\Carbon;
 
@@ -55,6 +56,24 @@ class PengeluaranController extends Controller
         return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
     }
 
+    public function cari(Request $request)
+    {
+        $title = 'Laporan Pengeluaran';
+        $user = Auth::user();
+
+        if(!$request->bulan == '' && $request->tahun == ''){
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->whereMonth('tanggal', '=', $request->bulan)->orderBy('tanggal', 'ASC')->paginate(10);
+        }elseif($request->bulan == '' && !$request->tahun == ''){
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
+        }elseif(!$request->bulan == '' && !$request->tahun == ''){
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->whereMonth('tanggal', '=', $request->bulan)->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
+        }else{
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->orderBy('tanggal', 'ASC')->paginate(10);
+        }
+
+        return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'title' => $title]);
+    }
+
     public function laporan_jenis_pengeluaran(Request $request)
     {
         //
@@ -70,6 +89,11 @@ class PengeluaranController extends Controller
     public function create()
     {
         //
+    }
+
+    public function export_jenis_pengeluaran()
+    {
+        return Excel::download(new ExportJenisPengeluaran, 'jenis-pengeluaran.xlsx');
     }
 
     public function export()

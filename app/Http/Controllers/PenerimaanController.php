@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ExportPembayaran;
 use App\Exports\ExportLainlain;
+use App\Exports\ExportJenisPenerimaan;
 use Maatwebsite\Excel\Facades\Excel;
 use \Carbon\Carbon;
 
@@ -61,6 +62,10 @@ class PenerimaanController extends Controller
         $jenis = DB::table('jenis_pembayaran')->paginate(10);
 
         return view('pages.jenisPenerimaan', ['user' => $user, 'title' => $title, 'jenis' => $jenis]);
+    }
+
+    public function export_jenis_penerimaan(){
+        return Excel::download(new ExportJenisPenerimaan, 'jenis-penerimaan.xlsx');
     }
 
     public function export_pembayaran(){

@@ -9,10 +9,10 @@
 
     <div class="text-xl font-bold">Tabel Pengeluaran</div>
 
-    <div class="flex justify-between my-4">
+    <div class="flex justify-between mt-2 mb-4">
         <a href="{{url('/laporan/pengeluaran/download')}}" class="py-2 px-4 bg-green-500 text-white rounded-md">Export</a>
 
-        <form class="flex" action="/laporan/pembayaran" method="POST">
+        <form class="flex" action="/laporan/pengeluaran" method="POST">
             {{ csrf_field() }}
             <div class="flex flex-row gap-2">
                 <div class="flex">

@@ -40,6 +40,9 @@
         </div>
     </form>
 
+    <div class="my-6">
+        {{ $pengeluarans->links() }}
+    </div>
     {{-- <div class="block w-96 h-auto mt-6 bg-white p-4 rounded-lg shadow-md">
         <div class="flex justify-between w-full">
             <div class="">Pemasukan Pembayaran</div>
@@ -201,9 +204,6 @@
               </table>
             </div>
           </div>
-        </div>
-        <div class="my-6">
-            {{ $pengeluarans->links() }}
         </div>
     </div>
 

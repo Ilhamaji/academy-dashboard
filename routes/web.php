@@ -60,19 +60,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transaksi/pembayaran', [PenerimaanController::class, 'transaksi']);
     Route::get('/transaksi/lain-lain', [LainnyaController::class, 'transaksi']);
     Route::get('/laporan/jenis-penerimaan', [PenerimaanController::class, 'laporan_jenis_penerimaan']);
+    Route::get('/laporan/jenis-penerimaan/download', [PenerimaanController::class, 'export_jenis_penerimaan']);
 
     //Endpoint Pengeluaran
     Route::get('/pengeluaran', [PengeluaranController::class, 'jenis_pengeluaran']);
     Route::post('/pengeluaran/jenis', [PengeluaranController::class, 'tambah_jenis_pengeluaran']);
     Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
     Route::get('/laporan/pengeluaran', [PengeluaranController::class, 'pengeluaran']);
+    Route::post('/laporan/pengeluaran', [PengeluaranController::class, 'cari']);
     Route::get('/laporan/pengeluaran/download', [PengeluaranController::class, 'export']);
     Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
     Route::get('/transaksi/pengeluaran', [PengeluaranController::class, 'transaksi']);
     Route::get('/laporan/jenis-pengeluaran', [PengeluaranController::class, 'laporan_jenis_pengeluaran']);
+    Route::get('/laporan/jenis-pengeluaran/download', [PengeluaranController::class, 'export_jenis_pengeluaran']);
 
     //Endpoint Laporan Kelas
     Route::get('/laporan/kelas', [DetailController::class, 'kelas']);
+    Route::get('/laporan/kelas/download', [DetailController::class, 'export']);
     Route::get('/laporan/kelas/{id}', [DetailController::class, 'show']);
     Route::post('/laporan/kelas/{id}', [DetailController::class, 'showCari']);
     Route::get('/laporan/kelas/siswa/{nisn}', [DetailController::class, 'detail']);

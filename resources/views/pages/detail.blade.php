@@ -12,12 +12,18 @@
         <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
     @endforeach
 
-    <div class="flex mb-2">
+    <div class="flex">
         <p class="text-sm text-blue-500">Kelas</p>
         <div class="mx-1">/</div>
     </div>
 
-    <div class="flex flex-col mt-6">
+    <div class="text-xl font-bold">Tabel Kelas</div>
+
+    <div class="flex justify-between my-2">
+        <a href="{{url('/laporan/kelas/download')}}" class="py-2 px-4 bg-green-500 text-white rounded-md">Export</a>
+    </div>
+
+    <div class="flex flex-col mt-4">
         <div class="-m-1.5 max-h-[80vh] overflow-auto shadow-md rounded-lg bg-gray-200">
           <div class="p-1.5 min-w-full inline-block align-middle">
             <div class="overflow-hidden">

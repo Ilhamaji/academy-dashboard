@@ -9,7 +9,7 @@
 
     <div class="text-xl font-bold">Tabel Penerimaan Lain-lain</div>
 
-    <div class="flex justify-between my-4">
+    <div class="flex justify-between mt-2 mb-4">
         <a href="{{url('/laporan/lain-lain/download')}}" class="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600">Export</a>
 
         <form class="flex" action="/laporan/lain-lain" method="POST">

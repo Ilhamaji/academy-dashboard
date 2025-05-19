@@ -6,6 +6,8 @@ use App\Models\Detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ExportKelas;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DetailController extends Controller
 {
@@ -100,6 +102,10 @@ class DetailController extends Controller
         $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->where('pembayaran.nisn', '=', $nisn)->where('tanggal', 'like', '%'.$request->cari.'%')->orderBy('tanggal', 'ASC')->get();
 
         return view('pages.detailPembayaran', ['title' => $title, 'user' => $user, 'pembayarans' => $pembayarans, 'back' => $back[0]->kelas, 'nisn' => $nisn]);
+    }
+
+    public function export(){
+        return Excel::download(new ExportKelas, 'kelas.xlsx');
     }
 
     /**

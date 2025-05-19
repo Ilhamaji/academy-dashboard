@@ -9,7 +9,7 @@
 
     <div class="text-xl font-bold">Tabel Penerimaan Pembayaran</div>
 
-    <div class="flex justify-between my-4">
+    <div class="flex justify-between mt-2 mb-4">
         <a href="{{url('/laporan/pembayaran/download')}}" class="py-2 px-4 bg-green-500 text-white rounded-md">Export</a>
 
         <form class="flex" action="/laporan/pembayaran" method="POST">
