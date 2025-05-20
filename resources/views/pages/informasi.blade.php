@@ -100,24 +100,6 @@
             </div>
             <div class="mb-5">
                 <label
-                for="kodepos"
-                class="mb-3 block text-base font-medium text-[#07074D]"
-                >
-                Kode Pos
-                </label>
-                <input
-                type="number"
-                name="kodepos"
-                id="kodepos"
-                value="{{$informasi->kodepos}}"
-                placeholder="14235"
-                min="0"
-                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-
-                />
-            </div>
-            <div class="mb-5">
-                <label
                 for="no_telp"
                 class="mb-3 block text-base font-medium text-[#07074D]"
                 >
@@ -148,6 +130,24 @@
                 class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
 
                 >{{$informasi->alamat}}</textarea>
+            </div>
+            <div class="mb-5">
+                <label
+                for="kodepos"
+                class="mb-3 block text-base font-medium text-[#07074D]"
+                >
+                Kode Pos
+                </label>
+                <input
+                type="number"
+                name="kodepos"
+                id="kodepos"
+                value="{{$informasi->kodepos}}"
+                placeholder="14235"
+                min="0"
+                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+
+                />
             </div>
             <div class="mb-5">
                 <label

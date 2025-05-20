@@ -72,15 +72,35 @@ class KasController extends Controller
     public function view_pdf() {
         $mpdf = new \Mpdf\Mpdf();
         $stylesheet = file_get_contents('pdf.css');
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_pembayaran', 'pembayaran.id_jenis', '=', 'jenis_pembayaran.id')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_pembayaran.jenis')->sum('nominal');
-        $lains = DB::table('lain_lain')->sum('nominal');
+
+        $pembayarans= DB::table('pembayaran')
+            ->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')
+            ->join('jenis_pembayaran', 'pembayaran.id_jenis', '=', 'jenis_pembayaran.id')
+            ->select(
+                DB::raw('COUNT(pembayaran.id) as jumlah'),
+                DB::raw('SUM(pembayaran.nominal) as nominal'),
+                'jenis_pembayaran.jenis'
+            )
+            ->groupBy('jenis_pembayaran.jenis')
+            ->get();
+
+        $total_pembayarans = DB::table('pembayaran')
+            ->sum('nominal');
+
+        $lains = DB::table('lain_lain')->select(DB::raw('COUNT(id) as jumlah'), DB::raw('SUM(nominal) as nominal'))->get();
+
         $informasi = DB::table('informasi')->find(0);
-        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->sum('nominal');
+
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select(DB::raw('COUNT(pengeluaran.id) as jumlah'),DB::raw('SUM(pengeluaran.nominal) as nominal'), 'jenis_pengeluaran.jenis')->groupBy('jenis_pengeluaran.jenis')->get();
+
+        $total_pengeluarans = DB::table('pengeluaran')
+            ->sum('nominal');
+
         $time = Carbon::now();
         $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
 
         $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML(view('components.pdfKas', ['pembayarans' => $pembayarans, 'lains' => $lains, 'pengeluarans' => $pengeluarans, 'informasi' => $informasi, 'tahun' => $tahun]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->WriteHTML(view('components.pdfKas', ['pembayarans' => $pembayarans, 'lains' => $lains[0], 'pengeluarans' => $pengeluarans, 'informasi' => $informasi, 'tahun' => $tahun, 'total_pembayarans' => $total_pembayarans, 'total_pengeluarans' => $total_pengeluarans]), \Mpdf\HTMLParserMode::HTML_BODY);
         $mpdf->Output();
     }
 
