@@ -13,13 +13,13 @@
     <tbody>
     @foreach ($pembayarans as $pembayaran)
         <tr class="odd:bg-white even:bg-gray-100">
-            <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nisn }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nama_siswa }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->kelas }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->jenis }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ number_format($pembayaran->nominal, 0); }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->tanggal }}</td>
+            <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-500">{{ $loop->iteration }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->nisn }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->nama_siswa }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->kelas }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->jenis }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Rp {{ number_format($pembayaran->nominal, 0); }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->tanggal }}</td>
         </tr>
     @endforeach
     </tbody>

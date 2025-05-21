@@ -45,8 +45,8 @@
                 <tbody>
                 @foreach ($kelass as $kelas)
                     <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $kelas->nama_kelas }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $kelas->wali_kelas }}</td>
+                        <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-500">{{ $kelas->nama_kelas }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $kelas->wali_kelas }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
                             <a href="/kelas/edit/{{$kelas->id}}" class="cursor-pointer bg-blue-500 hover:bg-blue-700 p-3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">

@@ -9,9 +9,9 @@
     <tbody>
     @foreach ($jenis as $j)
         <tr class="odd:bg-white even:bg-gray-100">
-            <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $j->jenis }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $j->updated_at }}</td>
+            <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-500">{{ $loop->iteration }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $j->jenis }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $j->updated_at }}</td>
         </tr>
     @endforeach
     </tbody>

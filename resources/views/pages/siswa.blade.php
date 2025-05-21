@@ -77,20 +77,20 @@
                 <tbody>
                 @foreach ($siswas as $siswa)
                     <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                             <p class="w-10 lg:w-auto truncate">{{ $siswa->nisn }}</p>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                             <p class="w-20 lg:w-auto truncate">{{ $siswa->nama_siswa }}</p>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                             <p class="w-20 lg:w-auto truncate">{{ $siswa->jenis_kelamin }}</p>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                             <p class="">{{ $siswa->kelas }}</p>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
                             <p class="w-20 md:w-40 lg:w-86 truncate">{{ $siswa->alamat }}</p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">

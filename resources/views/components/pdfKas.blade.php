@@ -4,7 +4,7 @@
             <img src="{{$informasi->logo}}" alt="logo">
         </div>
         <div class="pdf-header-text">
-            <h1>{{$informasi->nama}}</h1>
+            <h1 class="pdf-header-nama" style="text-transform: uppercase;">{{strtoupper($informasiNama)}}</h1>
             <h4>{{$informasi->alamat}}</h4>
             <h4>Tlp. {{$informasi->no_telp}}</h4>
         </div>
@@ -62,7 +62,7 @@
         <thead style="text-align: center; float: center; margin: 0 auto;">
             <tr>
                 <th scope="col" class="tabel-tit"></th>
-                <th scope="col" class="tabel-tit">Surakarta,.....................</th>
+                <th scope="col" class="tabel-tit">Surakarta, {{$tanggal}}</th>
             </tr>
         </thead>
     </table>

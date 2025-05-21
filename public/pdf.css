@@ -22,6 +22,10 @@
     margin: 0 auto;
 }
 
+.pdf-header-nama {
+    text-transform: capitalize;
+}
+
 .pdf-title {
     display: flex;
     float: center;
@@ -32,6 +36,7 @@
 }
 
 img {
+    filter: grayscale(1);
     display: flex;
     float: center;
     align-items: center;
