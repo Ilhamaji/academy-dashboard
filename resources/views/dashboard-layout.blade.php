@@ -2,14 +2,14 @@
 
 <!-- component -->
 <div class="min-h-screen bg-gray-100">
-    <aside id="sidebar" class="fixed shadow-md no-scrollbar overflow-y-scroll bg-white -translate-x-80 fixed inset-0 z-50 min-h-screen w-72 transition-transform duration-300 xl:translate-x-0">
+    <aside id="sidebar" class="fixed shadow-md no-scrollbar overflow-y-scroll bg-white -translate-x-80 fixed inset-0 z-50 min-h-screen w-72 transition-transform duration-300 lg:translate-x-0">
       <div class="relative">
         <a class="flex items-center gap-4 py-4 mx-4 border-b border-gray-200" href="/">
             <h6 class="block antialiased tracking-normal font-sans text-xl font-bold leading-relaxed text-black">
                 Dashboard
             </h6>
         </a>
-        <button onclick="sidebarHandler()" class="middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden" type="button">
+        <button onclick="sidebarHandler()" class="middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none md:hidden" type="button">
           <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true" class="h-5 w-5 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
