@@ -26,7 +26,7 @@ class="flex justify-center items-center transition-opacity duration-300 ease-out
             <label for="jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Pembayaran</label>
             <select name="jenis" id="jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
                 @foreach ($jenis as $j)
-                    <option value='{{ $j->jenis }}'>{{ $j->jenis }}</option>
+                    <option value='{{ $j->id }}'>{{ $j->jenis }}</option>
                 @endforeach
             </select>
             <label for="nominal" class="font-semibold text-sm text-gray-600 pb-1 block">Nominal</label>

@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/penerimaan/pembayaran/{id}', [PembayaranController::class, 'show']);
     Route::post('/penerimaan/lain-lain', [LainnyaController::class, 'store']);
     Route::get('/penerimaan/lain-lain/{id}', [LainnyaController::class, 'show']);
-    Route::get('/transaksi/pembayaran', [PenerimaanController::class, 'transaksi']);
+    Route::get('/transaksi/pembayaran', [PembayaranController::class, 'transaksi']);
     Route::get('/transaksi/lain-lain', [LainnyaController::class, 'transaksi']);
     Route::get('/laporan/jenis-penerimaan', [PenerimaanController::class, 'laporan_jenis_penerimaan']);
     Route::get('/laporan/jenis-penerimaan/download', [PenerimaanController::class, 'export_jenis_penerimaan']);

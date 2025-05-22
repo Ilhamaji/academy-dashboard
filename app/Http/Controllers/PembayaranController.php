@@ -66,6 +66,18 @@ class PembayaranController extends Controller
         return redirect("/transaksi/pembayaran")->with('success', 'Pembayaran created successfully');
     }
 
+    public function transaksi(){
+        $title = 'Transaksi Penerimaan';
+        $user = Auth::user();
+        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
+        $jenis = DB::table('jenis_pembayaran')->get();
+
+        return view('pages.transaksiPembayaran', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title, 'jenis' => $jenis ]);
+    }
+
     /**
      * Display the specified resource.
      */

@@ -72,6 +72,21 @@ class KasController extends Controller
     }
 
     public function view_pdf() {
+        $informasi = DB::table('informasi')->find(0);
+
+        Carbon::setLocale('id');
+        $time = Carbon::now();
+        $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+        $bulan = Carbon::createFromFormat('Y-m-d H:i:s', $time)->month;
+        $b = strlen($bulan) == 1 ? '0'.$bulan : $bulan;
+        $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
+        $informasiNama = strtoupper($informasi->nama);
+
+        $pembayaran = DB::table('pembayaran')->sum('nominal');
+        $lain = DB::table('lain_lain')->sum('nominal');
+        $pengeluaran = DB::table('pengeluaran')->sum('nominal');
+        $total = $pembayaran + $lain - $pengeluaran;
+
         $mpdf = new \Mpdf\Mpdf();
         $stylesheet = file_get_contents('pdf.css');
 
@@ -82,30 +97,24 @@ class KasController extends Controller
                 DB::raw('COUNT(pembayaran.id) as jumlah'),
                 DB::raw('SUM(pembayaran.nominal) as nominal'),
                 'jenis_pembayaran.jenis'
-            )
+            )->where('tanggal', 'like', '%'.$tahun.'-'.$b.'%')
             ->groupBy('jenis_pembayaran.jenis')
             ->get();
 
-        $total_pembayarans = DB::table('pembayaran')
+        $total_pembayarans = DB::table('pembayaran')->where('tanggal', 'like', '%'.$tahun.'-'.$b.'%')
             ->sum('nominal');
 
-        $lains = DB::table('lain_lain')->select(DB::raw('COUNT(id) as jumlah'), DB::raw('SUM(nominal) as nominal'))->get();
+        $lains = DB::table('lain_lain')->select(DB::raw('COUNT(id) as jumlah'), DB::raw('SUM(nominal) as nominal'))->where('tanggal', 'like', '%'.$tahun.'-'.$b.'%')->get();
 
-        $informasi = DB::table('informasi')->find(0);
 
-        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select(DB::raw('COUNT(pengeluaran.id) as jumlah'),DB::raw('SUM(pengeluaran.nominal) as nominal'), 'jenis_pengeluaran.jenis')->groupBy('jenis_pengeluaran.jenis')->get();
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select(DB::raw('COUNT(pengeluaran.id) as jumlah'),DB::raw('SUM(pengeluaran.nominal) as nominal'), 'jenis_pengeluaran.jenis')->groupBy('jenis_pengeluaran.jenis')->where('tanggal', 'like', '%'.$tahun.'-'.$b.'%')->get();
 
-        $total_pengeluarans = DB::table('pengeluaran')
+        $total_pengeluarans = DB::table('pengeluaran')->where('tanggal', 'like', '%'.$tahun.'-'.$b.'%')
             ->sum('nominal');
 
-        $time = Carbon::now();
-        $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
-        Carbon::setLocale('id');
-        $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
-        $informasiNama = strtoupper($informasi->nama);
 
         $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML(view('components.pdfKas', ['pembayarans' => $pembayarans, 'lains' => $lains[0], 'pengeluarans' => $pengeluarans, 'informasi' => $informasi, 'tahun' => $tahun, 'total_pembayarans' => $total_pembayarans, 'total_pengeluarans' => $total_pengeluarans, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->WriteHTML(view('components.pdfKas', ['pembayarans' => $pembayarans, 'lains' => $lains[0], 'pengeluarans' => $pengeluarans, 'informasi' => $informasi, 'tahun' => $tahun, 'total_pembayarans' => $total_pembayarans, 'total_pengeluarans' => $total_pengeluarans, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama, 'total' => $total]), \Mpdf\HTMLParserMode::HTML_BODY);
         $mpdf->restrictColorSpace = 1;
 
         $mpdf->Output();

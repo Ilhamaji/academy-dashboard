@@ -52,8 +52,12 @@
                 <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total_pengeluarans, 0)}}</td>
             </tr>
             <tr class="tabels-r">
-                <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="2">Saldo Akhir Kas</td>
+                <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="2">Total Bulan Ini</td>
                 <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format(($total_pembayarans + $lains->nominal) - $total_pengeluarans, 0);}}</td>
+            </tr>
+            <tr class="tabels-r">
+                <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="2">Saldo Akhir Kas</td>
+                <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total, 0);}}</td>
             </tr>
         </tbody>
     </table>
