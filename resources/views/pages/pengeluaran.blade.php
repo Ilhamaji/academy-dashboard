@@ -59,7 +59,7 @@
                                 </svg>
                             </a>
 
-                            <a onclick="return confirm('Apakah anda yakin untuk menghapus {{ $jenis->nama }}?')" href="/penerimaan/hapus/{{ $jenis->kode }}" class="cursor-pointer bg-red-500 hover:bg-red-700 p-3 rounded-lg group ml-2">
+                            <a onclick="return confirm('Apakah anda yakin untuk menghapus {{ $jenis->nama }}?')" href="/pengeluaran/hapus/{{ $jenis->kode }}" class="cursor-pointer bg-red-500 hover:bg-red-700 p-3 rounded-lg group ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                     <path d="M10 11V17" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M14 11V17" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -108,7 +108,7 @@ class PembayaranController extends Controller
         $pembayaran = DB::table('pembayaran')->where('id', '=', $id);
         $pembayaran->delete();
 
-        return redirect('/transaski/pembayaran')->with('success', 'Berhasil menghapus pembayaran');
+        return redirect('/transaksi/pembayaran')->with('success', 'Berhasil menghapus pembayaran');
     }
 
 

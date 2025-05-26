@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
 
         //Endpoint Pengeluaran
         Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
-        Route::get('/laporan/pengeluaran/{id}', [PengeluaranController::class, 'view_pdf']);
+        Route::get('/laporan/pengeluaran/kwitansi/{id}', [PengeluaranController::class, 'view_pdf']);
 
         //Endpoint Laporan Pengeluaran
         Route::get('/laporan/pengeluaran', [PengeluaranController::class, 'pengeluaran']);
