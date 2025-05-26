@@ -30,6 +30,8 @@
                         <option value='{{ $j->kode }}' {{$pengeluarans->kode_jenis == $j->kode ? 'selected' : ''}}>{{ $j->nama }}</option>
                     @endforeach
                 </select>
+                <label for="keterangan" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Pengeluaran</label>
+                <textarea type="text" name="keterangan" id="keterangan" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>{{$pengeluarans->keterangan}}</textarea>
                 <label for="nominal" class="font-semibold text-sm text-gray-600 pb-1 block">Nominal</label>
                 <input id="nominal" type="number" name="nominal" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" value="{{$pengeluarans->nominal}}" @required(true)/>
                 <label for="tgl" class="font-semibold text-sm text-gray-600 pb-1 block">Tanggal</label>

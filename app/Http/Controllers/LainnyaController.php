@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lainnya;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -44,14 +45,27 @@ class LainnyaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lainnya $lainnya, $id)
-    {
-        //
-        $title = 'Penerimaan';
-        $user = Auth::user();
-        $lains = DB::table('lain_lain')->where('id', '=', $id)->orderBy('tanggal', 'ASC')->get();
+    public function view_pdf($id){
+        $informasi = DB::table('informasi')->find(0);
 
-        return view('pages.kwitansiLainnya', ['user' => $user, 'lains' => $lains, 'title' => $title]);
+        Carbon::setLocale('id');
+        $time = Carbon::now();
+        $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+        $bulan = Carbon::createFromFormat('Y-m-d H:i:s', $time)->month;
+        $b = strlen($bulan) == 1 ? '0'.$bulan : $bulan;
+        $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
+        $informasiNama = strtoupper($informasi->nama);
+
+        $lain = DB::table('lain_lain')->join('jenis_penerimaan', 'lain_lain.kode_jenis', '=', 'jenis_penerimaan.kode')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
+
+        $mpdf = new \Mpdf\Mpdf();
+        $stylesheet = file_get_contents('pdf.css');
+
+        $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
+        $mpdf->WriteHTML(view('components.pdfKwitansiLainnya', ['lain' => $lain, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->restrictColorSpace = 1;
+
+        $mpdf->Output();
     }
 
     public function transaksi(){

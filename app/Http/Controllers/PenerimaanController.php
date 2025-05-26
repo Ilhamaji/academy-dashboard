@@ -73,6 +73,10 @@ class PenerimaanController extends Controller
     }
 
     public function hapus_jenis_penerimaan($kode){
+        $jenis_pembayaran = DB::table('pembayaran')->where('kode_jenis', '=', $kode);
+        $jenis_pembayaran->delete();
+        $jenis_lain = DB::table('lain_lain')->where('kode_jenis', '=', $kode);
+        $jenis_lain->delete();
         $jenis_penerimaan = DB::table('jenis_penerimaan')->where('kode', '=', $kode);
         $jenis_penerimaan->delete();
 

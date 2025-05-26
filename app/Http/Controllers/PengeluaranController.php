@@ -79,6 +79,8 @@ class PengeluaranController extends Controller
     }
 
     public function hapus_jenis_pengeluaran($kode){
+        $pembayaran = DB::table('pembayaran')->where('kode_jenis', '=', $kode);
+        $pembayaran->delete();
         $jenis_pengeluaran = DB::table('jenis_pengeluaran')->where('kode', '=', $kode);
         $jenis_pengeluaran->delete();
 
@@ -143,12 +145,14 @@ class PengeluaranController extends Controller
         $request->validate([
             'kode_jenis' => 'required',
             'nominal' => 'required|numeric',
+            'keterangan' => 'required',
             'tgl' => 'required',
         ]);
 
         DB::table('pengeluaran')->insert([
             'kode_jenis' => $request->kode_jenis,
             'nominal' => $request->nominal,
+            'keterangan' => $request->keterangan,
             'tanggal' => $request->tgl,
         ]);
 
@@ -158,14 +162,27 @@ class PengeluaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
-    {
-        //
-        $title = 'Pengeluaran';
-        $user = Auth::user();
-        $pengeluaran = DB::table('pengeluaran')->where('id', '=', $id)->get();
+    public function view_pdf($id){
+        $informasi = DB::table('informasi')->find(0);
 
-        return view('pages.kwitansiPengeluaran', ['user' => $user, 'pengeluaran' => $pengeluaran, 'title' => $title]);
+        Carbon::setLocale('id');
+        $time = Carbon::now();
+        $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+        $bulan = Carbon::createFromFormat('Y-m-d H:i:s', $time)->month;
+        $b = strlen($bulan) == 1 ? '0'.$bulan : $bulan;
+        $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
+        $informasiNama = strtoupper($informasi->nama);
+
+        $pengeluaran = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->find($id);
+
+        $mpdf = new \Mpdf\Mpdf();
+        $stylesheet = file_get_contents('pdf.css');
+
+        $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
+        $mpdf->WriteHTML(view('components.pdfKwitansiPengeluaran', ['pengeluaran' => $pengeluaran, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->restrictColorSpace = 1;
+
+        $mpdf->Output();
     }
 
     public function transaksi(){
@@ -182,7 +199,7 @@ class PengeluaranController extends Controller
     public function edit_transaksi($id){
         $title = 'Transaksi Pengeluaran';
         $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->join('jenis_penerimaan', 'kode_jenis', '=', 'kode')->select('pengeluaran.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->find($id);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
         $jenis = DB::table('jenis_pengeluaran')->get();
 
@@ -195,12 +212,14 @@ class PengeluaranController extends Controller
          $request->validate([
             'nominal' => 'required',
             'tgl' => 'required',
+            'keterangan' => 'required',
             'kode_jenis' => 'required'
 
         ]);
 
         $pengeluarans->update([
             'nominal' => $request->nominal,
+            'keterangan' => $request->keterangan,
             'tanggal' => $request->tgl,
             'kode_jenis' => $request->kode_jenis,
         ]);

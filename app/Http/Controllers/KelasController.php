@@ -97,10 +97,12 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kelas $kelas, $id)
+    public function destroy(Kelas $kelas, $nama_kelas)
     {
         //
-        $kelas = DB::table('kelas')->where('id', '=', $id);
+        $siswa = DB::table('siswa')->where('siswa.kelas', '=', $nama_kelas);
+        $siswa->delete();
+        $kelas = DB::table('kelas')->where('nama_kelas', '=', $nama_kelas);
         $kelas->delete();
 
         return redirect("/kelas")->with('success', 'Siswa deleted successfully');

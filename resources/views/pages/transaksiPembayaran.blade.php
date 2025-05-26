@@ -17,6 +17,17 @@
         <div class="mx-1">/</div>
     </div>
 
+    <div class="flex">
+        <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
+                    <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </button>
+        <span class="inline my-auto ml-2 font-bold">Tambah Transaksi Pembayaran</span>
+    </div>
+
     @include('components.modalTambahPembayaran')
 
     <div class="flex flex-col my-6">

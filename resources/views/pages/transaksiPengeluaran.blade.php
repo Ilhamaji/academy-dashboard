@@ -17,6 +17,17 @@
         <div class="mx-1">/</div>
     </div>
 
+    <div class="flex">
+        <button type="button" id="openModalButton" class="transition hover:cursor-pointer duration-200 px-4 bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="fff">
+                    <path d="M6 12H18M12 6V18" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </button>
+        <span class="inline my-auto ml-2 font-bold">Tambah Transaksi Pengeluaran</span>
+    </div>
+
     @include('components.modalTambahPengeluaran')
 
     <div class="flex flex-col my-6">
@@ -28,6 +39,7 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">No</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Pengeluaran</th>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Keterangan</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nominal</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Tanggal</th>
                                 <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>
@@ -38,6 +50,7 @@
                             <tr class="odd:bg-white even:bg-gray-100">
                                 <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-500">{{ $loop->iteration }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pengeluaran->nama_jenis_pengeluaran }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pengeluaran->keterangan }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Rp {{ number_format($pengeluaran->nominal, 0); }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pengeluaran->tanggal }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">

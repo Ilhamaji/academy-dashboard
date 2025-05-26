@@ -11,21 +11,23 @@
     </div>
     <hr>
     <div class="pdf-title">
-        <h2>Kwitansi Transaksi</h2>
-        <h2>{{$pembayaran->nama_siswa}}</h2>
+        <h2>Kwitansi Transaksi Pengeluaran</h2>
+        <h4>{{$pengeluaran->tanggal}}</h4>
     </div>
 
     <table class="tabels">
         <thead class="tabels-head">
             <tr class="tabels-r">
                 <th scope="col" class="tabels-h">Jenis Transaksi</th>
+                <th scope="col" class="tabels-h">Keterangan</th>
                 <th scope="col" class="tabels-h">Nominal</th>
             </tr>
         </thead>
         <tbody class="tabels-body">
             <tr class="tabels-r">
-                <td class="tabels-d" style="text-align: center;">{{$pembayaran->nama_jenis_penerimaan}}</td>
-                <td class="tabels-d" style="text-align: center;">Rp {{number_format($pembayaran->nominal, 0);}}</td>
+                <td class="tabels-d" style="text-align: center;">{{$pengeluaran->nama_jenis_pengeluaran}}</td>
+                <td class="tabels-d" style="text-align: center;">{{$pengeluaran->keterangan}}</td>
+                <td class="tabels-d" style="text-align: center;">Rp {{number_format($pengeluaran->nominal, 0);}}</td>
             </tr>
         </tbody>
     </table>

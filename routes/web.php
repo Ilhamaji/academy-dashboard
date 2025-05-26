@@ -64,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/laporan/lain-lain', [LainnyaController::class, 'cari']);
         Route::get('/laporan/lain-lain/download', [PenerimaanController::class, 'export_lainlain']);
         Route::post('/penerimaan/lain-lain', [LainnyaController::class, 'store']);
-        Route::get('/penerimaan/lain-lain/{id}', [LainnyaController::class, 'show']);
+        Route::get('/penerimaan/lain-lain/{id}', [LainnyaController::class, 'view_pdf']);
 
         //Endpoint Transaksi Pembayaran
         Route::get('/transaksi/pembayaran', [PembayaranController::class, 'transaksi']);
@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
 
         //Endpoint Pengeluaran
         Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
-        Route::get('/penerimaan/pengeluaran/{id}', [PengeluaranController::class, 'show']);
+        Route::get('/laporan/pengeluaran/{id}', [PengeluaranController::class, 'view_pdf']);
 
         //Endpoint Laporan Pengeluaran
         Route::get('/laporan/pengeluaran', [PengeluaranController::class, 'pengeluaran']);
@@ -127,7 +127,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/kelas', [KelasController::class, 'store']);
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit']);
     Route::put('/kelas/edit/{id}', [KelasController::class, 'update']);
-    Route::get('/kelas/hapus/{id}', [KelasController::class, 'destroy']);
+    Route::get('/kelas/hapus/{nama_kelas}', [KelasController::class, 'destroy']);
 
     //Endpoint Kas
     Route::get('/kas', [KasController::class, 'index']);

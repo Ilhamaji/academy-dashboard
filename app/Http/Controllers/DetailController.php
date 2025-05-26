@@ -56,13 +56,13 @@ class DetailController extends Controller
         $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
         $informasiNama = strtoupper($informasi->nama);
 
-        $pembayaran = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_penerimaan', 'kode_jenis', '=', 'kode')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
+        $pembayaran = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_penerimaan', 'pembayaran.kode_jenis', '=', 'jenis_penerimaan.kode')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
 
         $mpdf = new \Mpdf\Mpdf();
         $stylesheet = file_get_contents('pdf.css');
 
         $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML(view('components.pdfKwitansi', ['pembayaran' => $pembayaran, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->WriteHTML(view('components.pdfKwitansiPembayaran', ['pembayaran' => $pembayaran, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
         $mpdf->restrictColorSpace = 1;
 
         $mpdf->Output();

@@ -1,11 +1,21 @@
 <!-- Modal -->
 <div
-class="flex justify-center items-center align-middle transition-opacity duration-300 ease-out z-[9999]"
+class="fixed antialiased inset-0 bg-gray-600/50 bg-opacity-75 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300 ease-out z-[9999]"
+id="exampleModalWeb3"
+aria-hidden="true"
 >
     <div class="bg-white shadow-md rounded-lg w-9/12 sm:w-7/12 md:w-5/12 lg:w-4/12 scale-95 p-5 transition-transform duration-300 ease-out">
         <!-- Modal Header -->
         <div class="flex justify-between">
             <span>Tambah Penerimaan Lain-lain</span>
+            <button
+            type="button"
+            id="closeModalButton"
+            aria-label="Close"
+            class="text-white bg-red-600 hover:cursor-pointer px-2 rounded-md"
+            >
+            &times;
+            </button>
         </div>
         <hr class="my-4">
         <form action="/penerimaan/lain-lain" method="POST">
@@ -26,3 +36,19 @@ class="flex justify-center items-center align-middle transition-opacity duration
         </form>
     </div>
 </div>
+
+<script>
+const modal = document.getElementById("exampleModalWeb3");
+const openModalButton = document.getElementById("openModalButton");
+const closeModalButton = document.getElementById("closeModalButton");
+
+openModalButton.addEventListener("click", () => {
+    modal.classList.remove("opacity-0", "pointer-events-none");
+    modal.classList.add("opacity-100");
+});
+
+closeModalButton.addEventListener("click", () => {
+    modal.classList.add("opacity-0", "pointer-events-none");
+    modal.classList.remove("opacity-100");
+});
+</script>
