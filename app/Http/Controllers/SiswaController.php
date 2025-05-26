@@ -26,15 +26,6 @@ class SiswaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function storeView(Request $request)
-    {
-        //
-    }
-
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -140,5 +131,29 @@ class SiswaController extends Controller
 
     public function export_siswa(){
         return Excel::download(new ExportSiswa, 'siswa.xlsx');
+    }
+
+    public function laporanSiswa(){
+        $title = 'Laporan Siswa';
+        $user = Auth::user();
+        $siswas = DB::table('kelas')->join('siswa', 'kelas.nama_kelas', '=', 'siswa.kelas')->select('kelas.*', 'siswa.*')->paginate(10);
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+
+        return view('pages.laporanSiswa', ['kelass' => $kelass, 'user' => $user, 'siswas' => $siswas, 'title' => $title]);
+    }
+
+    public function laporanCari(Request $request){
+        $title = 'Laporan Siswa';
+        $user = Auth::user();
+        $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->paginate(10);
+
+        if(!$request->cari == ''){
+            $siswas = DB::table('siswa')->where('nama_siswa','like',"%".$request->cari."%")->paginate(10);
+        }else{
+            $siswas = DB::table('siswa')
+            ->paginate(10);
+        }
+
+        return view('pages.laporanSiswa', ['user' => $user, 'siswas' => $siswas, 'title' => $title]);
     }
 }

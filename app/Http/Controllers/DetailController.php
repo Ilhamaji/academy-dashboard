@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Exports\ExportKelas;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DetailController extends Controller
@@ -24,35 +25,6 @@ class DetailController extends Controller
         return view('pages.detail', ['user' => $user, 'kelass' => $kelass, 'title' => $title]);
     }
 
-    public function siswa(){
-        //
-        $title = 'Laporan Siswa';
-        $user = Auth::user();
-        $siswas = DB::table('kelas')->join('siswa', 'kelas.nama_kelas', '=', 'siswa.kelas')->select('kelas.*', 'siswa.*')->paginate(10);
-        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-
-        return view('pages.laporanSiswa', ['kelass' => $kelass, 'user' => $user, 'siswas' => $siswas, 'title' => $title]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Detail $detail, $id)
     {
         //
@@ -68,19 +40,32 @@ class DetailController extends Controller
         $title = 'Laporan Kelas';
         $user = Auth::user();
         $back = DB::table('siswa')->select('kelas')->where('nisn', '=', $nisn)->get();
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->where('pembayaran.nisn', '=', $nisn)->orderBy('tanggal', 'ASC')->get();
+        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'pembayaran.kode_jenis')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->where('pembayaran.nisn', '=', $nisn)->orderBy('tanggal', 'ASC')->get();
 
         return view('pages.detailPembayaran', ['title' => $title, 'user' => $user, 'pembayarans' => $pembayarans, 'back' => $back[0]->kelas, 'nisn' => $nisn]);
     }
 
-    public function more(Detail $detail, $id){
-        $title = 'Laporan Kelas';
-        $user = Auth::user();
-        $back = DB::table('pembayaran')->select('nisn')->where('id', '=', $id)->get();
-        $backKelas = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('siswa.kelas')->where('id', '=', $id)->get();
-        $pembayaran = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.*')->where('id', '=', $id)->orderBy('tanggal', 'ASC')->get();
+    public function view_pdf(Detail $detail, $id){
+        $informasi = DB::table('informasi')->find(0);
 
-        return view('pages.detailKwitansi', ['user' => $user, 'pembayaran' => $pembayaran, 'title' => $title, 'back' => $back[0]->nisn, 'backKelas' => $backKelas[0]->kelas]);
+        Carbon::setLocale('id');
+        $time = Carbon::now();
+        $tahun = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+        $bulan = Carbon::createFromFormat('Y-m-d H:i:s', $time)->month;
+        $b = strlen($bulan) == 1 ? '0'.$bulan : $bulan;
+        $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
+        $informasiNama = strtoupper($informasi->nama);
+
+        $pembayaran = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->join('jenis_penerimaan', 'kode_jenis', '=', 'kode')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
+
+        $mpdf = new \Mpdf\Mpdf();
+        $stylesheet = file_get_contents('pdf.css');
+
+        $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
+        $mpdf->WriteHTML(view('components.pdfKwitansi', ['pembayaran' => $pembayaran, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->restrictColorSpace = 1;
+
+        $mpdf->Output();
     }
 
     /**

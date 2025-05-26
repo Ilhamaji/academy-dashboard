@@ -19,17 +19,9 @@ class LainnyaController extends Controller
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(10);
+        $lains = DB::table('lain_lain')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->orderBy('tanggal', 'ASC')->paginate(10);
 
         return view('pages.laporanLainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'lains' => $lains, 'title' => $title]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -40,7 +32,7 @@ class LainnyaController extends Controller
         //
         DB::table('lain_lain')->insert([
             [
-                'keterangan' => $request->keterangan,
+                'kode_jenis' => $request->kode_jenis,
                 'nominal' => $request->nominal,
                 'tanggal' => $request->tgl
             ],
@@ -66,11 +58,46 @@ class LainnyaController extends Controller
         $title = 'Transaksi Penerimaan';
         $user = Auth::user();
         $siswas = DB::table('siswa')->orderBy('nama_siswa', 'ASC')->get();
-        $pembayarans = DB::table('pembayaran')->join('siswa', 'pembayaran.nisn', '=', 'siswa.nisn')->select('pembayaran.*', 'siswa.nama_siswa', 'siswa.kelas')->orderBy('tanggal', 'ASC')->get();
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
+        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->paginate(10);
+        $jenis = DB::table('jenis_penerimaan')->where('kategori', '=', 'Lain-lain')->orderBy('nama')->get();
 
-        return view('pages.transaksiLainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'pembayarans' => $pembayarans, 'lains' => $lains, 'title' => $title]);
+        return view('pages.transaksiLainnya', ['user' => $user, 'siswas' => $siswas, 'kelass' => $kelass, 'lains' => $lains, 'title' => $title, 'jenis' => $jenis]);
+    }
+
+    public function edit_transaksi($id){
+        $title = 'Transaksi Penerimaan';
+        $user = Auth::user();
+        $lains = DB::table('lain_lain')->find($id);
+        $jenis = DB::table('jenis_penerimaan')->where('kategori', '=', 'Lain-lain')->get();
+
+        return view('pages.transaksiLainnyaEdit', ['user' => $user,'lains' => $lains, 'title' => $title, 'jenis' => $jenis ]);
+    }
+
+    public function update_transaksi($id, Request $request){
+        $lains = DB::table('lain_lain')->where('id', '=', $id);
+
+         $request->validate([
+            'nominal' => 'required',
+            'tgl' => 'required',
+            'kode_jenis' => 'required'
+
+        ]);
+
+        $lains->update([
+            'nominal' => $request->nominal,
+            'tanggal' => $request->tgl,
+            'kode_jenis' => $request->kode_jenis,
+        ]);
+
+        return redirect('/transaksi/lain-lain')->with('success', 'Berhasil mengubah transaksi lain-lain');
+    }
+
+    public function hapus_transaksi($id){
+        $lains = DB::table('lain_lain')->where('id', '=', $id);
+        $lains->delete();
+
+        return redirect('/transaksi/lain-lain')->with('success', 'Berhasil menghapus lain-lain');
     }
 
     public function cari(Request $request)
@@ -79,13 +106,13 @@ class LainnyaController extends Controller
         $user = Auth::user();
 
         if(!$request->bulan == '' && $request->tahun == ''){
-            $lains = DB::table('lain_lain')->whereMonth('tanggal', '=', $request->bulan)->orderBy('tanggal', 'ASC')->paginate(6);
+            $lains = DB::table('lain_lain')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->whereMonth('tanggal', '=', $request->bulan)->orderBy('tanggal', 'ASC')->paginate(10);
         }elseif($request->bulan == '' && !$request->tahun == ''){
-            $lains = DB::table('lain_lain')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(6);
+            $lains = DB::table('lain_lain')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
         }elseif(!$request->bulan == '' && !$request->tahun == ''){
-            $lains = DB::table('lain_lain')->whereMonth('tanggal', '=', $request->bulan)->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(6);
+            $lains = DB::table('lain_lain')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
         }else{
-            $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->paginate(6);
+            $lains = DB::table('lain_lain')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->orderBy('tanggal', 'ASC')->paginate(10);
         }
 
         return view('pages.laporanLainnya', ['lains' => $lains, 'user' => $user, 'title' => $title]);

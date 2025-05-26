@@ -166,7 +166,7 @@
                             </g>
                         </g>
                     </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Jenis Penerimaan</p>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Data Penerimaan</p>
                 </a>
             </div>
           </li>
@@ -205,7 +205,7 @@
                             </g>
                         </g>
                     </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Jenis Pengeluaran</p>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Data Pengeluaran</p>
                 </a>
             </div>
           </li>
@@ -400,7 +400,7 @@
                         <path d="M7 15V15C5.11438 15 4.17157 15 3.58579 14.4142C3.58579 14.4142 3.58579 14.4142 3.58579 14.4142C3 13.8284 3 12.8856 3 11L3 9C3 7.11438 3 6.17157 3.58579 5.58579C4.17157 5 5.11438 5 7 5L13 5C14.8856 5 15.8284 5 16.4142 5.58579C17 6.17157 17 7.11438 17 9V9" stroke="#155dfc" class="group-hover:stroke-white {{ $title === 'Kas' ? 'stroke-white' : '' }}" stroke-width="2" stroke-linejoin="round"/>
                         <path d="M16 14C16 15.1046 15.1046 16 14 16C12.8954 16 12 15.1046 12 14C12 12.8954 12.8954 12 14 12C15.1046 12 16 12.8954 16 14Z" stroke="#155dfc" class="group-hover:stroke-white {{ $title === 'Kas' ? 'stroke-white' : '' }}" stroke-width="2"/>
                         </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Kas</p>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Rekap Kas</p>
                 </a>
             </div>
           </li>
@@ -424,7 +424,7 @@
         </ul>
       </div>
     </aside>
-    <div class="xl:ml-72">
+    <div class="lg:ml-72">
       <nav class="block w-full max-w-full text-black py-1 bg-white shadow-sm px-4 md:px-5 lg:px-10">
         <div class="flex justify-between gap-6 flex-row md:items-center">
           <div class="capitalize my-auto">
@@ -433,11 +433,11 @@
           <div class="flex items-center justify-between">
             <a href="/profil">
               <button class="middle font-sans font-bold center disabled:opacity-50 disabled:shadow-none cursor-pointer text-sm py-3 rounded-lg text-black hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 visible items-center gap-1 flex" type="button">
-                <span class="pr-2 hidden invisble capitalize none xl:visible xl:flex">{{$user->name}}</span>
+                <span class="pr-2 hidden invisble capitalize none lg:visible lg:flex">{{$user->name}}</span>
                 <img src="/{{$user->image}}" alt="foto-profil" class="w-8 h-8 rounded-full">
               </button>
             </a>
-            <button onclick="sidebarHandler()" class="relative ml-2 bg-gray-200 hover:bg-gray-300 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:none xl:hidden" type="button">
+            <button onclick="sidebarHandler()" class="relative ml-2 bg-gray-200 hover:bg-gray-300 middle none font-sans font-medium text-center uppercase disabled:opacity-50 disabled:shadow-none cursor-pointer w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid lg:none lg:hidden" type="button">
                 <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" stroke-width="3" class="h-6 w-6 text-blue-gray-500">
                     <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>

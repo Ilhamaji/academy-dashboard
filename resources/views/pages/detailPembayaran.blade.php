@@ -50,7 +50,7 @@
                 <thead>
                   <tr>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">No</th>
-                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Keterangan</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Penerimaan</th>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nominal</th>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Tanggal</th>
                     <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>
@@ -60,11 +60,11 @@
                 @foreach ($pembayarans as $pembayaran)
                     <tr class="odd:bg-white even:bg-gray-100">
                         <td class="px-6 py-4 w-20 whitespace-nowrap text-sm text-gray-800">{{ $loop->iteration }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 {{ $pembayaran->keterangan === 'spp' ? 'uppercase' : 'capitalize' }}">{{ $pembayaran->keterangan }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->nama_jenis_penerimaan }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Rp {{ $pembayaran->nominal }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{ $pembayaran->tanggal }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium flex justify-self-end">
-                            <a href="/detail/kelas/siswa/pembayaran/{{ $pembayaran->id }}" class="mx-auto cursor-pointer bg-gray-400 hover:bg-gray-500 p-3 rounded-lg">
+                            <a href="/laporan/kelas/siswa/pembayaran/{{ $pembayaran->id }}" class="mx-auto cursor-pointer bg-gray-400 hover:bg-gray-500 p-3 rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                     <circle cx="12" cy="12" r="3" stroke="#fff" stroke-width="2"/>
                                     <path d="M20.188 10.9343C20.5762 11.4056 20.7703 11.6412 20.7703 12C20.7703 12.3588 20.5762 12.5944 20.188 13.0657C18.7679 14.7899 15.6357 18 12 18C8.36427 18 5.23206 14.7899 3.81197 13.0657C3.42381 12.5944 3.22973 12.3588 3.22973 12C3.22973 11.6412 3.42381 11.4056 3.81197 10.9343C5.23206 9.21014 8.36427 6 12 6C15.6357 6 18.7679 9.21014 20.188 10.9343Z" stroke="#fff" stroke-width="2"/>

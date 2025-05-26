@@ -23,10 +23,10 @@ class="flex justify-center items-center transition-opacity duration-300 ease-out
                     <option value='{{ $kelas->id }}'>{{ $kelas->nama_kelas }}</option>
                 @endforeach
             </select>
-            <label for="jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Pembayaran</label>
-            <select name="jenis" id="jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
+            <label for="kode_jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Penerimaan</label>
+            <select name="kode_jenis" id="kode_jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
                 @foreach ($jenis as $j)
-                    <option value='{{ $j->id }}'>{{ $j->jenis }}</option>
+                    <option value='{{ $j->kode }}'>{{ $j->nama }}</option>
                 @endforeach
             </select>
             <label for="nominal" class="font-semibold text-sm text-gray-600 pb-1 block">Nominal</label>

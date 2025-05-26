@@ -16,7 +16,7 @@
             {{ csrf_field() }}
             <div class="flex flex-row gap-2">
                 <div class="flex">
-                    <select name="bulan" id="bulan" class="bg-white h-full px-2 py-2 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md">
+                    <select name="bulan" id="bulan" class="bg-white h-full px-2 py-2 placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md">
                         <option value="">Bulan</option>
                         <option value="1">Januari</option>
                         <option value="2">Februari</option>

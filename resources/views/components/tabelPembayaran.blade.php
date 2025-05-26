@@ -17,7 +17,7 @@
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->nisn }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->nama_siswa }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->kelas }}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->jenis }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->nama_jenis_penerimaan }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">Rp {{ number_format($pembayaran->nominal, 0); }}</td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">{{ $pembayaran->tanggal }}</td>
         </tr>

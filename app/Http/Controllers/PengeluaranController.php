@@ -21,28 +21,68 @@ class PengeluaranController extends Controller
         //
         $title = 'Pengeluaran';
         $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->paginate(10);
+        $jenis_pengeluaran = DB::table('jenis_pengeluaran')->orderBy('created_at', 'ASC')->paginate(10);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
 
-        return view('pages.pengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
+        return view('pages.pengeluaran', ['user' => $user, 'jenis_pengeluaran' => $jenis_pengeluaran, 'kelass' => $kelass, 'title' => $title]);
     }
 
     public function tambah_jenis_pengeluaran(Request $request)
     {
         //
         $request->validate([
-            'jenis' => 'required',
+            'kode' => 'required|unique:jenis_pengeluaran',
+            'nama' => 'required|max:255',
         ]);
 
         $date = Carbon::now();
         $formattedDate = $date->toDateTimeString();
 
         DB::table('jenis_pengeluaran')->insert([
-            'jenis' => $request->jenis,
+            'kode' => $request->kode,
+            'nama' => $request->nama,
             'updated_at' => $formattedDate,
+            'created_at' => $formattedDate,
         ]);
 
         return redirect('/pengeluaran')->with('success', 'Berhasil menambah jenis pengeluaran');
+    }
+
+    public function edit_jenis_pengeluaran($kode, Request $request){
+        $title = 'Pengeluaran';
+        $user = Auth::user();
+
+        $jenis_pengeluaran = DB::table('jenis_pengeluaran')->where('kode', '=', $kode)->get();
+
+        return view('pages.pengeluaranEdit', ['jenis_pengeluaran' => $jenis_pengeluaran[0], 'title' => $title, 'user' => $user]);
+    }
+
+    public function update_jenis_pengeluaran($kode, Request $request){
+
+        $jenis_pengeluaran = DB::table('jenis_pengeluaran')->where('kode', '=', $kode);
+
+         $request->validate([
+            'kode' => 'required',
+            'nama' => 'required|max:255',
+        ]);
+
+        $date = Carbon::now();
+        $formattedDate = $date->toDateTimeString();
+
+        $jenis_pengeluaran->update([
+            'kode' => $request->kode,
+            'nama' => $request->nama,
+            'updated_at' => $formattedDate,
+        ]);
+
+        return redirect('/pengeluaran')->with('success', 'Berhasil mengubah jenis pengeluaran');
+    }
+
+    public function hapus_jenis_pengeluaran($kode){
+        $jenis_pengeluaran = DB::table('jenis_pengeluaran')->where('kode', '=', $kode);
+        $jenis_pengeluaran->delete();
+
+        return redirect('/pengeluaran')->with('success', 'Berhasil menghapus jenis pengeluaran');
     }
 
     public function pengeluaran(Request $request)
@@ -50,10 +90,9 @@ class PengeluaranController extends Controller
         //
         $title = 'Laporan Pengeluaran';
         $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->orderBy('tanggal', 'ASC')->paginate(10);
-        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->orderBy('tanggal', 'ASC')->paginate(10);
 
-        return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title]);
+        return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'title' => $title]);
     }
 
     public function cari(Request $request)
@@ -62,13 +101,14 @@ class PengeluaranController extends Controller
         $user = Auth::user();
 
         if(!$request->bulan == '' && $request->tahun == ''){
-            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->whereMonth('tanggal', '=', $request->bulan)->orderBy('tanggal', 'ASC')->paginate(10);
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->whereMonth('tanggal', '=', $request->bulan)->orderBy('tanggal', 'ASC')->paginate(10);
+
         }elseif($request->bulan == '' && !$request->tahun == ''){
-            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
         }elseif(!$request->bulan == '' && !$request->tahun == ''){
-            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->whereMonth('tanggal', '=', $request->bulan)->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->whereMonth('tanggal', '=', $request->bulan)->whereYear('tanggal', '=', $request->tahun)->orderBy('tanggal', 'ASC')->paginate(10);
         }else{
-            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.id_jenis', '=', 'jenis_pengeluaran.id')->select('pengeluaran.*', 'jenis_pengeluaran.jenis')->orderBy('tanggal', 'ASC')->paginate(10);
+            $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->orderBy('tanggal', 'ASC')->paginate(10);
         }
 
         return view('pages.laporanPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'title' => $title]);
@@ -82,13 +122,6 @@ class PengeluaranController extends Controller
         $jenis = DB::table('jenis_pengeluaran')->paginate(10);
 
         return view('pages.jenisPengeluaran', ['user' => $user, 'title' => $title, 'jenis' => $jenis]);
-    }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     public function export_jenis_pengeluaran()
@@ -108,21 +141,16 @@ class PengeluaranController extends Controller
     {
         //
         $request->validate([
-            'jenis' => 'required',
-            'keterangan' => 'required',
+            'kode_jenis' => 'required',
             'nominal' => 'required|numeric',
             'tgl' => 'required',
         ]);
 
         DB::table('pengeluaran')->insert([
-            'id_jenis' => $request->jenis,
-            'keterangan' => $request->keterangan,
+            'kode_jenis' => $request->kode_jenis,
             'nominal' => $request->nominal,
             'tanggal' => $request->tgl,
         ]);
-
-        $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
 
         return redirect('/transaksi/pengeluaran')->with('success', 'Berhasil mencatat pengeluaran');
     }
@@ -143,35 +171,47 @@ class PengeluaranController extends Controller
     public function transaksi(){
         $title = 'Transaksi Pengeluaran';
         $user = Auth::user();
-        $pengeluarans = DB::table('pengeluaran')->orderBy('tanggal', 'ASC')->get();
-        $jenis = DB::table('jenis_pengeluaran')->orderBy('jenis', 'ASC')->get();
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_pengeluaran', 'jenis_pengeluaran.kode', '=', 'pengeluaran.kode_jenis')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran')->orderBy('tanggal', 'ASC')->paginate(10);
         $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $jenis = DB::table('jenis_pengeluaran')->orderBy('nama')->get();
 
 
         return view('pages.transaksiPengeluaran', ['user' => $user, 'pengeluarans' => $pengeluarans, 'kelass' => $kelass, 'title' => $title, 'jenis' => $jenis]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pengeluaran $pengeluaran)
-    {
-        //
+    public function edit_transaksi($id){
+        $title = 'Transaksi Pengeluaran';
+        $user = Auth::user();
+        $pengeluarans = DB::table('pengeluaran')->join('jenis_penerimaan', 'kode_jenis', '=', 'kode')->select('pengeluaran.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
+        $kelass = DB::table('kelas')->orderBy('nama_kelas', 'ASC')->get();
+        $jenis = DB::table('jenis_pengeluaran')->get();
+
+        return view('pages.transaksiPengeluaranEdit', ['user' => $user, 'kelass' => $kelass, 'pengeluarans' => $pengeluarans, 'title' => $title, 'jenis' => $jenis ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Pengeluaran $pengeluaran)
-    {
-        //
+    public function update_transaksi($id, Request $request){
+        $pengeluarans = DB::table('pengeluaran')->where('id', '=', $id);
+
+         $request->validate([
+            'nominal' => 'required',
+            'tgl' => 'required',
+            'kode_jenis' => 'required'
+
+        ]);
+
+        $pengeluarans->update([
+            'nominal' => $request->nominal,
+            'tanggal' => $request->tgl,
+            'kode_jenis' => $request->kode_jenis,
+        ]);
+
+        return redirect('/transaksi/pengeluaran')->with('success', 'Berhasil mengubah transaksi pengeluaran');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pengeluaran $pengeluaran)
-    {
-        //
+    public function hapus_transaksi($id){
+        $pengeluarans = DB::table('pengeluaran')->where('id', '=', $id);
+        $pengeluarans->delete();
+
+        return redirect('/transaksi/pengeluaran')->with('success', 'Berhasil menghapus pengeluaran');
     }
 }

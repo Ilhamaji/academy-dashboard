@@ -14,7 +14,7 @@ class ExportLainlain implements FromView
     public function view(): View
     {
         //
-        $lains = DB::table('lain_lain')->orderBy('tanggal', 'ASC')->get();
+        $lains = DB::table('lain_lain')->join('jenis_penerimaan', 'jenis_penerimaan.kode', '=', 'lain_lain.kode_jenis')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->get();
 
         return view('components.tabelLainnya', [
             'lains' => $lains

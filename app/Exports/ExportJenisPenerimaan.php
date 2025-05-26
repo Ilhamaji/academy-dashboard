@@ -14,7 +14,7 @@ class ExportJenisPenerimaan implements FromView
     public function view() : View
     {
         //
-        $jenis = DB::table('jenis_pembayaran')->get();
+        $jenis = DB::table('jenis_penerimaan')->get();
 
         return view('components.tabelJenisPenerimaan', ['jenis' => $jenis]);
     }

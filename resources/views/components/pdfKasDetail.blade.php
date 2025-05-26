@@ -12,8 +12,17 @@
     <hr>
     <div class="pdf-title">
         <h2>Laporan Keuangan</h2>
-        <h2>Seluruhnya</h2>
+        <h2>{{$keterangan}}</h2>
     </div>
+
+    <table style="width: 100%; font-weight: bold;">
+        <tbody>
+            <tr>
+                <td>Saldo Kas : </td>
+                <td style="text-align: right;">Rp {{number_format($total + $total_pengeluarans, 0);}}</td>
+            </tr>
+        </tbody>
+    </table>
 
     <table class="tabels">
         <thead class="tabels-head">

@@ -11,55 +11,21 @@
     </div>
     <hr>
     <div class="pdf-title">
-        <h2>Laporan Keuangan</h2>
-        <h2>Seluruhnya</h2>
+        <h2>Kwitansi Transaksi</h2>
+        <h2>{{$pembayaran->nama_siswa}}</h2>
     </div>
 
     <table class="tabels">
         <thead class="tabels-head">
             <tr class="tabels-r">
-                <th scope="col" class="tabels-h">Kode</th>
                 <th scope="col" class="tabels-h">Jenis Transaksi</th>
-                <th scope="col" class="tabels-h">Jumlah</th>
-                <th scope="col" class="tabels-h">Total</th>
+                <th scope="col" class="tabels-h">Nominal</th>
             </tr>
         </thead>
         <tbody class="tabels-body">
-            @foreach ($pembayarans as $pembayaran)
-                <tr class="tabels-r">
-                    <td class="tabels-d">{{$pembayaran->kode_jenis_penerimaan}}</td>
-                    <td class="tabels-d">{{$pembayaran->nama_jenis_penerimaan}}</td>
-                    <td class="tabels-d" style="text-align: right;">{{$pembayaran->jumlah}}</td>
-                    <td class="tabels-d" style="text-align: right;">Rp {{number_format($pembayaran->nominal, 0);}}</td>
-                </tr>
-                @endforeach
-            @foreach ($lains as $lain)
-                <tr class="tabels-r">
-                    <td class="tabels-d">{{$lain->kode_jenis_penerimaan}}</td>
-                    <td class="tabels-d">{{$lain->nama_jenis_penerimaan}}</td>
-                    <td class="tabels-d" style="text-align: right;">{{$lain->jumlah}}</td>
-                    <td class="tabels-d" style="text-align: right;">Rp {{number_format($lain->nominal, 0);}}</td>
-                </tr>
-            @endforeach
             <tr class="tabels-r">
-                <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="3">Total Penerimaan</td>
-                <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total_pembayarans + $total_lains, 0);}}</td>
-            </tr>
-            @foreach ($pengeluarans as $pengeluaran)
-                <tr class="tabels-r">
-                    <td class="tabels-d">{{$pengeluaran->kode_jenis_pengeluaran}}</td>
-                    <td class="tabels-d">{{$pengeluaran->nama_jenis_pengeluaran}}</td>
-                    <td class="tabels-d" style="text-align: right;">{{$pengeluaran->jumlah}}</td>
-                    <td class="tabels-d" style="text-align: right;">Rp {{number_format($pengeluaran->nominal, 0);}}</td>
-                </tr>
-            @endforeach
-            <tr class="tabels-r">
-                <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="3">Total Pengeluaran</td>
-                <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total_pengeluarans, 0)}}</td>
-            </tr>
-            <tr class="tabels-r">
-                <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="3">Saldo Akhir Kas</td>
-                <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total, 0);}}</td>
+                <td class="tabels-d" style="text-align: center;">{{$pembayaran->nama_jenis_penerimaan}}</td>
+                <td class="tabels-d" style="text-align: center;">Rp {{number_format($pembayaran->nominal, 0);}}</td>
             </tr>
         </tbody>
     </table>

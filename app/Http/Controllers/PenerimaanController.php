@@ -19,20 +19,64 @@ class PenerimaanController extends Controller
      */
     public function tambah_jenis_penerimaan(Request $request){
         $request->validate([
-            'jenis' => 'required',
+            'kode' => 'required|unique:jenis_penerimaan',
+            'nama' => 'required|max:255',
+            'kategori' => 'required|max:11',
         ]);
 
         $date = Carbon::now();
         $formattedDate = $date->toDateTimeString();
 
-        DB::table('jenis_pembayaran')->insert([
+        DB::table('jenis_penerimaan')->insert([
             [
-                'jenis' => $request->jenis,
+                'kode' => $request->kode,
+                'nama' => $request->nama,
+                'kategori' => $request->kategori,
                 'updated_at' => $formattedDate,
+                'created_at' => $formattedDate,
             ],
         ]);
 
-        return redirect('/pembayaran')->with('success', 'Berhasil menambah jenis pembayaran');
+        return redirect('/penerimaan')->with('success', 'Berhasil menambah jenis pembayaran');
+    }
+
+    public function edit_jenis_penerimaan($kode, Request $request){
+        $title = 'Penerimaan';
+        $user = Auth::user();
+
+        $jenis_penerimaan = DB::table('jenis_penerimaan')->where('kode', '=', $kode)->get();
+
+        return view('pages.penerimaanEdit', ['jenis_penerimaan' => $jenis_penerimaan[0], 'title' => $title, 'user' => $user]);
+    }
+
+    public function update_jenis_penerimaan($kode, Request $request){
+
+        $jenis_penerimaan = DB::table('jenis_penerimaan')->where('kode', '=', $kode);
+
+         $request->validate([
+            'kode' => 'required',
+            'nama' => 'required|max:255',
+            'kategori' => 'required|max:11',
+        ]);
+
+        $date = Carbon::now();
+        $formattedDate = $date->toDateTimeString();
+
+        $jenis_penerimaan->update([
+            'kode' => $request->kode,
+            'nama' => $request->nama,
+            'kategori' => $request->kategori,
+            'updated_at' => $formattedDate,
+        ]);
+
+        return redirect('/penerimaan')->with('success', 'Berhasil mengubah jenis penerimaan');
+    }
+
+    public function hapus_jenis_penerimaan($kode){
+        $jenis_penerimaan = DB::table('jenis_penerimaan')->where('kode', '=', $kode);
+        $jenis_penerimaan->delete();
+
+        return redirect('/penerimaan')->with('success', 'Berhasil menghapus jenis penerimaan');
     }
 
     public function jenis_penerimaan()
@@ -40,15 +84,16 @@ class PenerimaanController extends Controller
         //
         $title = 'Penerimaan';
         $user = Auth::user();
+        $jenis_penerimaan = DB::table('jenis_penerimaan')->orderBy('created_at', 'ASC')->get();
 
-        return view('pages.pembayaran', ['user' => $user, 'title' => $title]);
+        return view('pages.penerimaan', ['user' => $user, 'title' => $title, 'jenis_penerimaan' => $jenis_penerimaan]);
     }
 
 
     public function laporan_jenis_penerimaan(Request $request){
         $title = 'Laporan Jenis Penerimaan';
         $user = Auth::user();
-        $jenis = DB::table('jenis_pembayaran')->paginate(10);
+        $jenis = DB::table('jenis_penerimaan')->paginate(10);
 
         return view('pages.jenisPenerimaan', ['user' => $user, 'title' => $title, 'jenis' => $jenis]);
     }
@@ -63,53 +108,5 @@ class PenerimaanController extends Controller
 
     public function export_lainlain(){
         return Excel::download(new ExportLainlain, 'penerimaan-lainlain.xlsx');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Penerimaan $penerimaan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Penerimaan $penerimaan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Penerimaan $penerimaan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Penerimaan $penerimaan)
-    {
-        //
     }
 }

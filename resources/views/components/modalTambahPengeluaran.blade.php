@@ -10,14 +10,12 @@ class="flex justify-center items-center transition-opacity duration-300 ease-out
         <hr class="my-4">
         <form action="/pengeluaran" method="POST">
             {{ csrf_field() }}
-            <label for="jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis</label>
-            <select name="jenis" id="jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
+            <label for="kode_jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Pengeluaran</label>
+            <select name="kode_jenis" id="kode_jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
                 @foreach ($jenis as $j)
-                    <option value="{{ $j->id }}">{{ $j->jenis }}</option>
+                    <option value="{{$j->kode}}">{{$j->nama}}</option>
                 @endforeach
             </select>
-            <label for="keterangan" class="font-semibold text-sm text-gray-600 pb-1 block">Keterangan</label>
-            <input id="keterangan" type="text" name="keterangan" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>
             <label for="nominal" class="font-semibold text-sm text-gray-600 pb-1 block">Nominal</label>
             <input id="nominal" type="number" name="nominal" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>
             <label for="tgl" class="font-semibold text-sm text-gray-600 pb-1 block">Tanggal</label>

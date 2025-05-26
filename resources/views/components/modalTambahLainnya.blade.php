@@ -10,8 +10,12 @@ class="flex justify-center items-center align-middle transition-opacity duration
         <hr class="my-4">
         <form action="/penerimaan/lain-lain" method="POST">
             {{ csrf_field() }}
-            <label for="keterangan" class="font-semibold text-sm text-gray-600 pb-1 block">Keterangan</label>
-            <input id="keterangan" type="text" name="keterangan" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>
+            <label for="kode_jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Lain-lain</label>
+            <select name="kode_jenis" id="kode_jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
+                @foreach ($jenis as $j)
+                    <option value="{{$j->kode}}">{{$j->nama}}</option>
+                @endforeach
+            </select>
             <label for="nominal" class="font-semibold text-sm text-gray-600 pb-1 block">Nominal</label>
             <input id="nominal" type="number" name="nominal" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>
             <label for="tgl" class="font-semibold text-sm text-gray-600 pb-1 block">Tanggal</label>
