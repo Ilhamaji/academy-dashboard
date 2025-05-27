@@ -17,7 +17,7 @@
         <div class="mx-1">/</div>
     </div>
 
-    <div class="text-xl font-bold">Tabel Kelas</div>
+    <div class="text-xl font-bold">Tabel Data Kelas</div>
 
     <div class="flex justify-between my-2">
         <a href="{{url('/laporan/kelas/download')}}" class="py-2 px-4 bg-green-500 text-white rounded-md">Export</a>
