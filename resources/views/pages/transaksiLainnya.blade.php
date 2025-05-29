@@ -38,7 +38,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">No</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Lain-lain</th>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Penerimaan</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nominal</th>
                                 <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Tanggal</th>
                                 <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>

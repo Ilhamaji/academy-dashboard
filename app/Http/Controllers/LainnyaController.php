@@ -56,9 +56,9 @@ class LainnyaController extends Controller
         $tanggal = Carbon::createFromFormat('Y-m-d H:i:s', $time)->translatedFormat('l d F Y');
         $informasiNama = strtoupper($informasi->nama);
 
-        $lain = DB::table('lain_lain')->join('jenis_penerimaan', 'lain_lain.kode_jenis', '=', 'jenis_penerimaan.kode')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan')->find($id);
+        $lain = DB::table('lain_lain')->join('jenis_penerimaan', 'lain_lain.kode_jenis', '=', 'jenis_penerimaan.kode')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan', 'jenis_penerimaan.kode as kode_jenis_penerimaan')->find($id);
 
-        $mpdf = new \Mpdf\Mpdf();
+        $mpdf = new \Mpdf\Mpdf(['format' => [300 ,150]]);
         $stylesheet = file_get_contents('pdf.css');
 
         $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);

@@ -4,30 +4,48 @@
             <img src="{{$informasi->logo}}" alt="logo">
         </div>
         <div class="pdf-header-text">
-            <h1 class="pdf-header-nama" style="text-transform: uppercase;">{{strtoupper($informasiNama)}}</h1>
-            <h4>{{$informasi->alamat}}</h4>
-            <h4>Tlp. {{$informasi->no_telp}}</h4>
+            <p class="pdf-header-nama" style="font-size: 1em; font-weight: bold; text-transform: uppercase;">{{strtoupper($informasiNama)}}</p>
+            <p style="font-size: 0.5em;">{{$informasi->alamat}} Tlp. {{$informasi->no_telp}}</p>
         </div>
     </div>
     <hr>
-    <div class="pdf-title">
-        <h2>Kwitansi Transaksi Pengeluaran</h2>
-        <h4>{{$pengeluaran->tanggal}}</h4>
+    <div style="width: 100%; text-align:center">
+        <p style="font-size: 1em; font-weight:bold">Kwitansi Transaksi Pengeluaran</p>
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p style="font-size: 0.7em"></p>
+                    </td>
+                    <td style="text-align: right;">
+                        <p style="font-size: 0.7em">{{$pengeluaran->tanggal}}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <table class="tabels">
         <thead class="tabels-head">
             <tr class="tabels-r">
-                <th scope="col" class="tabels-h">Jenis Transaksi</th>
-                <th scope="col" class="tabels-h">Keterangan</th>
-                <th scope="col" class="tabels-h">Nominal</th>
+                <th scope="col" class="tabels-h" style="font-size: 0.7em;padding: 4px;">Kode</th>
+                <th scope="col" class="tabels-h" style="font-size: 0.7em;padding: 4px;">Jenis Transaksi</th>
+                <th scope="col" class="tabels-h" style="font-size: 0.7em;padding: 4px;">Keterangan</th>
+                <th scope="col" class="tabels-h" style="font-size: 0.7em;padding: 4px;">Nominal</th>
             </tr>
         </thead>
         <tbody class="tabels-body">
             <tr class="tabels-r">
-                <td class="tabels-d" style="text-align: center;">{{$pengeluaran->nama_jenis_pengeluaran}}</td>
-                <td class="tabels-d" style="text-align: center;">{{$pengeluaran->keterangan}}</td>
-                <td class="tabels-d" style="text-align: center;">Rp {{number_format($pengeluaran->nominal, 0);}}</td>
+                <td class="tabels-d" style="text-align: left;font-size: 0.7em;padding: 4px;">{{$pengeluaran->kode_jenis_pengeluaran}}</td>
+                <td class="tabels-d" style="text-align: left;font-size: 0.7em;padding: 4px;">{{$pengeluaran->nama_jenis_pengeluaran}}</td>
+                <td class="tabels-d" style="text-align: left;font-size: 0.7em;padding: 4px;">{{$pengeluaran->keterangan}}</td>
+                <td class="tabels-d" style="text-align: right;font-size: 0.7em;padding: 4px;">Rp {{number_format($pengeluaran->nominal, 0);}}</td>
             </tr>
         </tbody>
     </table>
@@ -36,29 +54,19 @@
         <thead style="text-align: center; float: center; margin: 0 auto;">
             <tr>
                 <th scope="col" class="tabel-tit"></th>
-                <th scope="col" class="tabel-tit">Surakarta, {{$tanggal}}</th>
+                <th scope="col" class="tabel-tit"  style="font-size: 1.5em">Surakarta, {{$tanggal}}</th>
             </tr>
         </thead>
     </table>
 
-    <table class="tabel">
-        <thead>
-            <tr>
-                <th scope="col" class="">Mengetahui</th>
-                <th scope="col" class="">Mengetahui</th>
-            </tr>
-        </thead>
+    <table style="width: 100%; text-align:center; margin-top:20px">
         <tbody>
             <tr>
-                <td>Kepala Sekolah</td>
-                <td>Bagian Keuangan</td>
+                <td style="font-size: 0.7em">Kepala Sekolah</td>
+                <td style="font-size: 0.7em">Bagian Keuangan</td>
             </tr>
             <tr>
-                <td>{{$informasi->nama}}</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
+                <td style="font-size: 0.7em">{{$informasi->nama}}</td>
                 <td></td>
             </tr>
             <tr>
@@ -113,81 +121,10 @@
                 <td></td>
                 <td></td>
             </tr>
+
             <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>{{$informasi->nama_kepsek}}</td>
-                <td>Siti Fatimah</td>
+                <td style="font-size: 0.7em">{{$informasi->nama_kepsek}}</td>
+                <td style="font-size: 0.7em">Siti Fatimah</td>
             </tr>
         </tbody>
     </table>

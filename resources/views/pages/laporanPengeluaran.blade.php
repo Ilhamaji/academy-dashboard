@@ -1,5 +1,5 @@
 @extends('dashboard-layout')
-@section('title', 'Laporan Pengeluaran')
+@section('title', 'Laporan Transaksi Pengeluaran')
 
 @section('dashboard-content')
     <div class="flex mb-2">

@@ -24,7 +24,7 @@
             <form action="/transaksi/lain-lain/edit/{{$lains->id}}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('put') }}
-                <label for="kode_jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Lain-lain</label>
+                <label for="kode_jenis" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Penerimaan</label>
                 <select name="kode_jenis" id="kode_jenis" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
                     @foreach ($jenis as $j)
                         <option value='{{ $j->kode }}' {{$lains->kode_jenis == $j->kode ? 'selected' : ''}}>{{ $j->nama }}</option>

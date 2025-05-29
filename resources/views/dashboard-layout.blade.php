@@ -133,45 +133,6 @@
           </li>
           <li>
             <div class="group rounded-lg duration-300">
-                <a href="/laporan/kelas" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Kelas' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Kelas' ? 'fill-white' : ''}}">
-                        <g>
-                            <g>
-                                <path d="M427.692,0H86.442C72.304,0,59.733,10.4,59.733,24.5v460.867c0,14.1,12.571,26.633,26.708,26.633h341.25    c14.137,0,24.575-12.533,24.575-26.633V24.5C452.267,10.4,441.829,0,427.692,0z M435.2,485.367c0,4.683-2.779,9.567-7.508,9.567    H86.442c-4.729,0-9.642-4.883-9.642-9.567V24.5c0-4.683,4.912-7.433,9.642-7.433h341.25c4.729,0,7.508,2.75,7.508,7.433V485.367z"/>
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M299.733,59.733H214.4c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h85.333    c4.713,0,8.533-3.817,8.533-8.533C308.267,63.55,304.446,59.733,299.733,59.733z"/>
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M376.533,119.467H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,123.283,381.246,119.467,376.533,119.467z"/>
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M376.533,179.2H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,183.017,381.246,179.2,376.533,179.2z"/>
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M376.533,238.933H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,242.75,381.246,238.933,376.533,238.933z"/>
-                            </g>
-                        </g>
-                        <g>
-                            <g>
-                                <path d="M376.533,298.667H137.6c-4.713,0-9.6,2.75-9.6,7.467v128c0,4.717,4.887,9.6,9.6,9.6h238.933    c4.713,0,7.467-4.883,7.467-9.6v-128C384,301.417,381.246,298.667,376.533,298.667z M366.933,426.667H145.067V315.733h221.867    V426.667z"/>
-                            </g>
-                        </g>
-                    </svg>
-                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Data Kelas</p>
-                </a>
-            </div>
-          </li>
-          <li>
-            <div class="group rounded-lg duration-300">
                 <a href="/laporan/siswa" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Siswa' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Siswa' ? 'fill-white' : ''}}">
                         <g>
@@ -206,6 +167,45 @@
                         </g>
                     </svg>
                     <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Data Siswa</p>
+                </a>
+            </div>
+          </li>
+          <li>
+            <div class="group rounded-lg duration-300">
+                <a href="/laporan/kelas" class="middle none font-sans font-bold center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-blue-400 group-hover:shadow-lg group-hover:shadow-blue-500/40 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize text-blue-600 group-hover:text-white {{ $title === 'Laporan Kelas' ? 'shadow-md bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#155dfc" height="20" width="20" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve" class="group-hover:fill-white {{ $title === 'Laporan Kelas' ? 'fill-white' : ''}}">
+                        <g>
+                            <g>
+                                <path d="M427.692,0H86.442C72.304,0,59.733,10.4,59.733,24.5v460.867c0,14.1,12.571,26.633,26.708,26.633h341.25    c14.137,0,24.575-12.533,24.575-26.633V24.5C452.267,10.4,441.829,0,427.692,0z M435.2,485.367c0,4.683-2.779,9.567-7.508,9.567    H86.442c-4.729,0-9.642-4.883-9.642-9.567V24.5c0-4.683,4.912-7.433,9.642-7.433h341.25c4.729,0,7.508,2.75,7.508,7.433V485.367z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M299.733,59.733H214.4c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h85.333    c4.713,0,8.533-3.817,8.533-8.533C308.267,63.55,304.446,59.733,299.733,59.733z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,119.467H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,123.283,381.246,119.467,376.533,119.467z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,179.2H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,183.017,381.246,179.2,376.533,179.2z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,238.933H137.6c-4.713,0-8.533,3.817-8.533,8.533c0,4.717,3.821,8.533,8.533,8.533h238.933    c4.713,0,8.533-3.817,8.533-8.533C385.067,242.75,381.246,238.933,376.533,238.933z"/>
+                            </g>
+                        </g>
+                        <g>
+                            <g>
+                                <path d="M376.533,298.667H137.6c-4.713,0-9.6,2.75-9.6,7.467v128c0,4.717,4.887,9.6,9.6,9.6h238.933    c4.713,0,7.467-4.883,7.467-9.6v-128C384,301.417,381.246,298.667,376.533,298.667z M366.933,426.667H145.067V315.733h221.867    V426.667z"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">Laporan Data Kelas</p>
                 </a>
             </div>
           </li>

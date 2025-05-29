@@ -1,13 +1,13 @@
 @extends('dashboard-layout')
-@section('title', 'Laporan Jenis Pengeluaran')
+@section('title', 'Laporan Data Pengeluaran')
 
 @section('dashboard-content')
     <div class="flex mb-2">
-        <p class="text-sm text-blue-500">Laporan Jenis Pengeluaran</p>
+        <p class="text-sm text-blue-500">Laporan Data Pengeluaran</p>
         <div class="mx-1">/</div>
     </div>
 
-    <div class="text-xl font-bold">Tabel Jenis Pengeluaran</div>
+    <div class="text-xl font-bold">Tabel Data Pengeluaran</div>
 
     <div class="flex justify-between mt-2">
         <a href="{{url('/laporan/jenis-pengeluaran/download')}}" class="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600">Export</a>
