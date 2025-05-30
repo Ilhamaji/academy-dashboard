@@ -8,17 +8,15 @@
         </div>
     @endif
 
-    @foreach ($errors->all() as $error)
-        <div id="error-{{ $loop->iteration }}" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md">{{$error}}</div>
-    @endforeach
+    <div id="error" class="text-center bg-red-400 py-2 mb-3 text-white rounded-md {{isset($error) ?  'block' : 'hidden' }}">{{isset($error) ?  $error : '' }}</div>
 
     <div class="flex mb-2">
         <p class="text-sm text-blue-500">Kas</p>
         <div class="mx-1">/</div>
     </div>
 
-    <div class="{{isset($bulan) || isset($tahun) ? 'flex justify-between' : 'block'}}">
-        <form action="/kas/cari/download" method="POST" class="{{isset($bulan) || isset($tahun) ? 'block' : 'hidden'}}">
+    <div class="{{isset($bulan) && isset($tahun) ? 'flex justify-between' : 'block'}}">
+        <form action="/kas/cari/download" method="POST" class="{{isset($bulan) && isset($tahun) ? 'block' : 'hidden'}}">
             {{ csrf_field() }}
             <input type="text" name="bulan" hidden value={{isset($bulan) ? $bulan : ''}}>
             <input type="text" name="tahun" hidden value={{isset($tahun) ? $tahun : ''}}>
@@ -28,7 +26,7 @@
         <form class="flex" action="/kas" method="POST">
             {{ csrf_field() }}
             <div class="flex w-full justify-between gap-2">
-                <a href="{{url('/kas/download')}}" target="_blank" class="py-2 px-4 bg-green-500 text-white rounded-md {{!isset($bulan) && !isset($tahun) ? 'block' : 'hidden'}}">Export</a>
+                <a href="{{url('/kas/download')}}" target="_blank" class="py-2 px-4 bg-green-500 text-white rounded-md {{!isset($bulan) || !isset($tahun) ? 'block' : 'hidden'}}">Export</a>
                 <div class="flex flex-row gap-2">
                     <div class="flex">
                         <select name="bulan" id="bulan" class="bg-white h-full px-2 py-2 placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded transition duration-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md">
@@ -200,4 +198,13 @@
         </div>
     </div>
 
+    <script>
+         const error = document.getElementById('error');
+
+         if (error) {
+              setTimeout(() => {
+                error.style.display = 'none';
+              }, 10000);
+         }
+   </script>
 @endsection

@@ -19,7 +19,7 @@
         <tbody>
             <tr>
                 <td>Saldo Kas : </td>
-                <td style="text-align: right;">Rp {{number_format($total + $total_pengeluarans, 0);}}</td>
+                <td style="text-align: right;">Rp {{number_format($total_before, 0);}}</td>
             </tr>
         </tbody>
     </table>
@@ -68,7 +68,7 @@
             </tr>
             <tr class="tabels-r">
                 <td class="tabels-d" style="text-align: center; font-weight: bold;" colspan="3">Saldo Akhir Kas</td>
-                <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total, 0);}}</td>
+                <td class="tabels-d" style="text-align: right; font-weight: bold;">Rp {{number_format($total_before + $total, 0);}}</td>
             </tr>
         </tbody>
     </table>
