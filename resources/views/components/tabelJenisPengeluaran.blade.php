@@ -3,7 +3,7 @@
       <tr>
         <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">No</th>
         <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Kode</th>
-        <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nama Pengeluaran</th>
+        <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Pengeluaran</th>
         <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Tanggal</th>
       </tr>
     </thead>

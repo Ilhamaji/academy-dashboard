@@ -175,11 +175,15 @@ class PengeluaranController extends Controller
 
         $pengeluaran = DB::table('pengeluaran')->join('jenis_pengeluaran', 'pengeluaran.kode_jenis', '=', 'jenis_pengeluaran.kode')->select('pengeluaran.*', 'jenis_pengeluaran.nama as nama_jenis_pengeluaran', 'jenis_pengeluaran.kode as kode_jenis_pengeluaran')->find($id);
 
-        $mpdf = new \Mpdf\Mpdf(['format' => [300 ,150]]);
-        $stylesheet = file_get_contents('pdf.css');
+        $tgl = date("d-m-Y", strtotime($pengeluaran->tanggal));
+        $mpdf = new \Mpdf\Mpdf(['format' => [300 ,150], 'margin_footer' => 0]);
+        $mpdf->useFixedNormalLineHeight = false;
+        $mpdf->useFixedTextBaseline = false;
+        $mpdf->adjustFontDescLineheight = 0;
+        $stylesheet = file_get_contents('pdfKwitansi.css');
 
         $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML(view('components.pdfKwitansiPengeluaran', ['pengeluaran' => $pengeluaran, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->WriteHTML(view('components.pdfKwitansiPengeluaran', ['pengeluaran' => $pengeluaran, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama, 'tgl' => $tgl]), \Mpdf\HTMLParserMode::HTML_BODY);
         $mpdf->restrictColorSpace = 1;
 
         $mpdf->Output();

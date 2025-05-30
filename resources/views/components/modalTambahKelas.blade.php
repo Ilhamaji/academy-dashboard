@@ -9,7 +9,7 @@
     <div class="bg-white rounded-lg w-9/12 sm:w-7/12 md:w-5/12 lg:w-3/12 scale-95 p-5 transition-transform duration-300 ease-out">
       <!-- Modal Header -->
         <div class="flex justify-between">
-            <span>Tambah Siswa</span>
+            <span>Tambah Kelas</span>
             <button
             type="button"
             id="closeModalButton"

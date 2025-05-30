@@ -41,7 +41,7 @@
                   <tr>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">No</th>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Kode</th>
-                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Nama Penerimaan</th>
+                    <th scope="col" class="px-6 py-3 text-start text-xs font-bold text-black uppercase">Jenis Pengeluaran</th>
                     <th scope="col" class="px-6 py-3 text-end text-xs font-bold text-black uppercase">Aksi</th>
                   </tr>
                 </thead>

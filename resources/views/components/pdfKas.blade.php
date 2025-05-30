@@ -12,7 +12,7 @@
     <hr>
     <div class="pdf-title">
         <h2>Laporan Keuangan</h2>
-        <h2>Seluruhnya</h2>
+        <h2>Keseluruhan</h2>
     </div>
 
     <table class="tabels">

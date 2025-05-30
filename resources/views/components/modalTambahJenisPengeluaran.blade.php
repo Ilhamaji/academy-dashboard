@@ -22,7 +22,7 @@ aria-hidden="true"
             {{ csrf_field() }}
             <label for="kode" class="font-semibold text-sm text-gray-600 pb-1 block">Kode</label>
             <input type="text" id="kode" type="text" name="kode" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)/>
-            <label for="nama" class="font-semibold text-sm text-gray-600 pb-1 block">Nama Pengeluaran</label>
+            <label for="nama" class="font-semibold text-sm text-gray-600 pb-1 block">Jenis Pengeluaran</label>
             <textarea type="text" id="nama" type="text" name="nama" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)></textarea>
             <button type="submit" class="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                 <span class="inline-block">Tambah</span>

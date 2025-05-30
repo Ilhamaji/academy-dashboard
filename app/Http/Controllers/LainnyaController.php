@@ -58,11 +58,15 @@ class LainnyaController extends Controller
 
         $lain = DB::table('lain_lain')->join('jenis_penerimaan', 'lain_lain.kode_jenis', '=', 'jenis_penerimaan.kode')->select('lain_lain.*', 'jenis_penerimaan.nama as nama_jenis_penerimaan', 'jenis_penerimaan.kode as kode_jenis_penerimaan')->find($id);
 
-        $mpdf = new \Mpdf\Mpdf(['format' => [300 ,150]]);
-        $stylesheet = file_get_contents('pdf.css');
+        $tgl = date("d-m-Y", strtotime($lain->tanggal));
+        $mpdf = new \Mpdf\Mpdf(['format' => [300 ,150], 'margin_footer' => 0]);
+        $mpdf->useFixedNormalLineHeight = false;
+        $mpdf->useFixedTextBaseline = false;
+        $mpdf->adjustFontDescLineheight = 0;
+        $stylesheet = file_get_contents('pdfKwitansi.css');
 
         $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
-        $mpdf->WriteHTML(view('components.pdfKwitansiLainnya', ['lain' => $lain, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama]), \Mpdf\HTMLParserMode::HTML_BODY);
+        $mpdf->WriteHTML(view('components.pdfKwitansiLainnya', ['lain' => $lain, 'informasi' => $informasi, 'tahun' => $tahun, 'b' => $b, 'tanggal' => $tanggal, 'informasiNama' => $informasiNama, 'tgl' => $tgl]), \Mpdf\HTMLParserMode::HTML_BODY);
         $mpdf->restrictColorSpace = 1;
 
         $mpdf->Output();

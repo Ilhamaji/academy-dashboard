@@ -31,28 +31,40 @@ class RegisterController extends Controller
                 ->get();
 
         $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:users',
-            'email' => 'required|unique:users',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
-            'password' => 'required',
-        ]);
-
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
-        $imagePath = "images/".$imageName;
+                'name' => 'required',
+                'username' => 'required|unique:users',
+                'email' => 'required|unique:users',
+                'image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+                'password' => 'required',
+            ]);
 
         $hashedPassword = Hash::make($request->password);
-        DB::table('users')->insert([
-            [
-                'name' => $request->name,
-                'username' => $request->username,
-                'email' => $request->email,
-                'image' => $imagePath,
-                'password' => $hashedPassword,
-                'created_at' => now(),
-            ],
-        ]);
+
+        if ($request->image !== '' && strlen($request->image) > 0) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $imagePath = "images/".$imageName;
+            DB::table('users')->insert([
+                [
+                    'name' => $request->name,
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'image' => $imagePath,
+                    'password' => $hashedPassword,
+                    'created_at' => now(),
+                ],
+            ]);
+        }else{
+            DB::table('users')->insert([
+                [
+                    'name' => $request->name,
+                    'username' => $request->username,
+                    'email' => $request->email,
+                    'password' => $hashedPassword,
+                    'created_at' => now(),
+                ],
+            ]);
+        }
 
         return redirect("/register")->with('success', 'User created successfully');
     }
