@@ -20,12 +20,14 @@ aria-hidden="true"
         <hr class="my-4">
         <form action="/penerimaan/pembayaran" method="POST">
             {{ csrf_field() }}
-            <label for="nisn" class="font-semibold text-sm text-gray-600 pb-1 block">Nama Siswa</label>
-            <select name="nisn" id="nisn" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" @required(true)>
+            <label for="custom_field1" class="font-semibold text-sm text-gray-600 pb-1 block">Siswa</label>
+            <input id="custom_field1" name="nisn" type="text" list="custom_field1_datalist" class="form-control border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
+            <datalist id="custom_field1_datalist" class="select2">
                 @foreach ($siswas as $siswa)
                     <option value='{{ $siswa->nisn }}'>{{ $siswa->nama_siswa }}</option>
                 @endforeach
-            </select>
+            </datalist>
+            <span id="error" class="text-danger"></span>
             <label for="kelas" class="font-semibold text-sm text-gray-600 pb-1 block">Kelas</label>
             <select name="kelas" id="kelas" class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full">
                 <option value=''>Pilih kelas jika belum terdaftar</option>
@@ -63,5 +65,9 @@ openModalButton.addEventListener("click", () => {
 closeModalButton.addEventListener("click", () => {
     modal.classList.add("opacity-0", "pointer-events-none");
     modal.classList.remove("opacity-100");
+});
+
+$(document).ready(function() {
+    $('.select2').select2();
 });
 </script>
