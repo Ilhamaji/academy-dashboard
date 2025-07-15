@@ -9,7 +9,7 @@ class Informasi extends Model
     //
     protected $table = 'informasi';
 
-    protected $fillable = ['name',
+    protected $fillable = ['nama',
                         'npsn',
                         'nss',
                         'kodepos',
