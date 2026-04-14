@@ -23,10 +23,10 @@ A powerful, all-in-one administrative platform built with **Laravel**. This syst
 
 ## 🛠️ Built With
 
-  * **Backend**: [Laravel 10.x/11.x](https://laravel.com)
-  * **Frontend**: Blade Templating / [Livewire / Inertia.js]
+  * **Backend**: [Laravel](https://laravel.com)
+  * **Frontend**: Blade Templating
   * **Styling**: Tailwind CSS
-  * **Database**: MySQL / PostgreSQL
+  * **Database**: MySQL
 
 ## 📦 Installation
 
