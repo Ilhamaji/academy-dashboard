@@ -1,27 +1,36 @@
-# <img src="[https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20Logo%20Vertical/1%20Logo%20Vertical%20-%20Black.svg](https://www.google.com/search?q=https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%2520SVG/2%2520Logo%2520Vertical/1%2520Logo%2520Vertical%2520-%2520Black.svg)" alt="Laravel Logo" width="36" height="36" align="top" /> Academy Dashboard
+# Academy Dashboard
 
-A robust and scalable academic management system built with **Laravel**. This dashboard provides a centralized platform for managing student data, course enrollments, and academic reporting with an emphasis on performance and security.
+A powerful, all-in-one administrative platform built with **Laravel**. This system is designed to streamline school management, focusing on financial transparency, student administration, and classroom organization.
 
-**Demo:** [https://academy-dashboard-ilham.netlify.app](https://www.google.com/search?q=https://academy-dashboard-ilham.netlify.app) *(Note: Netlify is usually for frontend, adjust this if you are hosting on Heroku/Railway/VPS)*
+## 🚀 Key Modules & Features
 
-## 🚀 Features
+### 💰 Financial Management & Reporting
 
-  * **Student Information System**: Comprehensive management of student profiles and academic records.
-  * **Course & Curriculum Management**: Tools to organize classes, subjects, and teacher assignments.
-  * **Reporting Tools**: Generate academic reports and monitor institutional KPIs.
-  * **Secure Authentication**: Built-in Laravel authentication and role-based access control (RBAC).
-  * **Eloquent ORM**: Optimized database interactions for seamless data handling.
+  * **Payment Tracking**: Manage student tuition (SPP), enrollment fees, and other administrative payments.
+  * **Financial Reports**: Generate automated reports for income and expenditures.
+  * **Transaction History**: Secure and traceable logs for every financial activity.
+
+### 🏫 Academic & Classroom Management
+
+  * **Class Organization**: Manage class lists, grade levels, and homeroom teacher assignments.
+  * **Student Directory**: Centralized database for student profiles, attendance, and academic status.
+  * **Enrollment System**: Efficient workflow for registering and managing new student intakes.
+
+### 🛠️ Administrative Tools
+
+  * **Role-Based Access**: Secure login for Admins, Accountants, and Teachers with specific permissions.
+  * **Data Visualization**: Quick-view dashboards for financial summaries and student statistics.
 
 ## 🛠️ Built With
 
-  * **Framework**: [Laravel 10.x / 11.x](https://laravel.com)
-  * **Frontend**: Blade Templating / [Livewire / Inertia.js - *Pilih salah satu*]
+  * **Backend**: [Laravel 10.x/11.x](https://laravel.com)
+  * **Frontend**: Blade Templating / [Livewire / Inertia.js]
   * **Styling**: Tailwind CSS
   * **Database**: MySQL / PostgreSQL
 
 ## 📦 Installation
 
-Ikuti langkah-langkah berikut untuk menjalankan project ini di environment lokal Anda:
+Follow these steps to set up the project locally:
 
 1.  **Clone the repository**
 
@@ -30,7 +39,7 @@ Ikuti langkah-langkah berikut untuk menjalankan project ini di environment lokal
     cd academy-dashboard
     ```
 
-2.  **Install dependencies**
+2.  **Install PHP & JS Dependencies**
 
     ```bash
     composer install
@@ -38,25 +47,20 @@ Ikuti langkah-langkah berikut untuk menjalankan project ini di environment lokal
     ```
 
 3.  **Environment Setup**
-    Salin file `.env.example` menjadi `.env` dan sesuaikan konfigurasi database Anda:
+    Copy the example environment file and configure your database settings:
 
     ```bash
     cp .env.example .env
     ```
 
-4.  **Generate Application Key**
+4.  **Security & Database Initialization**
 
     ```bash
     php artisan key:generate
-    ```
-
-5.  **Run Migrations & Seeding**
-
-    ```bash
     php artisan migrate --seed
     ```
 
-6.  **Compile Assets**
+5.  **Compile Assets**
 
     ```bash
     npm run dev
@@ -64,27 +68,27 @@ Ikuti langkah-langkah berikut untuk menjalankan project ini di environment lokal
 
 ## 📋 Usage
 
-Jalankan server pengembangan lokal:
+Run the local development server:
 
 ```bash
 php artisan serve
 ```
 
-Aplikasi akan dapat diakses di `http://127.0.0.1:8000`.
+The application will be available at `http://127.0.0.1:8000`.
 
 ## 🤝 Contributing
 
-Jika Anda ingin berkontribusi:
+Contributions are welcome to make this academy system even better.
 
-1.  Fork Project ini.
-2.  Buat Feature Branch (`git checkout -b feature/NewFeature`).
-3.  Commit perubahan Anda (`git commit -m 'Add some NewFeature'`).
-4.  Push ke Branch (`git push origin feature/NewFeature`).
+1.  Fork the Project.
+2.  Create your Feature Branch (`git checkout -b feature/NewFeature`).
+3.  Commit your changes (`git commit -m 'Add some NewFeature'`).
+4.  Push to the Branch (`git push origin feature/NewFeature`).
 5.  Open a Pull Request.
 
 ## 📄 License
 
-Distributed under the **MIT License**. Lihat file `LICENSE` untuk informasi lebih lanjut.
+Distributed under the **MIT License**. See the `LICENSE` file for more information.
 
 ## ✉️ Contact
 
@@ -93,4 +97,4 @@ Project Link: [https://github.com/Ilhamaji/academy-dashboard](https://www.google
 
 -----
 
-*Disclaimer: This dashboard is built as a part of a professional web development portfolio for educational management systems.*
+*Disclaimer: This project is part of a professional web development portfolio focusing on institutional management solutions.*
