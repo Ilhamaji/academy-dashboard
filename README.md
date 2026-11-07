@@ -2,74 +2,76 @@
 
 # Academy Dashboard
 
-Aplikasi administrasi sekolah berbasis **Laravel** untuk pencatatan pembayaran SPP, pengeluaran, dan laporan keuangan.
+A **Laravel** school-administration app for tracking tuition (SPP) payments, expenses, and financial reports.
 
 [![Status](https://img.shields.io/badge/status-complete-brightgreen?style=flat-square)](#)
 [![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=flat-square&logo=laravel&logoColor=white)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://php.net)
 [![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://mysql.com)
 
+**English** · [Bahasa Indonesia](README.id.md)
+
 </div>
 
 ---
 
-## Tentang
+## About
 
-Pencatatan SPP dan pengeluaran sekolah biasanya berjalan di buku kas atau spreadsheet terpisah, sehingga saldo mudah selisih dan riwayat sulit ditelusuri. Aplikasi ini memusatkannya: setiap pembayaran dan pengeluaran tercatat di satu database, bisa dicari, dan diekspor ke Excel maupun PDF.
+Schools usually track tuition and expenses across a cash book or a handful of spreadsheets, which makes balances drift and history hard to audit. This app centralises it: every payment and expense lands in one database, is searchable, and exports to Excel or PDF.
 
-## Modul
+## Modules
 
-### Penerimaan
+### Income
 
-- Pencatatan pembayaran SPP di `/transaksi/pembayaran` (tambah, ubah, hapus).
-- CRUD *jenis penerimaan* beserta nominal, di `/penerimaan`.
-- Laporan pembayaran dan laporan per jenis penerimaan, masing-masing punya versi `/download` (Excel).
+- Record tuition payments at `/transaksi/pembayaran` (create, edit, delete).
+- CRUD for *income types* and their amounts at `/penerimaan`.
+- Payment reports and per-income-type reports, each with a `/download` (Excel) variant.
 
-### Pengeluaran
+### Expenses
 
-- Pencatatan pengeluaran di `/transaksi/pengeluaran` (tambah, ubah, hapus).
-- CRUD *jenis pengeluaran* di `/pengeluaran`.
-- Laporan pengeluaran dan laporan per jenis pengeluaran, dengan ekspor `/download`.
-- Kwitansi PDF per pengeluaran di `/laporan/pengeluaran/kwitansi/{id}`.
+- Record expenses at `/transaksi/pengeluaran` (create, edit, delete).
+- CRUD for *expense types* at `/pengeluaran`.
+- Expense reports and per-expense-type reports, with `/download` export.
+- A PDF receipt per expense at `/laporan/pengeluaran/kwitansi/{id}`.
 
-### Lain-lain
+### Other receipts
 
-- Pencatatan penerimaan lain di luar SPP (`/transaksi/lain-lain`), dengan jenis dan laporannya sendiri.
+- Record non-tuition income (`/transaksi/lain-lain`) with its own types and report.
 
-### Data Siswa & Kelas
+### Students and classes
 
-- Data siswa dengan NISN sebagai kunci: cari, tambah, ubah, hapus.
-- Data kelas: tambah, ubah, hapus (hapus berdasarkan nama kelas).
-- Laporan siswa dan laporan per kelas (`/laporan/kelas/{id}`), termasuk rincian pembayaran per siswa.
+- Student records keyed by NISN: search, create, edit, delete.
+- Class records: create, edit, delete (deletion is by class name).
+- Student reports and per-class reports (`/laporan/kelas/{id}`), including per-student payment detail.
 
-### Buku Kas
+### Cash book
 
-- Rekap kas berdasarkan rentang tanggal, dengan unduhan PDF (`POST /kas/cari/download`).
+- A cash recap by date range with PDF download (`POST /kas/cari/download`).
 
-### Pengguna
+### Users
 
-- Login, register, logout, dan halaman profil.
+- Login, registration, logout, and a profile page.
 
-> **Catatan:** semua route di dalam grup `auth` memakai middleware `auth` yang sama. Belum ada pembedaan peran (admin/bendahara/guru) — siapa pun yang punya akun bisa mengakses seluruh menu.
+> **Note:** every route inside the `auth` group uses the same `auth` middleware. There is no role separation (admin/treasurer/teacher) — any account can reach every menu.
 
 ## Tech Stack
 
-| Bagian | Teknologi |
+| Layer | Technology |
 | --- | --- |
 | Framework | Laravel |
-| Bahasa | PHP 8.2+ |
+| Language | PHP 8.2+ |
 | Frontend | Blade + Tailwind CSS + Vite |
 | Database | MySQL |
-| Ekspor | `maatwebsite/excel`, PDF |
+| Export | `maatwebsite/excel`, PDF |
 
-## Menjalankan
+## Getting Started
 
-### 1. Prasyarat
+### 1. Prerequisites
 
-- PHP 8.2+ dengan ekstensi `pdo_mysql`, `mbstring`, `xml`, `gd`
+- PHP 8.2+ with `pdo_mysql`, `mbstring`, `xml`, `gd`
 - Composer, Node.js 18+, MySQL 8
 
-### 2. Clone & install
+### 2. Clone and install
 
 ```bash
 git clone https://github.com/Ilhamaji/academy-dashboard.git
@@ -78,14 +80,14 @@ composer install
 npm install
 ```
 
-### 3. Konfigurasi
+### 3. Configure
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-Sesuaikan database di `.env`:
+Point the database settings in `.env` at your instance:
 
 ```env
 DB_CONNECTION=mysql
@@ -96,59 +98,59 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 4. Muat database
+### 4. Load the database
 
-Repo hanya menyertakan migration untuk tabel `users`. Untuk skema lengkap beserta data contoh, impor dump:
+The repo only ships a migration for the `users` table. For the full schema plus sample data, import the dump:
 
 ```bash
 mysql -u root -p academy < academy.sql
 ```
 
-Atau jalankan migration minimal, lalu buat tabel `siswa`, `kelas`, `pembayaran`, `pengeluaran`, dan `lain_lain` secara manual mengacu ke `academy.sql`.
+Alternatively, run the minimal migration and create the `siswa`, `kelas`, `pembayaran`, `pengeluaran`, and `lain_lain` tables by hand, following `academy.sql`.
 
-### 5. Jalankan
+### 5. Run
 
 ```bash
 npm run dev          # terminal 1
 php artisan serve    # terminal 2
 ```
 
-Buka [http://127.0.0.1:8000](http://127.0.0.1:8000), lalu daftar akun lewat `/register`.
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) and register through `/register`.
 
-## Peta Route
+## Route Map
 
-| Grup | Route utama |
+| Group | Main routes |
 | --- | --- |
 | Auth | `/register`, `/login`, `/logout` |
 | Dashboard | `/` |
-| Siswa | `/siswa`, `/siswa/cari`, `/laporan/siswa` |
-| Kelas | `/kelas`, `/laporan/kelas/{id}` |
-| Penerimaan | `/penerimaan` (jenis), `/transaksi/pembayaran`, `/laporan/pembayaran` |
-| Pengeluaran | `/pengeluaran` (jenis), `/transaksi/pengeluaran`, `/laporan/pengeluaran` |
-| Lain-lain | `/transaksi/lain-lain`, `/laporan/lain-lain` |
-| Kas | `/kas`, `POST /kas/cari/download` |
-| Informasi & profil | `/informasi`, `/profil` |
+| Students | `/siswa`, `/siswa/cari`, `/laporan/siswa` |
+| Classes | `/kelas`, `/laporan/kelas/{id}` |
+| Income | `/penerimaan` (types), `/transaksi/pembayaran`, `/laporan/pembayaran` |
+| Expenses | `/pengeluaran` (types), `/transaksi/pengeluaran`, `/laporan/pengeluaran` |
+| Other | `/transaksi/lain-lain`, `/laporan/lain-lain` |
+| Cash book | `/kas`, `POST /kas/cari/download` |
+| Info and profile | `/informasi`, `/profil` |
 
-## Struktur
+## Project Layout
 
 ```
 app/
   Http/Controllers/     # Home, Siswa, Kelas, Pembayaran, Penerimaan,
                         # Pengeluaran, Lainnya, Detail, Kas, User, Auth
-  Exports/              # kelas (7 file ekspor Excel/PDF)
+  Exports/              # class exports (7 Excel/PDF export files)
   Models/
-routes/web.php          # seluruh route
-resources/views/        # template Blade
-database/migrations/    # hanya users
-academy.sql             # dump skema + data lengkap
+routes/web.php          # all routes
+resources/views/        # Blade templates
+database/migrations/    # users only
+academy.sql             # full schema and sample data dump
 ```
 
-## Lisensi
+## License
 
 MIT.
 
 ---
 
 <div align="center">
-Dibuat oleh <a href="https://github.com/Ilhamaji">Ilham Aji</a>
+Built by <a href="https://github.com/Ilhamaji">Ilham Aji</a>
 </div>
